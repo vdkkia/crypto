@@ -1,6 +1,11 @@
 const logger = require("../logger");
 const googleTrends = require("google-trends-api");
 const helper = require("../helpers");
+const trends = require("../../models/trend");
+const slayer = require("slayer");
+
+const HttpsProxyAgent = require("https-proxy-agent");
+const proxyAgent = new HttpsProxyAgent("127.0.0.1:9050");
 
 // 100 is the most popularity
 const interestOverTime = async (keyword, period) => {
@@ -16,6 +21,7 @@ const interestOverTime = async (keyword, period) => {
       // property: "youtube", //  enumerated string ['images', 'news', 'youtube' or 'froogle']
       // endTime: helper.data.getProcessedDate("3d"),
       // geo: 'US', //defaults to worldwide
+      agent: proxyAgent,
     });
     // console.log(res)
     return JSON.parse(res).default.timelineData;
@@ -66,9 +72,46 @@ const relatedQueries = async (keyword, period) => {
 
 googleTrends.relatedQueries({ keyword: "Westminster Dog Show" });
 
+/// Shots is the number of 4-hour data
+/// e.g. shot == 8 >> 8 x 4-hour data (each with 1 hour overlap) >> 24 hours useful data
+const getNormalizeData = async (coin, shots) => {
+  let allData = (await trends.findOne({ keyword: coin })).data;
+  allData = allData.slice(-shots);
+  const firstShot = JSON.parse(allData[0]);
+  // let output = [firstShot];
+  let output = [];
+  output = output.concat(firstShot);
+  let reference = getReference(firstShot); // [{time:"", value:""}]
+  for (let i = 1; i < allData.length; i++) {
+    const nextShot = JSON.parse(allData[i]);
+    const item = nextShot.find((x) => x.time == reference.time);
+    const normCriteria = reference.value / item.value;
+    const normalizedShot = nextShot.map((x) => ({ time: x.time, value: x.value * normCriteria }));
+    output = output.concat(normalizedShot);
+    // output.push(normalizedShot)_
+    reference = getReference(normalizedShot);
+  }
+  return output;
+};
+
+const detectSpike = async (data) => {
+  const spikes = await slayer({ minPeakDistance: 100, minPeakHeight: 0 })
+    .y((item) => item.value)
+    .fromArray(data);
+  return spikes;
+};
+
+const getReference = (data) => {
+  for (let i = data.length - 1; i > 0; i--) {
+    if (data[i].value != 0) return data[i];
+  }
+};
+
 module.exports = {
   interestOverTime,
   dailyTrends,
   interestByRegion,
   relatedQueries,
+  getNormalizeData,
+  detectSpike,
 };
