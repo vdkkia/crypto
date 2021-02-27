@@ -8,16 +8,17 @@ const proxyAgent = new SocksProxyAgent("socks5h://127.0.0.1:9050");
 let isProxyUsing = false;
 
 let mainCounter = 0;
-let counter = 0;
+
 const getTrend = async () => {
   mainCounter++;
+  let counter = 0;
   // const groupedKeywords = _.chunk(keywords, 5);
   for (const coin of keywords) {
     counter++;
     logger.info(counter + "/" + keywords.length + (isProxyUsing ? " proxy" : "") + "  <" + coin + ">");
     let result;
     try {
-      result = await trendController.interestOverTime(coin, "3h", isProxyUsing ? proxyAgent : null);
+      result = await trendController.interestOverTime(coin, "30m", isProxyUsing ? proxyAgent : null);
       if (!Array.isArray(result)) {
         logger.info((isProxyUsing ? "proxy agent" : "main IP") + " is blocked, trying the other one...");
         isProxyUsing = !isProxyUsing;
