@@ -22,7 +22,7 @@ const getTrend = async () => {
       if (!Array.isArray(result)) {
         logger.info((isProxyUsing ? "proxy agent" : "main IP") + " is blocked, trying the other one...");
         isProxyUsing = !isProxyUsing;
-        result = await trendController.interestOverTime(coin, "3h", isProxyUsing ? proxyAgent : null);
+        result = await trendController.interestOverTime(coin, "30m", isProxyUsing ? proxyAgent : null);
         if (!Array.isArray(result)) {
           logger.error("FUCK! Both the main IP and the proxy are blocked by FUCKING Google!");
           return;
