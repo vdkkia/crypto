@@ -5,14 +5,14 @@ const logger = require("../logger");
 
 const { SocksProxyAgent } = require("socks-proxy-agent");
 const proxyAgent = new SocksProxyAgent("socks5h://127.0.0.1:9050");
-let isProxyUsing = true;
+let isProxyUsing = false;
 
 let mainCounter = 0;
 const getTrend = async () => {
   mainCounter++;
   // const groupedKeywords = _.chunk(keywords, 5);
   for (const coin of keywords) {
-    logger.info("Trying " + coin + "...");
+    logger.info((isProxyUsing ? "proxy agent" : "main IP") + "  <" + coin + ">");
     let result;
     try {
       result = await trendController.interestOverTime(coin, "3h", isProxyUsing ? proxyAgent : null);
