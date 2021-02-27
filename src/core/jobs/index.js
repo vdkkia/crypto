@@ -2,31 +2,49 @@
 const trends = require("../../models/trend");
 const trendController = require("../controllers/trendController");
 const logger = require("../logger");
+
+const { SocksProxyAgent } = require("socks-proxy-agent");
+const proxyAgent = new SocksProxyAgent("socks5h://127.0.0.1:9050");
+let isProxyUsing = true;
+
 let mainCounter = 0;
 const getTrend = async () => {
   mainCounter++;
   // const groupedKeywords = _.chunk(keywords, 5);
   for (const coin of keywords) {
-    console.log(coin);
-    const result = await trendController.interestOverTime(coin, "3h");
+    logger.info("Trying " + coin + "...");
+    let result;
+    try {
+      result = await trendController.interestOverTime(coin, "3h", isProxyUsing ? proxyAgent : null);
+      if (!Array.isArray(result)) {
+        logger.info((isProxyUsing ? "proxy agent" : "main IP") + " is blocked, trying the other one...");
+        isProxyUsing = !isProxyUsing;
+        result = await trendController.interestOverTime(coin, "3h", isProxyUsing ? proxyAgent : null);
+        if (!Array.isArray(result)) {
+          logger.error("FUCK! Both the main IP and the proxy are blocked by FUCKING Google!");
+          return;
+        }
+      }
+    } catch (err) {
+      logger.error("Error: " + err);
+    }
+
     await sleep(1000);
 
-    if (Array.isArray(result)) {
-      const data = result.map((z) => ({
-        time: z?.time,
-        value: z?.value[0],
-      }));
-      //   console.log(result)
-      try {
-        await trends.findOneAndUpdate(
-          { keyword: coin },
-          { $push: { data: JSON.stringify(data) } },
-          { upsert: true }
-        );
-        // logger.info("Trend data stored for keyword: '" + coin + "'");
-      } catch (e) {
-        logger.error("Error storing trend data for keyword: '" + coin + "': " + e);
-      }
+    const data = result.map((z) => ({
+      time: z?.time,
+      value: z?.value[0],
+    }));
+    //   console.log(result)
+    try {
+      await trends.findOneAndUpdate(
+        { keyword: coin },
+        { $push: { data: JSON.stringify(data) } },
+        { upsert: true }
+      );
+      logger.info("Trend data stored for keyword: '" + coin + "'");
+    } catch (e) {
+      logger.error("Error storing trend data for keyword: '" + coin + "': " + e);
     }
   }
   logger.info("===============================================" + mainCounter + "'");

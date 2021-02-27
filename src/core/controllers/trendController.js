@@ -4,14 +4,11 @@ const helper = require("../helpers");
 const trends = require("../../models/trend");
 const slayer = require("slayer");
 
-const { SocksProxyAgent } = require('socks-proxy-agent');
-const proxyAgent = new SocksProxyAgent('socks5h://127.0.0.1:9050');
-
 // const HttpsProxyAgent = require("https-proxy-agent");
 // const proxyAgent = new HttpsProxyAgent("127.0.0.1:9050");
 
 // 100 is the most popularity
-const interestOverTime = async (keyword, period) => {
+const interestOverTime = async (keyword, period, agent) => {
   // period =< 4 ==> timeFrame: 1 minute
   // period > 4 ==> timeFrame: 8 minuts
   try {
@@ -24,7 +21,7 @@ const interestOverTime = async (keyword, period) => {
       // property: "youtube", //  enumerated string ['images', 'news', 'youtube' or 'froogle']
       // endTime: helper.data.getProcessedDate("3d"),
       // geo: 'US', //defaults to worldwide
-      agent: proxyAgent,
+      agent,
     });
     // console.log(res)
     return JSON.parse(res).default.timelineData;
