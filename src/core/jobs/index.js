@@ -12,7 +12,6 @@ const getTrend = async () => {
     await sleep(1000);
 
     if (Array.isArray(result)) {
-      console.log("data.......",data);
       const data = result.map((z) => ({
         time: z?.time,
         value: z?.value[0],
