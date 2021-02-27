@@ -21,6 +21,7 @@
     "google-trends-api": "^4.9.2",
     "https-proxy-agent": "^5.0.0",
     "ioredis": "^4.19.4",
+    "lodash": "^4.17.21",
     "moment": "^2.29.1",
     "mongoose": "^5.11.17",
     "node-cron": "^2.0.3",
@@ -29,6 +30,7 @@
     "passport-local-mongoose": "^6.0.1",
     "redis": "^3.0.2",
     "slayer": "^1.0.1",
+    "socks-proxy-agent": "^5.0.0",
     "winston": "^3.3.3"
   },
   "devDependencies": {

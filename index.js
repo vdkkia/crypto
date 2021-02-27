@@ -12,8 +12,9 @@ const logger = require("./src/core/logger");
 const db = require("./src/database/mongoDB");
 const session = require("./src/middlewares/session");
 const jobRunner = require("./src/core/jobRunner");
+const trendsController = require("./src/core/controllers/trendController");
 
-// const coins = require("./src/models/coin");
+const coins = require("./src/models/coin");
 
 app.use(
   cors({
@@ -31,8 +32,11 @@ app.use(passport.session());
 const server = app
   .listen(process.env.serverPort, async () => {
     await db.connect();
-    // jobRunner.manualRun();
-    jobRunner.start();
+    jobRunner.manualRun();
+    // jobRunner.start();
+
+    // const data = await trendsController.getNormalizeData("Bitcoin", 10);
+    // console.log(await trendsController.detectSpike(data));
 
     // const axios = require("axios");
     // const res = await axios.get("https://api.coinstats.app/public/v1/coins");

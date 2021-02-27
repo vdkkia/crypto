@@ -9,13 +9,13 @@ const schedule = (cronExpression, job) => {
   });
 };
 
-let tasks = [];
-// Every 3 hours (Trend result is 4 hours >> 1 hour overlap)
-// At minute 0 past every 3rd hour.
-tasks.push(schedule("0 */3 * * *", jobs.getTrend));
 const jobRunner = {
   start: () => {
     try {
+      let tasks = [];
+      // Every 3 hours (Trend result is 4 hours >> 1 hour overlap)
+      // At minute 0 past every 3rd hour.
+      tasks.push(schedule("* * * * *", jobs.getTrend));
       tasks.forEach((x) => x.stop());
       tasks.forEach((x) => x.start());
       logger.info(`${tasks.length} jobs were scheduled.`);

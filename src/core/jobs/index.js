@@ -1,11 +1,18 @@
+// const _ = require("lodash");
 const trends = require("../../models/trend");
 const trendController = require("../controllers/trendController");
 const logger = require("../logger");
+let mainCounter = 0;
 const getTrend = async () => {
-  for (const x of keywords) {
-    const result = await trendController.interestOverTime(x, "4h");
-    await sleep(200);
+  mainCounter++;
+  // const groupedKeywords = _.chunk(keywords, 5);
+  for (const coin of keywords) {
+    console.log(coin);
+    const result = await trendController.interestOverTime(coin, "3h");
+    await sleep(1000);
+
     if (Array.isArray(result)) {
+      console.log("data.......",data);
       const data = result.map((z) => ({
         time: z?.time,
         value: z?.value[0],
@@ -13,22 +20,23 @@ const getTrend = async () => {
       //   console.log(result)
       try {
         await trends.findOneAndUpdate(
-          { keyword: x },
+          { keyword: coin },
           { $push: { data: JSON.stringify(data) } },
           { upsert: true }
         );
-        logger.info("Trend data stored for keyword: '" + x + "'");
+        // logger.info("Trend data stored for keyword: '" + coin + "'");
       } catch (e) {
-        logger.error("Error storing trend data for keyword: '" + x + "': " + e);
+        logger.error("Error storing trend data for keyword: '" + coin + "': " + e);
       }
     }
   }
+  logger.info("===============================================" + mainCounter + "'");
 };
 
 module.exports = { getTrend };
 
 const sleep = (ms) => {
-  new Promise((resolve) => {
+  return new Promise((resolve) => {
     setTimeout(() => {
       resolve();
     }, ms);
