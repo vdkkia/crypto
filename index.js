@@ -32,8 +32,8 @@ app.use(passport.session());
 const server = app
   .listen(process.env.serverPort, async () => {
     await db.connect();
-    jobRunner.manualRun();
-    // jobRunner.start();
+    // jobRunner.manualRun();
+    jobRunner.start();
 
     // const data = await trendsController.getNormalizeData("Bitcoin", 10);
     // console.log(await trendsController.detectSpike(data));
