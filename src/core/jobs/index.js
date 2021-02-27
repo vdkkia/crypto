@@ -8,11 +8,13 @@ const proxyAgent = new SocksProxyAgent("socks5h://127.0.0.1:9050");
 let isProxyUsing = false;
 
 let mainCounter = 0;
+let counter = 0;
 const getTrend = async () => {
   mainCounter++;
   // const groupedKeywords = _.chunk(keywords, 5);
   for (const coin of keywords) {
-    logger.info((isProxyUsing ? "proxy agent" : "main IP") + "  <" + coin + ">");
+    counter++;
+    logger.info(counter + "/" + keywords.length + (isProxyUsing ? " proxy" : "") + "  <" + coin + ">");
     let result;
     try {
       result = await trendController.interestOverTime(coin, "3h", isProxyUsing ? proxyAgent : null);
@@ -42,9 +44,9 @@ const getTrend = async () => {
         { $push: { data: JSON.stringify(data) } },
         { upsert: true }
       );
-      logger.info("Trend data stored for keyword: '" + coin + "'");
+      logger.info("OK");
     } catch (e) {
-      logger.error("Error storing trend data for keyword: '" + coin + "': " + e);
+      logger.error("Error '" + coin + "': " + e);
     }
   }
   logger.info("===============================================" + mainCounter + "'");
