@@ -42,6 +42,7 @@ const proxyPool = {
     return pool[number].proxy;
   },
   activate: () => {
+    console.log("PROXY POOL REFRESH....")
     proxies.forEach((proxy) => {
       if (proxy.status == "banned" && new Date() - proxy.updateTime > 3 * 3600 * 1000) {
         proxy.status = "ready";
