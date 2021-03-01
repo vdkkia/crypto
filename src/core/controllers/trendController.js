@@ -28,7 +28,7 @@ const interestOverTime = async (keyword, period, agent) => {
           return resolve("Banned");
         }
         logger.error("Error: " + err + " keyword " + keyword + "  Host: " + agent.proxy.host);
-        reject("Proxy down...");
+        resolve("Proxy down...");
       });
   });
 };

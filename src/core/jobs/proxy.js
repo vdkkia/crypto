@@ -1,29 +1,31 @@
 const logger = require("../logger");
 const ProxyAgent = require("proxy-agent");
-const hosts = require("./hosts");
+// const { SocksProxyAgent } = require("socks-proxy-agent");
+
+// const hosts = require("./hosts");
+const host = "http://golbaghi.zaeem.gmail.com:abm9z4@69.30.242.214:%PORT%";
 let proxies = [];
 let pool = [];
 
 const proxyPool = {
   init: (size) => {
-    proxies = hosts.map((x, i) => ({
-      host: x,
-      number: i + 1,
-      status: "ready",
-      updateTime: new Date(),
-    }));
-
+    for (let i = 1; i < 500; i++) {
+      proxies.push({
+        host: host.replace("%PORT%", 20000 + i),
+        number: i,
+        status: "ready",
+        updateTime: new Date(),
+      });
+    }
     for (let i = 0; i < size; i++) {
-      const item = proxies.find((p) => p.status == "ready");
+      const item = proxies[i];
       const proxy = new ProxyAgent(item.host);
       item.status = "active";
       item.updateTime = new Date();
       pool.push({ proxy, number: item.number });
     }
   },
-  acquire: (number) => {
-    return pool[number].proxy;
-  },
+  acquire: (number) => pool[number].proxy,
   replace: (number, result) => {
     const failedProxy = proxies.find((p) => p.number == pool[number].number);
     if (result == "Banned") {
@@ -48,6 +50,14 @@ const proxyPool = {
       }
     });
   },
+  // acquireRotatingProxy: () => new ProxyAgent(rotatingProxyhost),
 };
+
+// (async () => {
+//   const trendController = require("../controllers/trendController");
+//   const agent = new ProxyAgent(host.replace("%PORT%", 20001));
+//   const a = await trendController.interestOverTime("bitcoin,vechain", "30m", agent);
+//   console.log(a);
+// })();
 
 module.exports = proxyPool;
