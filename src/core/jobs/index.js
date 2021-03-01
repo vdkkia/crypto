@@ -5,14 +5,21 @@ const logger = require("../logger");
 const coins = require("./coinRepo");
 const proxyPool = require("./proxy");
 const sleep = require("./sleep");
+const { default: PQueue } = require("p-queue");
+const queue = new PQueue({ concurrency: 1 });
 const interval = "30m";
 
 proxyPool.init(coins.length);
 
 const groupRunner = async () => {
-  for (const [i, group] of coins.entries()) {
-    getTrend(group, i);
-  }
+  (async () => {
+    await queue.add(() => {
+      for (const [i, group] of coins.entries()) {
+        getTrend(group, i);
+      }
+    });
+    logger.info("Queue: a task was started.");
+  })();
 };
 
 const dataFetcher = async (items, i) => {
