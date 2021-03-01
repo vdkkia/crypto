@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",
-    "test": "NODE_ENV==test && jest --forceExit"
+    "test": "NODE_ENV==test && jest --forceExit",
+    "build": "webpack --config webpack.prod.js"
   },
   "author": "Vahid Kiani",
   "license": "ISC",
@@ -19,26 +20,39 @@
     "express": "^4.17.1",
     "express-session": "^1.17.1",
     "google-trends-api": "^4.9.2",
+    "gulp": "^4.0.2",
     "https-proxy-agent": "^5.0.0",
     "ioredis": "^4.19.4",
     "lodash": "^4.17.21",
     "moment": "^2.29.1",
     "mongoose": "^5.11.17",
     "node-cron": "^2.0.3",
+    "p-queue": "^6.6.2",
+    "pack": "^2.2.0",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
     "passport-local-mongoose": "^6.0.1",
+    "proxy-agent": "^4.0.1",
     "redis": "^3.0.2",
     "slayer": "^1.0.1",
     "socks-proxy-agent": "^5.0.0",
-    "winston": "^3.3.3"
+    "web": "^0.0.2",
+    "winston": "^3.3.3",
+    "worker-threads-pool": "^2.0.0"
   },
   "devDependencies": {
     "chai": "^4.2.0",
+    "clean-webpack-plugin": "^3.0.0",
     "expect": "^26.6.2",
+    "gulp-util": "^3.0.8",
+    "html-webpack-plugin": "^5.2.0",
     "jest": "^26.1.0",
     "mocha": "^7.1.1",
+    "node-polyfill-webpack-plugin": "^1.0.3",
     "nodemon": "^2.0.7",
-    "supertest": "^4.0.2"
+    "supertest": "^4.0.2",
+    "webpack": "^5.24.2",
+    "webpack-cli": "^4.5.0",
+    "webpack-merge": "^5.7.3"
   }
 }

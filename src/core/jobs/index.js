@@ -1,114 +1,101 @@
-// const _ = require("lodash");
 const trends = require("../../models/trend");
+const groupedTrends = require("../../models/groupedTrend");
 const trendController = require("../controllers/trendController");
 const logger = require("../logger");
+const coins = require("./coinRepo");
+const proxyPool = require("./proxy");
+const sleep = require("./sleep");
+// const { default: PQueue } = require("p-queue");
+const interval = "2m";
 
-const { SocksProxyAgent } = require("socks-proxy-agent");
-const proxyAgent = new SocksProxyAgent("socks5h://127.0.0.1:9050");
-let isProxyUsing = false;
+proxyPool.init(coins.length);
 
-let mainCounter = 0;
+const groupRunner = async () => {
+  // const queue = new PQueue({ concurrency: 50 });
 
-const getTrend = async () => {
-  mainCounter++;
-  let counter = 0;
-  // const groupedKeywords = _.chunk(keywords, 5);
-  for (const coin of keywords) {
-    counter++;
-    logger.info(counter + "/" + keywords.length + (isProxyUsing ? " proxy" : "") + "  <" + coin + ">");
-    let result;
-    try {
-      result = await trendController.interestOverTime(coin, "30m", isProxyUsing ? proxyAgent : null);
-      if (!Array.isArray(result)) {
-        logger.info((isProxyUsing ? "proxy agent" : "main IP") + " is blocked, trying the other one...");
-        isProxyUsing = !isProxyUsing;
-        result = await trendController.interestOverTime(coin, "30m", isProxyUsing ? proxyAgent : null);
-        if (!Array.isArray(result)) {
-          logger.error("FUCK! Both the main IP and the proxy are blocked by FUCKING Google!");
-          return;
-        }
+  for (const [i, group] of coins.entries()) {
+    // queue.add(async () => {
+    //   await getTrend(group, i);
+    // });
+
+      getTrend(group, i);
+  }
+  // await queue.onIdle();
+};
+
+const dataFetcher = async (items, i) => {
+  try {
+    // Ensures that each group is using specific proxy
+    const proxy = proxyPool.acquire(i);
+    const result = await trendController.interestOverTime(items, interval, proxy);
+    if (Array.isArray(result)) {
+      return result;
+    } else {
+      // console.log(result, items, proxy)
+      // logger.warn("Result empty, trying...");
+      const replaceResult = proxyPool.replace(i);
+      if (replaceResult === "error") {
+        logger.error("Get trends data failed. All proxies are either in use or banned :(");
+        return null;
       }
-    } catch (err) {
-      logger.error("Error: " + err);
+      logger.info("Proxy number " + i + " was replaced with a new one.");
+      await sleep(1);
+      return dataFetcher(items, i);
     }
+  } catch (err) {
+    logger.error("dataFetcher Error: " + err);
+  }
+};
 
-    await sleep(1000);
+const getTrend = async (group, i) => {
+  // Individual coins
+  for (const [index, coin] of group.entries()) {
+    const individualResult = await dataFetcher(coin, i);
+    if (individualResult) {
+      await sleep();
+      const data = individualResult.map((z) => ({
+        time: z?.time,
+        value: z?.value[0],
+      }));
+      try {
+        await trends.findOneAndUpdate(
+          { keyword: coin },
+          { $push: { data: JSON.stringify(data) } },
+          { upsert: true }
+        );
+        logger.info("Group'" + i + "' " + (index + 1) + "/" + group.length + " '" + coin.toUpperCase() + "'");
+      } catch (e) {
+        logger.error(
+          "Group'" + i + "' " + (index + 1) + "/" + group.length + " '" + coin.toUpperCase() + "': " + e
+        );
+      }
+    } else {
+      logger.error("No data for '" + coin.toUpperCase() + "'");
+    }
+  }
 
-    const data = result.map((z) => ({
+  // Group of coins
+  await sleep();
+  const groupResult = await dataFetcher(group, i);
+  if (groupResult) {
+    const data = groupResult.map((z) => ({
       time: z?.time,
-      value: z?.value[0],
+      value: z?.value,
     }));
-    //   console.log(result)
     try {
-      await trends.findOneAndUpdate(
-        { keyword: coin },
+      await groupedTrends.findOneAndUpdate(
+        { keyword: group.join("|") },
         { $push: { data: JSON.stringify(data) } },
         { upsert: true }
       );
-      logger.info("OK");
+      logger.info("group  < " + group.join(" | ") + " >");
     } catch (e) {
-      logger.error("Error '" + coin + "': " + e);
+      logger.error("group  < " + group.join(" | ") + " >: " + e);
     }
+  } else {
+    logger.error("No data for < " + group.join(" | ") + " >");
   }
-  logger.info("===============================================" + mainCounter + "'");
+  logger.warn("================= < " + group.join(" | ") + " > =================");
 };
 
-module.exports = { getTrend };
-
-const sleep = (ms) => {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve();
-    }, ms);
-  });
-};
-
-const keywords = [
-  "Bitcoin",
-  "Ethereum",
-  "Binance coin",
-  "Polkadot",
-  "Cardano",
-  "Litecoin",
-  "Chainlink",
-  "Uniswap",
-  "Aave",
-  "EOS",
-  "Dogecoin",
-  "Monero",
-  "TRON",
-  "Tezos",
-  "Vechain",
-  "Solana",
-  "Filecoin",
-  "Sushiswap",
-  "Ravencoin",
-  "Yearn.finance",
-  "UMA",
-  "REN",
-  "Thorchain",
-  "Ontology",
-  "OMG network",
-  "QTUM",
-  "Kusama",
-  "Lisk",
-  "Ocean protocol",
-  "1inch",
-  "Celo",
-  "Kyber",
-  "Decentraland",
-  "Band protocol",
-  "Nucypher",
-  "Algorand",
-  "Polkastarter",
-  "Chiliz",
-  "Serum",
-  "Komodo",
-  "Augur",
-  "Numeraire",
-  "Fetch.ai",
-  "Redfox labs",
-  "Litentry",
-  "BAT",
-  "Ripple",
-];
+module.exports = { groupRunner };
