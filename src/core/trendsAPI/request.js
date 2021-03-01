@@ -3,7 +3,7 @@ const https = require("https");
 const querystring = require("querystring");
 
 // cache of the cookie - avoid re-requesting on subsequent requests.
-// let cookieVal;
+let cookieVal;
 
 // simpler request method for avoiding double-promise confusion
 function rereq(options, done) {
@@ -31,7 +31,7 @@ function request({ method, host, path, qs, agent }) {
     method,
     path: `${path}?${querystring.stringify(qs)}`,
   };
-  let cookieVal;
+  // let cookieVal;
 
   if (agent) options.agent = agent;
   // will use cached cookieVal if set on 429 error
@@ -52,7 +52,7 @@ function request({ method, host, path, qs, agent }) {
           cookieVal = res.headers["set-cookie"][0].split(";")[0];
           options.headers = { cookie: cookieVal };
           rereq(options, function (err, response) {
-            if (err) return reject(err);
+            if (err) return reject("429");
             resolve(response);
           });
         } else {
