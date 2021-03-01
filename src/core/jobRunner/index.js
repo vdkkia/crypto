@@ -15,7 +15,7 @@ const jobRunner = {
     try {
       let tasks = [];
       tasks.push(schedule("*/1 * * * *", jobs.groupRunner));
-      tasks.push(schedule("0 * * * *", () => proxyPool.activate()));
+      tasks.push(schedule("*/30 * * * *", () => proxyPool.activate()));
       tasks.forEach((x) => x.stop());
       tasks.forEach((x) => x.start());
       logger.info(`${tasks.length} jobs were scheduled.`);
