@@ -5,36 +5,26 @@ const logger = require("../logger");
 const coins = require("./coinRepo");
 const proxyPool = require("./proxy");
 const sleep = require("./sleep");
-// const { default: PQueue } = require("p-queue");
 const interval = "30m";
 
 proxyPool.init(coins.length);
 
 const groupRunner = async () => {
-  // const queue = new PQueue({ concurrency: 50 });
-
   for (const [i, group] of coins.entries()) {
-    // queue.add(async () => {
-    //   await getTrend(group, i);
-    // });
-
-      getTrend(group, i);
+    getTrend(group, i);
   }
-  // await queue.onIdle();
 };
 
 const dataFetcher = async (items, i) => {
   try {
-    // Ensures that each group is using specific proxy
+    // Ensures that each group is using a specific proxy
     const proxy = proxyPool.acquire(i);
     const result = await trendController.interestOverTime(items, interval, proxy);
     if (Array.isArray(result)) {
       return result;
     } else {
-      // console.log(result, items, proxy)
-      // logger.warn("Result empty, trying...");
-      const replaceResult = proxyPool.replace(i);
-      if (replaceResult === "error") {
+      const replaceResult = proxyPool.replace(i, result);
+      if (!replaceResult) {
         logger.error("Get trends data failed. All proxies are either in use or banned :(");
         return null;
       }

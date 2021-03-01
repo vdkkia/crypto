@@ -1,21 +1,3 @@
-// module.exports = [
-//   "http://qssdzswn-dest:kjyp2s9wu3ai@209.127.191.180:9279",
-//   "http://qssdzswn-dest:kjyp2s9wu3ai@45.95.96.132:8691",
-//   "http://qssdzswn-dest:kjyp2s9wu3ai@45.95.96.187:8746",
-//   "http://qssdzswn-dest:kjyp2s9wu3ai@45.95.96.237:8796",
-//   "http://qssdzswn-dest:kjyp2s9wu3ai@45.136.228.154:6209",
-//   "http://qssdzswn-dest:kjyp2s9wu3ai@45.94.47.66:8110",
-//   "http://qssdzswn-dest:kjyp2s9wu3ai@45.94.47.108:8152",
-//   "http://qssdzswn-dest:kjyp2s9wu3ai@193.8.56.119:9183",
-//   "http://qssdzswn-dest:kjyp2s9wu3ai@45.95.99.226:7786",
-//   "http://qssdzswn-dest:kjyp2s9wu3ai@45.95.99.20:7580",
-//   "http://cwhzltdh-dest:pplff7dicwh0@45.72.55.91:7128",
-//   "http://cwhzltdh-dest:pplff7dicwh0@45.94.47.183:8227",
-//   "http://cwhzltdh-dest:pplff7dicwh0@185.95.157.232:6253",
-//   "http://cwhzltdh-dest:pplff7dicwh0@45.86.15.111:8658",
-//   "http://cwhzltdh-dest:pplff7dicwh0@45.130.255.173:7195",
-// ];
-
 module.exports = [
   "http://pcvpttjl-dest:w0kgh6nois6f@45.137.43.25:7579",
   "http://pcvpttjl-dest:w0kgh6nois6f@45.130.125.195:6212",
