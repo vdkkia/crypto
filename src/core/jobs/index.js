@@ -6,7 +6,7 @@ const coins = require("./coinRepo");
 const proxyPool = require("./proxy");
 const sleep = require("./sleep");
 // const { default: PQueue } = require("p-queue");
-const interval = "2m";
+const interval = "30m";
 
 proxyPool.init(coins.length);
 
