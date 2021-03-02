@@ -11,11 +11,13 @@ const interval = "30m";
 
 proxyPool.init(coins.length);
 
-const groupRunner = async () =>
+
+const groupRunner = async () => {
   await queue.add(async () => {
     logger.info("Queue: a task was started.");
     return await Promise.all(coins.map((x, i) => getTrend(x, i)));
   });
+};
 
 const dataFetcher = async (items, i) => {
   try {
