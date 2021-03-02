@@ -24,7 +24,7 @@ const getInterestOverTimeKey = async ({
         req: JSON.stringify({
           comparisonItem: buildComparisonItem({
             keyword: keywords,
-            hl: '"en-US"',
+            hl: 'en-US',
             timezone,
             category,
             property,
@@ -44,14 +44,14 @@ const getInterestOverTimeKey = async ({
 
   } catch (err) {
     if(process.env.NODE_ENV !== 'production') { 
-      if(err.response.status === 429 && err.response.headers && err.response.headers['set-cookie']) {
+      if(err.response.status === 429 && 
+        err.response.headers && err.response.headers['set-cookie']) {
         console.log('Please save this cookie value for future requests:');
         const cookieVal = err.response.headers['set-cookie'][0].split(';')[0];
         console.log(cookieVal);
         
       }
     }
-    
     throw err;
   }
 };
