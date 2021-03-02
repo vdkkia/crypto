@@ -2,30 +2,33 @@ const logger = require("../logger");
 const ProxyAgent = require("proxy-agent");
 const { SocksProxyAgent } = require("socks-proxy-agent");
 
-// const hosts = require("./hosts");
-const rotatingProxy = "http://golbaghi.zaeem.gmail.com:abm9z4@69.30.242.214:2000";
-const socksRotatingProxy = "socks://golbaghi.zaeem.gmail.com:abm9z4@69.30.242.214:3000";
-const HttpPRX = new ProxyAgent(rotatingProxy);
-const SocksPRX = new SocksProxyAgent(socksRotatingProxy);
-const PROXY = SocksPRX
+const hosts = require("./hosts");
+// const rotatingProxy = "http://golbaghi.zaeem.gmail.com:abm9z4@69.30.242.214:2000";
+// const socksRotatingProxy = "socks://golbaghi.zaeem.gmail.com:abm9z4@69.30.242.214:3000";
+// const HttpPRX = new ProxyAgent(rotatingProxy);
+// const SocksPRX = new SocksProxyAgent(socksRotatingProxy);
+// const PROXY = SocksPRX
 // const host = "http://golbaghi.zaeem.gmail.com:abm9z4@69.30.242.214:%PORT%";
 let proxies = [];
 let pool = [];
 
 const proxyPool = {
   init: (size) => {
-    for (let i = 1; i < size + 1; i++) {
+    // for (let i = 1; i < size + 1; i++) {
+    hosts.map((x, i) => {
       proxies.push({
-        host: rotatingProxy, // host.replace("%PORT%", 20000 + i),
-        number: i,
+        host: x, // host.replace("%PORT%", 20000 + i),
+        number: i + 1,
         retry: 0,
         status: "ready",
         updateTime: new Date(),
       });
-    }
+    });
+
+    // }
     for (let i = 0; i < size; i++) {
       const item = proxies[i];
-      const proxy = PROXY; // new ProxyAgent(item.host);
+      const proxy = new ProxyAgent(item.host); //PROXY; // new ProxyAgent(item.host);
       item.status = "active";
       item.updateTime = new Date();
       pool.push({ proxy, number: item.number });
@@ -44,7 +47,7 @@ const proxyPool = {
     const readyProxies = proxies.filter((x) => x.status == "ready");
     const item = readyProxies[Math.round(Math.random() * readyProxies.length)];
     if (!item) return false;
-    pool[number] = { proxy: PROXY, number: item.number };
+    pool[number] = { proxy: new ProxyAgent(item.host), number: item.number };
     item.status = "active";
     item.updateTime = new Date();
     return pool[number].proxy;

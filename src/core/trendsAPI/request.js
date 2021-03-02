@@ -34,7 +34,7 @@ const request = async ({ method, host, path, qs, agent }) => {
   };
   if (agent) options.agent = agent;
   // will use cached cookieVal if set on 429 error
-  if (new Date() - cookieRefresh < 10 * 60* 1000) {
+  if (new Date() - cookieRefresh < 1 * 60* 1000) {
     if (cookieVal) options.headers = { cookie: cookieVal };
   } else {
     cookieRefresh = new Date();
