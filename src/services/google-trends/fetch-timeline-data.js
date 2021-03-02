@@ -27,7 +27,9 @@ const fetchTimelineData = async ({ widgets, obj, proxyUri }) => {
     },
   });
 
-  const { timelineData } = JSON.parse(dataResponse.data.slice(5)).default;
+  const {
+    default: { timelineData },
+  } = JSON.parse(dataResponse.data.slice(5));
 
   return timelineData;
 };

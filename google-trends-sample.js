@@ -4,7 +4,6 @@ const {
 } = require('./src/services/google-trends');
 
 require('dotenv').config();
-console.log('hi');
 
 const FOUR_HOUR = 60 * 60 * 1000 * 4;
 
