@@ -1,4 +1,4 @@
 module.exports = {
-  getInterestOverTimeKey: require("./get-interest-over-time-key"),
+  getTimelineDataKey: require("./get-timeline-data-key"),
   fetchTimelineData: require("./fetch-timeline-data"),
 };

@@ -2,7 +2,7 @@ const axios = require("axios");
 const ProxyAgent = require("proxy-agent");
 const buildComparisonItem = require("./utils/build-comparison-item");
 
-const getInterestOverTimeKey = async ({
+const getTimelineDataKey = async ({
   keywords,
   timezone = new Date().getTimezoneOffset(),
   category = 0,
@@ -65,4 +65,4 @@ const getInterestOverTimeKey = async ({
   }
 };
 
-module.exports = getInterestOverTimeKey;
+module.exports = getTimelineDataKey;

@@ -1,6 +1,6 @@
 const { 
   fetchTimelineData, 
-  getInterestOverTimeKey, 
+  getTimelineDataKey, 
 } = require('./src/services/google-trends');
 
 require('dotenv').config();
@@ -15,7 +15,7 @@ const keywords = ['Creditcoin', 'Velas'];
 
   try {
     const now = Date.now();
-    const interestDataKey = await getInterestOverTimeKey({
+    const timelineDataKey = await getTimelineDataKey({
       keywords,
       startTime: new Date(now - FOUR_HOUR),
       granularTimeResolution: true,
@@ -23,7 +23,7 @@ const keywords = ['Creditcoin', 'Velas'];
 
     console.log('got the key');
 
-    const timelineData = await fetchTimelineData(interestDataKey);
+    const timelineData = await fetchTimelineData(timelineDataKey);
     console.log('fetched timeline data:');
     console.log(timelineData);
 
