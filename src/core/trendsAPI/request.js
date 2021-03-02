@@ -14,7 +14,7 @@ const rereq = (options, done) => {
     .get("http://" + options.host + options.path, {
       httpsAgent: options.agent,
       headers: options.headers,
-      timeout: 50000,
+      // timeout: 50000,
     })
     .then((res) => {
       done(null, res);
@@ -39,7 +39,7 @@ const request = async ({ method, host, path, qs, agent }) => {
       .get("http://" + options.host + options.path, {
         httpsAgent: options.agent,
         headers: options.headers,
-        timeout: 50000,
+        // timeout: 50000,
       })
       .then((res) => {
         resolve(res.data);
