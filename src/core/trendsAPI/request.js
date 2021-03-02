@@ -1,72 +1,64 @@
 "use strict";
 const https = require("https");
 const querystring = require("querystring");
+const sleep = require("../jobs/sleep");
+
+const axios = require("axios");
 
 // cache of the cookie - avoid re-requesting on subsequent requests.
 let cookieVal;
 
 // simpler request method for avoiding double-promise confusion
-function rereq(options, done) {
-  let req;
-
-  req = https.request(options, (res) => {
-    let chunk = "";
-
-    res.on("data", (data) => {
-      chunk += data;
+const rereq = (options, done) => {
+  axios
+    .get("http://" + options.host + options.path, {
+      httpsAgent: options.agent,
+      headers: options.headers,
+      timeout: 50000,
+    })
+    .then((res) => {
+      done(null, res);
+    })
+    .catch((err) => {
+      done(err);
     });
-    res.on("end", () => {
-      done(null, chunk.toString("utf8"));
-    });
-  });
-  req.on("error", (e) => {
-    done(e);
-  });
-  req.end();
-}
+};
 
-function request({ method, host, path, qs, agent }) {
+const request = async ({ method, host, path, qs, agent }) => {
+  await sleep(1);
   const options = {
     host,
     method,
     path: `${path}?${querystring.stringify(qs)}`,
   };
-  // let cookieVal;
-
   if (agent) options.agent = agent;
   // will use cached cookieVal if set on 429 error
   if (cookieVal) options.headers = { cookie: cookieVal };
-
   return new Promise((resolve, reject) => {
-    const req = https.request(options, (res) => {
-      let chunk = "";
-
-      res.on("data", (data) => {
-        chunk += data;
-      });
-
-      res.on("end", () => {
-        if (res.statusCode === 429 && res.headers["set-cookie"]) {
-          // Fix for the "too many requests" issue
-          // Look for the set-cookie header and re-request
-          cookieVal = res.headers["set-cookie"][0].split(";")[0];
+    axios
+      .get("http://" + options.host + options.path, {
+        httpsAgent: options.agent,
+        headers: options.headers,
+        timeout: 50000,
+      })
+      .then((res) => {
+        resolve(res.data);
+      })
+      .catch(async (err) => {
+        if (err.response?.status === 429 && err.response.headers["set-cookie"]) {
+          cookieVal = err.response.headers["set-cookie"][0].split(";")[0];
           options.headers = { cookie: cookieVal };
-          rereq(options, function (err, response) {
-            if (err) return reject("429");
-            resolve(response);
+          await sleep(1);
+          rereq(options, (e, response) => {
+            if (e) return reject(e.message);
+            resolve(response.data);
           });
         } else {
-          resolve(chunk.toString("utf8"));
+          console.log(err.message);
+          reject(err.message);
         }
       });
-    });
-
-    req.on("error", (e) => {
-      reject(e);
-    });
-
-    req.end();
   });
-}
+};
 
 module.exports = request;

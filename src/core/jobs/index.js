@@ -12,14 +12,13 @@ const interval = "30m";
 proxyPool.init(coins.length);
 
 const groupRunner = async () => {
-  (async () => {
-    await queue.add(() => {
-      for (const [i, group] of coins.entries()) {
-        getTrend(group, i);
-      }
-    });
+  queue.add(async () => {
     logger.info("Queue: a task was started.");
-  })();
+    for (const [i, group] of coins.entries()) {
+      getTrend(group, i);
+    }
+  });
+  await queue.onIdle();
 };
 
 const dataFetcher = async (items, i) => {
@@ -30,13 +29,13 @@ const dataFetcher = async (items, i) => {
     if (Array.isArray(result)) {
       return result;
     } else {
-      const replaceResult = proxyPool.replace(i, result);
-      if (!replaceResult) {
-        logger.error("Get trends data failed. All proxies are either in use or banned :(");
-        return null;
-      }
-      logger.info("Proxy number " + i + " was replaced with a new one.");
-      await sleep(1);
+      // const replaceResult = proxyPool.replace(i, result);
+      // if (!replaceResult) {
+      //   logger.error("Get trends data failed. All proxies are either in use or banned :(");
+      //   return null;
+      // }
+      // logger.info("Proxy number " + i + " was replaced with a new one.");
+      // await sleep(1);
       return dataFetcher(items, i);
     }
   } catch (err) {
@@ -49,7 +48,7 @@ const getTrend = async (group, i) => {
   for (const [index, coin] of group.entries()) {
     const individualResult = await dataFetcher(coin, i);
     if (individualResult) {
-      await sleep();
+      // await sleep();
       const data = individualResult.map((z) => ({
         time: z?.time,
         value: z?.value[0],
@@ -72,7 +71,7 @@ const getTrend = async (group, i) => {
   }
 
   // Group of coins
-  await sleep();
+  // await sleep();
   const groupResult = await dataFetcher(group, i);
   if (groupResult) {
     const data = groupResult.map((z) => ({
