@@ -14,7 +14,6 @@ const getInterestOverTimeKey = async ({
   proxyUri = process.env.PROXY_URI,
 }) => {
   try {
-
     const result = await axios({
       url: "https://trends.google.com/trends/api/explore",
       method: "GET",
@@ -24,7 +23,7 @@ const getInterestOverTimeKey = async ({
         req: JSON.stringify({
           comparisonItem: buildComparisonItem({
             keyword: keywords,
-            hl: 'en-US',
+            hl: "en-US",
             timezone,
             category,
             property,
@@ -40,16 +39,26 @@ const getInterestOverTimeKey = async ({
       headers: { cookie },
       timeout: 5000,
     });
-    return JSON.parse(result.data.slice(4)).widgets;
-
+    return {
+      widgets: JSON.parse(result.data.slice(4)).widgets,
+      obj: {
+        category,
+        property,
+        timezone,
+        hl: "en-US",
+      },
+      proxyUri,
+    };
   } catch (err) {
-    if(process.env.NODE_ENV !== 'production') { 
-      if(err.response.status === 429 && 
-        err.response.headers && err.response.headers['set-cookie']) {
-        console.log('Please save this cookie value for future requests:');
-        const cookieVal = err.response.headers['set-cookie'][0].split(';')[0];
+    if (process.env.NODE_ENV !== "production") {
+      if (
+        err.response.status === 429 &&
+        err.response.headers &&
+        err.response.headers["set-cookie"]
+      ) {
+        console.log("Please save this cookie value for future requests:");
+        const cookieVal = err.response.headers["set-cookie"][0].split(";")[0];
         console.log(cookieVal);
-        
       }
     }
     throw err;
