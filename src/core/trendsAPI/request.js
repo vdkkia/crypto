@@ -7,6 +7,7 @@ const axios = require("axios");
 
 // cache of the cookie - avoid re-requesting on subsequent requests.
 let cookieVal;
+let cookieRefresh = new Date();
 
 // simpler request method for avoiding double-promise confusion
 const rereq = (options, done) => {
@@ -33,7 +34,11 @@ const request = async ({ method, host, path, qs, agent }) => {
   };
   if (agent) options.agent = agent;
   // will use cached cookieVal if set on 429 error
-  if (cookieVal) options.headers = { cookie: cookieVal };
+  if (new Date() - cookieRefresh < 10 * 60* 1000) {
+    if (cookieVal) options.headers = { cookie: cookieVal };
+  } else {
+    cookieRefresh = new Date();
+  }
   return new Promise((resolve, reject) => {
     axios
       .get("http://" + options.host + options.path, {
