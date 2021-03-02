@@ -11,15 +11,11 @@ const interval = "30m";
 
 proxyPool.init(coins.length);
 
-const groupRunner = async () => {
-  queue.add(async () => {
+const groupRunner = async () =>
+  await queue.add(async () => {
     logger.info("Queue: a task was started.");
-    for (const [i, group] of coins.entries()) {
-      getTrend(group, i);
-    }
+    return await Promise.all(coins.map((x, i) => getTrend(x, i)));
   });
-  await queue.onIdle();
-};
 
 const dataFetcher = async (items, i) => {
   try {
@@ -36,6 +32,7 @@ const dataFetcher = async (items, i) => {
       // }
       // logger.info("Proxy number " + i + " was replaced with a new one.");
       // await sleep(1);
+      logger.info("Retry....");
       return dataFetcher(items, i);
     }
   } catch (err) {
