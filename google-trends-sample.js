@@ -1,6 +1,7 @@
 const { 
   fetchTimelineData, 
-  getTimelineDataKey, 
+  getTimelineDataKey,
+  getCookie, 
 } = require('./src/services/google-trends');
 
 require('dotenv').config();
@@ -13,18 +14,21 @@ const keywords = ['Creditcoin', 'Velas'];
 (async () => {
 
   try {
-    const now = Date.now();
-    const timelineDataKey = await getTimelineDataKey({
-      keywords,
-      startTime: new Date(now - FOUR_HOUR),
-      granularTimeResolution: true,
-    });
+    // const now = Date.now();
+    // const timelineDataKey = await getTimelineDataKey({
+    //   keywords,
+    //   startTime: new Date(now - FOUR_HOUR),
+    //   granularTimeResolution: true,
+    // });
 
-    console.log('got the key');
+    // console.log('got the key');
 
-    const timelineData = await fetchTimelineData(timelineDataKey);
-    console.log('fetched timeline data:');
-    console.log(timelineData);
+    // const timelineData = await fetchTimelineData(timelineDataKey);
+    // console.log('fetched timeline data:');
+    // console.log(timelineData);
+
+    const cookie = await getCookie();
+    console.log(cookie);
 
   } catch (err) {
     console.log(err?.response?.status);

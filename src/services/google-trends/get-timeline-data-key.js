@@ -15,6 +15,7 @@ const getTimelineDataKey = async ({
   granularTimeResolution = false,
   cookie = process.env.DEFAULT_COOKIE_URI,
   proxyUri = process.env.PROXY_URI,
+  log = true,
 }) => {
   try {
     // const result = await axios.get("https://httpbin.org/ip", {
@@ -47,8 +48,7 @@ const getTimelineDataKey = async ({
         }),
         tz: timezone,
       },
-      headers: { cookie },
-      // timeout: 2000,
+      headers: cookie ? { cookie } : undefined,
       cancelToken: cancelTokenSource.token,
     });
     return {
@@ -62,7 +62,7 @@ const getTimelineDataKey = async ({
       proxyUri,
     };
   } catch (err) {
-    if (process.env.NODE_ENV !== "production") {
+    if (process.env.NODE_ENV !== "production" && log) {
       if (
         err?.response?.status === 429 &&
         err?.response?.headers &&
