@@ -2,3 +2,5 @@
 .env
 
 .prettierrc
+
+/stress-test/logs

@@ -2,6 +2,9 @@ const axios = require("axios");
 const ProxyAgent = require("proxy-agent");
 const buildComparisonItem = require("./utils/build-comparison-item");
 
+const TIMEOUT = 5000;
+axios.defaults.timeout = TIMEOUT;
+
 const getTimelineDataKey = async ({
   keywords,
   timezone = new Date().getTimezoneOffset(),
@@ -14,6 +17,14 @@ const getTimelineDataKey = async ({
   proxyUri = process.env.PROXY_URI,
 }) => {
   try {
+    // const result = await axios.get("https://httpbin.org/ip", {
+    //   httpsAgent: new ProxyAgent(proxyUri),
+    // });
+    // return result.data;
+    const cancelTokenSource = axios.CancelToken.source();
+    setTimeout(() => {
+      cancelTokenSource.cancel();
+    }, TIMEOUT);
     const result = await axios({
       url: "https://trends.google.com/trends/api/explore",
       method: "GET",
@@ -37,7 +48,8 @@ const getTimelineDataKey = async ({
         tz: timezone,
       },
       headers: { cookie },
-      timeout: 5000,
+      // timeout: 2000,
+      cancelToken: cancelTokenSource.token,
     });
     return {
       widgets: JSON.parse(result.data.slice(4)).widgets,
@@ -52,9 +64,9 @@ const getTimelineDataKey = async ({
   } catch (err) {
     if (process.env.NODE_ENV !== "production") {
       if (
-        err.response.status === 429 &&
-        err.response.headers &&
-        err.response.headers["set-cookie"]
+        err?.response?.status === 429 &&
+        err?.response?.headers &&
+        err?.response?.headers["set-cookie"]
       ) {
         console.log("Please save this cookie value for future requests:");
         const cookieVal = err.response.headers["set-cookie"][0].split(";")[0];
