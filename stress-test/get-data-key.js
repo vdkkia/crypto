@@ -5,13 +5,21 @@ const { getTimelineDataKey } = require("../src/services/google-trends");
 const keywords = ["Creditcoin", "Velas"];
 const FOUR_HOUR = 60 * 60 * 1000 * 4;
 
-const getDataKey = async (jobNumber, totalJobs, logger) => {
+const getDataKey = async ({
+  jobNumber,
+  totalJobs,
+  logger,
+  proxyUri,
+  cookie,
+}) => {
   try {
     logger.info(`getting data for job ${jobNumber}/${totalJobs}`);
     const timelineDataKey = await getTimelineDataKey({
       keywords,
       startTime: new Date(Date.now() - FOUR_HOUR),
       granularTimeResolution: true,
+      proxyUri,
+      cookie,
     });
     logger.info(`received result for job ${jobNumber}/${totalJobs}`);
     // logger.info("\n\n" + JSON.stringify(timelineDataKey, null, 2));

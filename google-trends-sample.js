@@ -1,7 +1,7 @@
 const { 
   fetchTimelineData, 
   getTimelineDataKey,
-  getCookie, 
+  getNewCookie, 
 } = require('./src/services/google-trends');
 
 require('dotenv').config();
@@ -27,7 +27,7 @@ const keywords = ['Creditcoin', 'Velas'];
     // console.log('fetched timeline data:');
     // console.log(timelineData);
 
-    const cookie = await getCookie();
+    const cookie = await getNewCookie({ proxyUri: "http://pcvpttjl-dest:w0kgh6nois6f@185.102.49.38:6376" });
     console.log(cookie);
 
   } catch (err) {

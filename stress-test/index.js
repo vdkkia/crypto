@@ -5,11 +5,12 @@ require("dotenv").config();
 const getDataKey = require("./get-data-key");
 const buildLogger = require("./build-logger");
 const printFinalReport = require("./print-final-report");
+const loadCookieStock = require("./load-cookie-stock");
 
 const logger = buildLogger(moment().format("YYMMDD-HHmmss"));
 
-const RUN_FOR_MINS = 1;
-const DELAY_BETWEEN_CALLS_MS = 250;
+const RUN_FOR_MINS = 60;
+const DELAY_BETWEEN_CALLS_MS = 500;
 const MAX_CONCURRENCY = 50;
 
 const numberOfCalls = Math.floor(
@@ -26,14 +27,26 @@ const limiter = new Bottleneck({
 const throttledGetDataKey = limiter.wrap(getDataKey);
 
 (async () => {
-  const jobPromises = [];
-
-  for (let i = 0; i < numberOfCalls; i++) {
-    logger.info(`added job #${i} of ${numberOfCalls}`);
-    jobPromises.push(throttledGetDataKey(i + 1, numberOfCalls, logger));
-  }
-
   try {
+    const cookieStock = await loadCookieStock();
+    const proxies = Object.keys(cookieStock);
+    logger.info(`loaded cookie info for ${proxies.length} proxies`);
+
+    const jobPromises = [];
+    for (let i = 0; i < numberOfCalls; i++) {
+      logger.info(`added job #${i} of ${numberOfCalls}`);
+      const cookieSet = cookieStock[proxies[i % proxies.length]];
+      jobPromises.push(
+        throttledGetDataKey({
+          jobNumber: i + 1,
+          totalJobs: numberOfCalls,
+          logger,
+          proxy: cookieSet.proxyUri,
+          cookie: cookieSet.cookie,
+        })
+      );
+    }
+
     const results = await Promise.all(jobPromises);
     printFinalReport(results, logger);
   } catch (err) {

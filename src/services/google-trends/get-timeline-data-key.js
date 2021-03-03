@@ -18,10 +18,6 @@ const getTimelineDataKey = async ({
   log = true,
 }) => {
   try {
-    // const result = await axios.get("https://httpbin.org/ip", {
-    //   httpsAgent: new ProxyAgent(proxyUri),
-    // });
-    // return result.data;
     const cancelTokenSource = axios.CancelToken.source();
     setTimeout(() => {
       cancelTokenSource.cancel();
