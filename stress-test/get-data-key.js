@@ -1,6 +1,9 @@
 const axios = require("axios");
 
-const { getTimelineDataKey } = require("../src/services/google-trends");
+const {
+  getTimelineDataKey,
+  fetchTimelineData,
+} = require("../src/services/google-trends");
 
 const keywords = ["Creditcoin", "Velas"];
 const FOUR_HOUR = 60 * 60 * 1000 * 4;
@@ -21,7 +24,9 @@ const getDataKey = async ({
       proxyUri,
       cookie,
     });
-    logger.info(`received result for job ${jobNumber}/${totalJobs}`);
+    logger.info(`received key for job ${jobNumber}/${totalJobs}`);
+    const timelineData = await fetchTimelineData(timelineDataKey);
+    logger.info(`received data for job ${jobNumber}/${totalJobs}`);
     // logger.info("\n\n" + JSON.stringify(timelineDataKey, null, 2));
     return true;
   } catch (err) {

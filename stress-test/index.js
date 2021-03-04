@@ -9,7 +9,7 @@ const loadCookieStock = require("./load-cookie-stock");
 
 const logger = buildLogger(moment().format("YYMMDD-HHmmss"));
 
-const RUN_FOR_MINS = 60;
+const RUN_FOR_MINS = 1;
 const DELAY_BETWEEN_CALLS_MS = 500;
 const MAX_CONCURRENCY = 50;
 
@@ -41,7 +41,8 @@ const throttledGetDataKey = limiter.wrap(getDataKey);
           jobNumber: i + 1,
           totalJobs: numberOfCalls,
           logger,
-          proxy: cookieSet.proxyUri,
+          // proxy: cookieSet.proxyUri,
+          proxy: process.env.PROXY_URI,
           cookie: cookieSet.cookie,
         })
       );
