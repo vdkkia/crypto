@@ -9,6 +9,10 @@ WORKDIR /usr/src/app
 
 COPY requirements.txt requirements.txt
 
+RUN pip install pyyaml
+RUN pip install argh
+
+RUN pip install watchdog
 RUN pip install -r requirements.txt
 ENV PYTHONUNBUFFERED 1
 

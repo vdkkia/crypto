@@ -105,14 +105,16 @@ services:
     depends_on: 
       - broker
     environment: 
-      PYTHONUNBUFFERED: 1
+      - NODE_ENV
+      - PYTHONUNBUFFERED=1
+      - KAFKA_BROKER_HOST=broker:9092
     entrypoint: 
       - bash 
       - -c 
       - |
         echo 'Giving Kafka a bit of time to start up…'
         sleep 40
-        python /usr/src/app/index.py
+        if [ $NODE_ENV = 'production' ]; then python -u index.py; else watchmedo auto-restart --recursive --pattern="*.py" --directory="." python index.py; fi;
     volumes:
       - ./normalizer:/usr/src/app
 
