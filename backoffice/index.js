@@ -1,23 +1,26 @@
-const Sequelize = require("sequelize");
+const restify = require("restify");
+const { ensureTopicsExist } = require("./services/events/processors");
+const routes = require("./routes");
 
-const sequelize = new Sequelize(process.env.POSTGRES_URI, {
-  dialect: "postgres",
-  protocol: "postgres",
-  // dialectOptions: {
-  //   ssl: {
-  //     require: true,
-  //     rejectUnauthorized: false,
-  //   },
-  // },
+const server = restify.createServer({
+  name: "backoffice server",
 });
 
-sequelize
-  .authenticate()
-  .then(() => {
-    console.log("Connection has been established successfully.");
-  })
-  .catch((err) => {
-    console.error("Unable to connect to the database:", err);
-  });
+routes(server);
 
-console.log("Hi from backoffice");
+server.listen(3000, (err) => {
+  if (err) {
+    console.log(`error happened when trying to run server ${server.name}:`);
+    console.error(err);
+  }
+  console.log(`${server.name} listening at ${server.url}`);
+});
+
+(async () => {
+  try {
+    const result = await ensureTopicsExist();
+    console.log(`number of topics created: ${result.length}`);
+  } catch (err) {
+    console.error(err);
+  }
+})();
