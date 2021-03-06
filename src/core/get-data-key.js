@@ -4,6 +4,8 @@ const getNewCookie = require("../services/google-trends/get-new-cookie");
 const redis = require("../database/redis");
 const FOUR_HOUR = 60 * 60 * 1000 * 4;
 const GET_DATA_MAX_TRIES = process.env.GET_DATA_MAX_TRIES;
+const trends = require("../models/trend");
+const signalDetector = require("./signalDetector");
 
 const getDataKey = async ({ jobNumber, totalJobs, logger, proxyUri, cookie, keywords }, totalTries = 0) => {
   try {
@@ -17,7 +19,18 @@ const getDataKey = async ({ jobNumber, totalJobs, logger, proxyUri, cookie, keyw
     });
     logger.info(`received key for job ${jobNumber}/${totalJobs}`);
     const timelineData = await fetchTimelineData(timelineDataKey);
-    console.log(timelineData)
+    signalDetector(timelineData, logger);
+    try {
+      await trends.findOneAndUpdate(
+        { keyword: keywords },
+        { $push: { data: JSON.stringify(timelineData) } },
+        { upsert: true }
+      );
+      logger.info(`${keywords} data was stored to DB successfully!`);
+    } catch (err) {
+      logger.error("DB error:" + err);
+    }
+
     logger.info(`received data for job ${jobNumber}/${totalJobs}`);
     return true;
   } catch (err) {
