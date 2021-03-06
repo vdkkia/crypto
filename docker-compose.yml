@@ -72,7 +72,7 @@ services:
       - KAFKA_CLIENT_ID=backoffice_admin
     depends_on:
       - db
-    command: bash -c "sleep 35 && cd /usr/src/app && npm install && npm run start"
+    command: bash -c "sleep 30 && cd /usr/src/app && npm install && npm run start"
     volumes:
       - ./backoffice:/usr/src/app
       - /usr/src/app/node_modules
@@ -92,10 +92,29 @@ services:
       - db
       - redis
       - broker
-    command: bash -c "sleep 35 && cd /usr/src/app && npm install && npm run start"
+    command: bash -c "sleep 40 && cd /usr/src/app && npm install && npm run start"
     volumes:
       - ./scraper:/usr/src/app
       - /usr/src/app/node_modules
+  normalizer:
+    container_name: normalizer
+    restart: unless-stopped
+    build:
+      context: normalizer
+      dockerfile: Dockerfile
+    depends_on: 
+      - broker
+    environment: 
+      PYTHONUNBUFFERED: 1
+    entrypoint: 
+      - bash 
+      - -c 
+      - |
+        echo 'Giving Kafka a bit of time to start up…'
+        sleep 40
+        python /usr/src/app/index.py
+    volumes:
+      - ./normalizer:/usr/src/app
 
 volumes:
   zookeeper-data:
