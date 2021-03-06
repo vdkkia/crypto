@@ -9,20 +9,12 @@ const formatTimeParams = (inputObject) => {
 
   const shouldIncludeTime = isLessThan7Days(obj.startTime, obj.endTime);
 
-  const startTime = convertDateToString(
-    obj.startTime,
-    shouldIncludeTime && obj.granularTimeResolution
-  );
-  const endTime = convertDateToString(
-    obj.endTime,
-    shouldIncludeTime && obj.granularTimeResolution
-  );
+  const startTime = convertDateToString(obj.startTime, shouldIncludeTime && obj.granularTimeResolution);
+  const endTime = convertDateToString(obj.endTime, shouldIncludeTime && obj.granularTimeResolution);
 
   obj.time = `${startTime} ${endTime}`;
   return obj;
 };
-
-module.exports = formatTimeParams;
 
 function isLessThan7Days(date1, date2) {
   return Math.abs(date2 - date1) / (24 * 60 * 60 * 1000) < 7;
@@ -47,3 +39,5 @@ function convertDateToString(d, shouldIncludeTime, formatWithoutDashes) {
 
   return `${year}${dash}${month}${dash}${day}`;
 }
+
+module.exports = formatTimeParams;

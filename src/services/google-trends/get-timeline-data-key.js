@@ -2,7 +2,7 @@ const axios = require("axios");
 const ProxyAgent = require("proxy-agent");
 const buildComparisonItem = require("./utils/build-comparison-item");
 
-const TIMEOUT = 5000;
+const TIMEOUT = process.env.AXIOS_TIMEOUT;
 axios.defaults.timeout = TIMEOUT;
 
 const getTimelineDataKey = async ({
@@ -59,11 +59,7 @@ const getTimelineDataKey = async ({
     };
   } catch (err) {
     if (process.env.NODE_ENV !== "production" && log) {
-      if (
-        err?.response?.status === 429 &&
-        err?.response?.headers &&
-        err?.response?.headers["set-cookie"]
-      ) {
+      if (err?.response?.status === 429 && err?.response?.headers && err?.response?.headers["set-cookie"]) {
         console.log("Please save this cookie value for future requests:");
         const cookieVal = err.response.headers["set-cookie"][0].split(";")[0];
         console.log(cookieVal);

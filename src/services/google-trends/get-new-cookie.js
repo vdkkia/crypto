@@ -22,11 +22,7 @@ const getNewCookie = async ({ proxyUri = process.env.PROXY_URI } = {}) => {
         log: false,
       });
     } catch (err) {
-      if (
-        err?.response?.status === 429 &&
-        err?.response?.headers &&
-        err?.response?.headers["set-cookie"]
-      ) {
+      if (err?.response?.status === 429 && err?.response?.headers && err?.response?.headers["set-cookie"]) {
         try {
           cookie = err.response.headers["set-cookie"][0].split(";")[0];
         } catch (err) {}

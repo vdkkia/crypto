@@ -2,12 +2,9 @@ const axios = require("axios");
 const ProxyAgent = require("proxy-agent");
 
 const fetchTimelineData = async ({ widgets, obj, proxyUri }) => {
-  const resultObj = widgets.find(
-    ({ id = "" }) => id.indexOf("TIMESERIES") > -1
-  );
+  const resultObj = widgets.find(({ id = "" }) => id.indexOf("TIMESERIES") > -1);
 
-  if (!resultObj)
-    throw new Error("Available widgets does not contain interest api type");
+  if (!resultObj) throw new Error("Available widgets does not contain interest api type");
 
   let req = resultObj.request;
   const { token } = resultObj;

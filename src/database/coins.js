@@ -50,16 +50,3 @@ module.exports = [
   ["rndr coin", "Plasma Finance", "ppay coin", "Sentinel coin", "sent coin"],
   ["sent coin", "Sirin Labs Token", "srn coin", "Cindicator", "cnd coin"],
 ];
-
-// module.exports = [
-//   ["Bitcoin", "Ethereum", "Binance coin", "Polkadot", "Cardano"],
-//   ["Litecoin", "Chainlink", "Uniswap", "Aave", "EOS"],
-//   ["Dogecoin", "Monero", "TRON", "Tezos", "Vechain"],
-//   ["Solana", "Filecoin", "Sushiswap", "Ravencoin", "Yearn.finance"],
-//   ["UMA", "REN", "Thorchain", "Ontology", "OMG network"],
-//   ["QTUM", "Kusama", "Lisk", "Ocean protocol", "1inch"],
-//   ["Celo", "Kyber", "Decentraland", "Band protocol", "Nucypher"],
-//   ["Algorand", "Polkastarter", "Chiliz", "Serum", "Komodo"],
-//   ["Augur", "Numeraire", "Fetch.ai", "Redfox labs", "Litentry"],
-//   ["BAT", "Ripple"],
-// ];

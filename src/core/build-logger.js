@@ -1,16 +1,16 @@
 const winston = require("winston");
-
+const moment = require("moment");
 const buildLogger = (fileNameTimestamp) =>
   winston.createLogger({
     level: "info",
     format: winston.format.simple(),
     transports: [
       new winston.transports.File({
-        filename: `./stress-test/logs/${fileNameTimestamp}-errors.log`,
+        filename: `./src/logs/${fileNameTimestamp}-errors.log`,
         level: "error",
       }),
       new winston.transports.File({
-        filename: `./stress-test/logs/${fileNameTimestamp}-all.log`,
+        filename: `./src/logs/${fileNameTimestamp}-all.log`,
       }),
       new winston.transports.Console({
         format: winston.format.combine(
@@ -18,13 +18,11 @@ const buildLogger = (fileNameTimestamp) =>
           winston.format.timestamp({
             format: "YYYYMMDD-HHmmss",
           }),
-          winston.format.printf(
-            ({ level, message, timestamp }) =>
-              `${timestamp} ${level}: ${message}`
-          )
+          winston.format.printf(({ level, message, timestamp }) => `${timestamp} ${level}: ${message}`)
         ),
       }),
     ],
   });
 
-module.exports = buildLogger;
+const logger = buildLogger(moment().format("YYMMDD-HHmmss"));
+module.exports = logger;
