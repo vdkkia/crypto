@@ -6,11 +6,7 @@ const redis = {
   init: (_logger) => {
     logger = _logger;
     return new Promise((resolve, reject) => {
-      redisClient = new Redis({
-        port: process.env.redisPort,
-        host: process.env.redisHost,
-        password: process.env.redisPassword,
-      })
+      redisClient = new Redis(process.env.REDIS_URI)
         .on("connect", () => {
           logger.info("Redis connection successful");
           resolve();

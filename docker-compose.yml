@@ -85,9 +85,15 @@ services:
     environment: 
       - NODE_ENV
       - POSTGRES_URI=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}
-      - REDIS_URI=redis://redis:6379
+      - REDIS_URI=redis://redis:6379/0
       - KAFKA_BROKER_HOST=broker:9092
       - KAFKA_CLIENT_ID=nodejs_1
+      - AXIOS_TIMEOUT=5000
+      - MAX_CONCURRENCY=50
+      - DELAY_BETWEEN_CALLS_MS=500
+      - GET_DATA_MAX_TRIES=2
+      - DEFAULT_COOKIE_URI
+      - PROXY_URI
     depends_on:
       - db
       - redis
