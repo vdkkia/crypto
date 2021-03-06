@@ -1,5 +1,5 @@
 const { BadRequestError } = require("restify-errors");
-const { withErrorHandling } = require("../errors");
+const { withErrorHandling } = require("../../errors");
 const { raiseEvent } = require("../processors");
 
 const handlePostEventRequest = async (req, res, next) => {
