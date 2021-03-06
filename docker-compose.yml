@@ -2,15 +2,15 @@ version: "3.8"
 
 services:
   zookeeper:
-    image: confluentinc/cp-zookeeper
+    image: confluentinc/cp-zookeeper:6.1.0
     container_name: zookeeper
     environment:
       ZOOKEEPER_CLIENT_PORT: 2181
     volumes:
-      - ${ZOOKEEPER_DATA_DIR}:/var/lib/zookeeper/data 
-      - ${ZOOKEEPER_LOG_DIR}:/var/lib/zookeeper/log
+      - zookeeper-data:/var/lib/zookeeper/data 
+      - zookeeper-log:/var/lib/zookeeper/log
   broker:
-    image: confluentinc/cp-kafka
+    image: confluentinc/cp-kafka:6.1.0
     container_name: broker
     ports: 
       - "19092:19092"
@@ -23,11 +23,11 @@ services:
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,CONNECTIONS_FROM_HOST:PLAINTEXT
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
     volumes:
-      - ${BROKER_DATA_DIR}:/var/lib/kafka/data
+      - broker-data:/var/lib/kafka/data
   kafdrop:
-    image: obsidiandynamics/kafdrop
+    image: obsidiandynamics/kafdrop:3.27.0
     container_name: kafdrop
-    restart: "no"
+    restart: unless-stopped
     ports:
       - "9000:9000"
     environment:
@@ -36,17 +36,18 @@ services:
     depends_on:
       - broker
   redis:
-    image: redis
-    restart: always
+    image: redis:6.2.1
+    restart: unless-stopped
     container_name: coinredis
+    command: redis-server --appendonly yes
     ports:
       - '${REDIS_EXPOSED_PORT}:6379'
     volumes:
-      - ${REDIS_DATA_DIR}:/var/lib/redis
+      - redis-data:/data
       # - ./redis/redis.conf:/usr/local/etc/redis/redis.conf
   db:
-    image: postgres
-    restart: always
+    image: postgres:13.2
+    restart: unless-stopped
     container_name: coindb
     ports: 
       - '${POSTGRES_EXPOSED_PORT}:5432'
@@ -55,4 +56,11 @@ services:
       - POSTGRES_USER
       - POSTGRES_PASSWORD
     volumes:
-      - ${POSTGRES_VOLUME_PATH}:/var/lib/postgresql/data
+      - db-data:/var/lib/postgresql/data
+
+volumes:
+  zookeeper-data:
+  zookeeper-log:
+  broker-data:
+  redis-data:
+  db-data:
