@@ -20,4 +20,4 @@ sequelize
     console.error("Unable to connect to the database:", err);
   });
 
-console.log("Hello");
+console.log("Hi from backoffice");

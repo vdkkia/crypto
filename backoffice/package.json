@@ -11,7 +11,7 @@
     "sequelize",
     "timescaledb"
   ],
-  "author": "Farid Khaheshi",
+  "author": "Bump Hunters",
   "license": "ISC",
   "devDependencies": {
     "nodemon": "2.0.7"
