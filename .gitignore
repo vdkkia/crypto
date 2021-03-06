@@ -1,6 +1,8 @@
 node_modules
 /data
+scraper/src/logs
 .env
+
 
 .prettierrc
 .DS_Store
