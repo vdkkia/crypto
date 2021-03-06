@@ -1,0 +1,25 @@
+{
+  "name": "db",
+  "version": "1.0.0",
+  "description": "This is a microservice for setting up the database and keeping track of changes we make to it.",
+  "main": "index.js",
+  "scripts": {
+    "start": "if [ $NODE_ENV = 'production' ]; then node index.js; else nodemon index.js -L; fi",
+    "migrate": "docker exec -it coinbackoffice npx sequelize-cli db:migrate"
+  },
+  "keywords": [
+    "sequelize",
+    "timescaledb"
+  ],
+  "author": "Farid Khaheshi",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "2.0.7"
+  },
+  "dependencies": {
+    "pg": "8.5.1",
+    "pg-hstore": "2.3.3",
+    "sequelize": "6.5.0",
+    "sequelize-cli": "6.2.0"
+  }
+}
