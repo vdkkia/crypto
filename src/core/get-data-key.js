@@ -19,10 +19,10 @@ const getDataKey = async ({ jobNumber, totalJobs, logger, proxyUri, cookie, keyw
     });
     logger.info(`received key for job ${jobNumber}/${totalJobs}`);
     const timelineData = await fetchTimelineData(timelineDataKey);
-    signalDetector(timelineData, logger);
+    signalDetector(timelineData.slice(), keywords, logger);
     try {
       await trends.findOneAndUpdate(
-        { keyword: keywords },
+        { keyword: typeof keywords === "string" ? keywords : keywords.join(" | ") },
         { $push: { data: JSON.stringify(timelineData) } },
         { upsert: true }
       );
