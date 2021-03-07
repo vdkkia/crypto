@@ -11,10 +11,10 @@ const processGoogleTrendsForAllKeywords = require("./src/services/google-trends/
   if (success) {
     // scheduler.schedule("0 */2 * * *", updateCookieStock.bind(logger));
     // scheduler.schedule("* * * * * *", updateCookieStock.bind(null, logger));
-    await processGoogleTrendsForAllKeywords(
-      logger,
-      process.env.ACTIVE_SECONDS_PER_MIN
-    );
+    // await processGoogleTrendsForAllKeywords(
+    //   logger,
+    //   process.env.ACTIVE_SECONDS_PER_MIN
+    // );
     logger.info("All jobs are running");
   } else {
     logger.error("Failed to initialize cookie stock for the first time");
