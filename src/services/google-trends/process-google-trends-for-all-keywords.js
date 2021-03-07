@@ -6,6 +6,7 @@ const loadCookies = require("../cookies/load-cookies");
 const keywords = require("./../../database/keywords.json");
 const prepareBatches = require("./utils/prepare-batches");
 const printFinalReport = require("../../core/print-final-report");
+const signalDetector = require("../../core/signalDetector");
 
 const cleanKeywords = keywords.map(({ term, category }) => ({
   term: term.trim(),
@@ -96,6 +97,7 @@ async function getTrendDataForBatch({
     });
     logger.info(`received key for batch ${batchNumber}/${totalBatches}`);
     const timelineData = await fetchTimelineData(timelineDataKey);
+    signalDetector(timelineData, keywords, logger);
     logger.info(
       `received timeline data for batch ${batchNumber}/${totalBatches}`
     );
