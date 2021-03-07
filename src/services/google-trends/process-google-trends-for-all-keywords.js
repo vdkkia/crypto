@@ -26,7 +26,7 @@ const batches = prepareBatches(cleanKeywords, 5);
 
 const processGoogleTrendsForAllKeywords = async (
   logger,
-  secondsToComplete = 50
+  secondsToComplete = process.env.ACTIVE_SECONDS_PER_MIN
 ) => {
   try {
     const startTime = Date.now();

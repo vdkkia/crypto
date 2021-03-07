@@ -11,7 +11,7 @@ const signalDetector = async (data, keywords, logger) => {
         const avg = values.reduce((t, i) => t + i) / values.length;
         logger.warn(`Average is ${avg}`);
         logger.warn(`mostRecent is ${mostRecent}`);
-        if (avg > 0 && mostRecent >= 2 * avg) {
+        if (avg > 0 && mostRecent >= 3 * avg) {
           logger.info("=================");
           logger.info("Jump detected!!!");
           logger.info("=================");
