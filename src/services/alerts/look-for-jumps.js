@@ -34,7 +34,20 @@ const lookForJumps = ({ timelineData, keywords, categoryMap, logger }) => {
         jumps.push(jumpData);
         saveJumpsQueue.add(jumpData);
         sendAlertQueue.add({
-          text: `jump detected on ${keyword}- category: ${categoryMap[keyword]}`,
+          blocks: [
+            {
+              type: "section",
+              text: {
+                type: "mrkdwn",
+                text: `jump detected on <https://trends.google.com/trends/explore?date=now%204-H&q=${encodeURIComponent(
+                  keyword
+                )}|${keyword}> - category: ${categoryMap[keyword]}`,
+              },
+            },
+          ],
+          // text: `jump detected on <https://trends.google.com/trends/explore?date=now%204-H&q=${encodeURIComponent(
+          //   keyword
+          // )}|${keyword}> - category: ${categoryMap[keyword]}`,
         });
       }
     });
