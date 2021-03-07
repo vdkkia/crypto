@@ -6,3 +6,6 @@
 /stress-test/logs
 /stress-test/cookie-stock.json
 .DS_Store
+
+src/logs
+/logs

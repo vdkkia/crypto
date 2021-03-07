@@ -1,16 +1,27 @@
 const axios = require("axios");
 const ProxyAgent = require("proxy-agent");
 
-const fetchTimelineData = async ({ widgets, obj, proxyUri }) => {
-  const resultObj = widgets.find(({ id = "" }) => id.indexOf("TIMESERIES") > -1);
+const TIMEOUT = process.env.AXIOS_TIMEOUT;
+axios.defaults.timeout = TIMEOUT;
 
-  if (!resultObj) throw new Error("Available widgets does not contain interest api type");
+const fetchTimelineData = async ({ widgets, obj, proxyUri }) => {
+  const resultObj = widgets.find(
+    ({ id = "" }) => id.indexOf("TIMESERIES") > -1
+  );
+
+  if (!resultObj)
+    throw new Error("Available widgets does not contain interest api type");
 
   let req = resultObj.request;
   const { token } = resultObj;
   req.requestOptions.category = obj.category;
   req.requestOptions.property = obj.property;
   req = JSON.stringify(req);
+
+  const cancelTokenSource = axios.CancelToken.source();
+  setTimeout(() => {
+    cancelTokenSource.cancel();
+  }, TIMEOUT);
 
   const dataResponse = await axios({
     url: "https://trends.google.com/trends/api/widgetdata/multiline",
@@ -22,6 +33,7 @@ const fetchTimelineData = async ({ widgets, obj, proxyUri }) => {
       token,
       tz: obj.timezone,
     },
+    cancelToken: cancelTokenSource.token,
   });
 
   const {
