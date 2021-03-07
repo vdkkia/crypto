@@ -1,3 +1,5 @@
+const sendAlertQueue = require("../queues/send-alert-queue");
+
 const printFinalReport = (results, logger) => {
   logger.info("---------------------------");
   logger.info("---------------------------");
@@ -14,6 +16,21 @@ const printFinalReport = (results, logger) => {
   );
   logger.info(`Error rate: ${parsePercent(errors.length / results.length)}`);
   logger.info(`Cancel rate: ${parsePercent(cancels.length / results.length)}`);
+  sendAlertQueue.add({
+    text: `
+  ---------------------------\n
+  ---------------------------\n
+  ---------------------------\n
+  ---------------------------\n
+  -----------REPORT----------\n
+  Total requests: ${results.length} \n
+  Valid data: ${validDataPoints.length} \n
+  Errors: ${results.length - validDataPoints.length} \n
+  Success rate: ${parsePercent(validDataPoints.length / results.length)} \n
+  Error rate: ${parsePercent(errors.length / results.length)} \n
+  Cancel rate: ${parsePercent(cancels.length / results.length)} \n
+  `,
+  });
 };
 
 module.exports = printFinalReport;
