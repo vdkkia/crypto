@@ -6,7 +6,8 @@ const printFinalReport = (results, logger) => {
   logger.info("---------------------------");
   logger.info("-----------REPORT----------");
   logger.info(`Total requests: ${results.length}`);
-  const validDataPoints = results.filter((result) => result === 1);
+  const validDataPoints = results.filter((result) => result >= 1);
+  const jumps = validDataPoints.reduce((acc, d) => acc + d - 1, 0);
   const cancels = results.filter((result) => result === 0);
   const errors = results.filter((result) => result === -1);
   logger.info(`Valid data: ${validDataPoints.length}`);
@@ -16,6 +17,7 @@ const printFinalReport = (results, logger) => {
   );
   logger.info(`Error rate: ${parsePercent(errors.length / results.length)}`);
   logger.info(`Cancel rate: ${parsePercent(cancels.length / results.length)}`);
+  logger.info(`Jumps: ${jumps}`);
   sendAlertQueue.add({
     text: `
   ---------------------------\n
@@ -29,6 +31,7 @@ const printFinalReport = (results, logger) => {
   Success rate: ${parsePercent(validDataPoints.length / results.length)} \n
   Error rate: ${parsePercent(errors.length / results.length)} \n
   Cancel rate: ${parsePercent(cancels.length / results.length)} \n
+  Jumps: ${jumps}
   `,
   });
 };

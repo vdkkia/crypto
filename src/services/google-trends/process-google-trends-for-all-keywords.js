@@ -7,6 +7,7 @@ const keywords = require("./../../database/keywords.json");
 const prepareBatches = require("./utils/prepare-batches");
 const printFinalReport = require("../../core/print-final-report");
 const signalDetector = require("../../core/signalDetector");
+const lookForJumps = require("../alerts/look-for-jumps");
 
 const cleanKeywords = keywords.map(({ term, category }) => ({
   term: term.trim(),
@@ -97,11 +98,17 @@ async function getTrendDataForBatch({
     });
     logger.info(`received key for batch ${batchNumber}/${totalBatches}`);
     const timelineData = await fetchTimelineData(timelineDataKey);
-    signalDetector(timelineData, keywords, logger);
+    // const jumps = signalDetector(timelineData.slice(), keywords, logger);
+    const jumps = lookForJumps({
+      timelineData: [...timelineData],
+      keywords,
+      categoryMap,
+      logger,
+    });
     logger.info(
       `received timeline data for batch ${batchNumber}/${totalBatches}`
     );
-    return 1;
+    return 1 + jumps.length;
   } catch (err) {
     if (axios.isCancel(err)) {
       logger.error(`batch ${batchNumber} canceled`);
