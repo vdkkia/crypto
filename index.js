@@ -7,7 +7,7 @@ const db = require("./src/database/mongoDB");
 (async () => {
   await redis.init(logger);
   await db.connect(logger);
-  // await redis.reset();
-  // jobRunner.start(logger);
-  jobRunner.manualRun(logger);
+  await redis.reset();
+  jobRunner.start(logger);
+  // jobRunner.manualRun(logger);
 })();
