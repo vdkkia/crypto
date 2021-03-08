@@ -1,0 +1,58 @@
+version: "3.8"
+
+services:
+  mongodb:
+    image: mongo:4.4.4
+    container_name: coinmongo
+    restart: unless-stopped
+    command: mongod --auth
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME
+      - MONGO_INITDB_ROOT_PASSWORD
+      - MONGO_INITDB_USERNAME
+      - MONGO_INITDB_PASSWORD
+      - MONGO_INITDB_DATABASE
+    volumes:
+      - ./mongodb/001_init-mongo.sh:/docker-entrypoint-initdb.d/001_init-mongo.sh
+      - mongo-data:/data/db
+    ports:
+      - "${MONGO_EXPOSED_PORT}:27017"
+  redis:
+    image: redis:6.2.1
+    restart: unless-stopped
+    container_name: coinredis
+    command: redis-server --appendonly yes
+    ports:
+      - "${REDIS_EXPOSED_PORT}:6379"
+    volumes:
+      - redis-data:/data
+      # - ./redis/redis.conf:/usr/local/etc/redis/redis.conf
+  scraper:
+    container_name: scraper
+    restart: unless-stopped
+    build:
+      context: scraper
+      dockerfile: Dockerfile
+    environment:
+      - NODE_ENV
+      - REDIS_URI=redis://redis:6379
+      - MONGO_URI=mongodb://${MONGO_INITDB_USERNAME}:${MONGO_INITDB_PASSWORD}@mongodb:27017/${MONGO_INITDB_DATABASE}
+      - PROXY_URI
+      - ACTIVE_SECONDS_PER_MIN
+      - COOKIE_STOCK_SIZE
+      - AXIOS_TIMEOUT
+      - MAX_CONCURRENCY
+      - SLACK_INCOMING_WEBHOOK
+    depends_on:
+      - redis
+    # command: bash -c "sleep 40 && cd /usr/src/app && npm install && npm run start"
+    command: bash -c "cd /usr/src/app && npm install && npm run start"
+    volumes:
+      - ./scraper:/usr/src/app
+      - /usr/src/app/node_modules
+      - scraper_logs:/logs
+
+volumes:
+  redis-data:
+  mongo-data:
+  scraper_logs:

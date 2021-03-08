@@ -1,12 +1,13 @@
 const getTimelineDataKey = require("./get-timeline-data-key");
 const waitForMs = require("./utils/wait-for-ms");
+const logger = require("./../logger");
 
 const FOUR_HOUR = 60 * 60 * 1000 * 4;
 const MAX_TRIES = 500;
 const keywords = ["Creditcoin", "Velas"];
 
 const getNewCookie = async ({ proxyUri = process.env.PROXY_URI } = {}) => {
-  console.log(`getting new cookie for ${proxyUri}`);
+  logger.info(`getting new cookie for ${proxyUri}`);
   let cookie;
   let totalTries = 0;
 
@@ -22,7 +23,11 @@ const getNewCookie = async ({ proxyUri = process.env.PROXY_URI } = {}) => {
         log: false,
       });
     } catch (err) {
-      if (err?.response?.status === 429 && err?.response?.headers && err?.response?.headers["set-cookie"]) {
+      if (
+        err?.response?.status === 429 &&
+        err?.response?.headers &&
+        err?.response?.headers["set-cookie"]
+      ) {
         try {
           cookie = err.response.headers["set-cookie"][0].split(";")[0];
         } catch (err) {}
@@ -31,9 +36,9 @@ const getNewCookie = async ({ proxyUri = process.env.PROXY_URI } = {}) => {
     totalTries += 1;
   } while (!cookie && totalTries < MAX_TRIES);
   if (cookie) {
-    console.log(`got new cookie for ${proxyUri}`);
+    logger.info(`got new cookie for ${proxyUri}`);
   } else {
-    console.log(`failed to new cookie for ${proxyUri}`);
+    logger.info(`failed to new cookie for ${proxyUri}`);
   }
   return cookie;
 };
