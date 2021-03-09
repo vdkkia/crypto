@@ -5,7 +5,7 @@ services:
     image: mongo:4.4.4
     container_name: coinmongo
     restart: unless-stopped
-    command: mongod --auth
+    command: mongod --auth --config /etc/mongod.conf
     environment:
       - MONGO_INITDB_ROOT_USERNAME
       - MONGO_INITDB_ROOT_PASSWORD
@@ -14,6 +14,7 @@ services:
       - MONGO_INITDB_DATABASE
     volumes:
       - ./mongodb/001_init-mongo.sh:/docker-entrypoint-initdb.d/001_init-mongo.sh
+      - ./mongodb/mongod.conf:/etc/mongod.conf
       - mongo-data:/data/db
     ports:
       - "${MONGO_EXPOSED_PORT}:27017"
