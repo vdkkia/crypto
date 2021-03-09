@@ -8,6 +8,7 @@ const keywords = require("./../../../data/keywords.json");
 const prepareBatches = require("./utils/prepare-batches");
 const printFinalReport = require("./utils/print-final-report");
 const lookForJumps = require("./../alerts/look-for-jumps");
+const saveTimelineQueue = require("./../../queues/save-timeline-queue");
 
 const cleanKeywords = keywords.map(({ term, category }) => ({
   term: term.trim(),
@@ -24,6 +25,7 @@ const categoryMap = cleanKeywords.reduce(
   {}
 );
 
+// const batches = prepareBatches(cleanKeywords.slice(0, 5), 5);
 const batches = prepareBatches(cleanKeywords, 5);
 
 const processGoogleTrendsForAllKeywords = async (
@@ -101,6 +103,11 @@ async function getTrendDataForBatch({
       timelineData: [...timelineData],
       keywords,
       categoryMap,
+    });
+    saveTimelineQueue.add({
+      keywords,
+      trends: timelineData,
+      reportTimestamp: Number(timelineData[timelineData.length - 1].time),
     });
     logger.info(
       `received timeline data for batch ${batchNumber}/${totalBatches}`
