@@ -1,6 +1,7 @@
 const sendAlertQueue = require("./../../queues/send-alert-queue");
 const saveJumpsQueue = require("./../../queues/save-jumps-queue");
 const logger = require("./../logger");
+const saveAlert = require("./save-alert");
 
 const lookForJumps = ({ timelineData, keywords, categoryMap }) => {
   const jumps = [];
@@ -33,7 +34,8 @@ const lookForJumps = ({ timelineData, keywords, categoryMap }) => {
           reportTimestamp: Number(timelineData[timelineData.length - 1].time),
         };
         jumps.push(jumpData);
-        saveJumpsQueue.add(jumpData);
+        // saveJumpsQueue.add(jumpData);
+        saveAlert(jumpData).catch((err) => logger.error(err.message));
         const alertMessage = `jump detected on <https://trends.google.com/trends/explore?date=now%204-H&q=${encodeURIComponent(
           keyword
         )}|${keyword}> - category: ${categoryMap[keyword]}`;

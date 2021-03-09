@@ -104,11 +104,11 @@ async function getTrendDataForBatch({
       keywords,
       categoryMap,
     });
-    saveTimelineQueue.add({
-      keywords,
-      trends: timelineData,
-      reportTimestamp: Number(timelineData[timelineData.length - 1].time),
-    });
+    // saveTimelineQueue.add({
+    //   keywords,
+    //   trends: timelineData,
+    //   reportTimestamp: Number(timelineData[timelineData.length - 1].time),
+    // });
     logger.info(
       `received timeline data for batch ${batchNumber}/${totalBatches}`
     );
