@@ -1,6 +1,7 @@
 const sendAlertQueue = require("../../queues/send-alert-queue");
-const saveJumpsQueue = require("../../queues/save-jumps-queue");
 const logger = require("../logger");
+const saveAlert = require("./save-alert");
+
 const FACTORS = ["0.02", "0.05", "0.1"];
 
 const lookForComparedJumps = ({ timelineData, keywords, categoryMap }) => {
@@ -31,16 +32,20 @@ const lookForComparedJumps = ({ timelineData, keywords, categoryMap }) => {
           if (litecoinAvg > 0 && lastValue > factor * litecoinAvg) {
             logger.warn("=======================================");
             logger.warn(`Jump detected!!!, coin: ${keyword}`);
-            logger.warn(`litecoin Avg: ${litecoinAvg}, value: ${lastValue}, factor: ${factor}`);
+            logger.warn(
+              `litecoin Avg: ${litecoinAvg}, value: ${lastValue}, factor: ${factor}`
+            );
             logger.warn("=======================================");
             const jumpData = {
               keyword,
               category: categoryMap[keyword],
               trend: keywordTimelineData,
-              reportTimestamp: Number(timelineData[timelineData.length - 1].time),
+              reportTimestamp: Number(
+                timelineData[timelineData.length - 1].time
+              ),
             };
             jumps.push(jumpData);
-            saveJumpsQueue.add(jumpData);
+            saveAlert(jumpData).catch((err) => logger.error(err.message));
             const alertMessage = `jump detected on <https://trends.google.com/trends/explore?date=now%204-H&q=${encodeURIComponent(
               keyword
             )}|${keyword}> - category: ${categoryMap[keyword]}`;
