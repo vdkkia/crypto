@@ -72,7 +72,7 @@ const processGoogleTrendsForAllKeywords = async (
     const newBatches = prepareBatches(
       results
         .filter((res) => isNaN(res))
-        .reduce((agg, keywordList) => [...agg, ...keywordList]),
+        .reduce((agg, keywordList) => [...agg, ...keywordList], []),
       4
     ).map((batch) => [COMPARING_KEYWORD, ...batch]);
 
