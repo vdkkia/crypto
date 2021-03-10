@@ -9,9 +9,9 @@ const processGoogleTrendsForAllKeywords = require("./src/services/google-trends/
   try {
     await redis.init();
     await db.init();
-    await updateCookieStock(false);
-    scheduler.schedule("0 */2 * * *", updateCookieStock);
-    scheduler.schedule("* * * * *", processGoogleTrendsForAllKeywords);
+    // await updateCookieStock(false);
+    // scheduler.schedule("0 */2 * * *", updateCookieStock);
+    // scheduler.schedule("* * * * *", processGoogleTrendsForAllKeywords);
     // await processGoogleTrendsForAllKeywords();
     logger.info("All jobs are running");
   } catch (err) {

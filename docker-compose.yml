@@ -1,6 +1,40 @@
 version: "3.8"
 
 services:
+  zookeeper:
+    image: confluentinc/cp-zookeeper:6.1.0
+    container_name: zookeeper
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+    volumes:
+      - zookeeper-data:/var/lib/zookeeper/data
+      - zookeeper-log:/var/lib/zookeeper/log
+  broker:
+    image: confluentinc/cp-kafka:6.1.0
+    container_name: broker
+    ports:
+      - "19092:19092"
+    depends_on:
+      - zookeeper
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://broker:9092,CONNECTIONS_FROM_HOST://localhost:19092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,CONNECTIONS_FROM_HOST:PLAINTEXT
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+    volumes:
+      - broker-data:/var/lib/kafka/data
+  kafdrop:
+    image: obsidiandynamics/kafdrop:3.27.0
+    container_name: kafdrop
+    restart: unless-stopped
+    ports:
+      - "${KAFDROP_PORT}:9000"
+    environment:
+      KAFKA_BROKERCONNECT: "broker:9092"
+      JVM_OPTS: "-Xms16M -Xmx48M -Xss180K -XX:-TieredCompilation -XX:+UseStringDeduplication -noverify"
+    depends_on:
+      - broker
   mongodb:
     image: mongo:4.4.4
     container_name: coinmongo
@@ -28,6 +62,39 @@ services:
     volumes:
       - redis-data:/data
       # - ./redis/redis.conf:/usr/local/etc/redis/redis.conf
+  db:
+    image: timescale/timescaledb:2.1.0-pg13
+    restart: unless-stopped
+    container_name: coindb
+    ports:
+      - "${POSTGRES_EXPOSED_PORT}:5432"
+    environment:
+      - POSTGRES_DB
+      - POSTGRES_USER
+      - POSTGRES_PASSWORD
+    volumes:
+      - db-data:/var/lib/postgresql/data
+      - ./db/init:/docker-entrypoint-initdb.d/
+  backoffice:
+    container_name: coinbackoffice
+    restart: unless-stopped
+    build:
+      context: backoffice
+      dockerfile: Dockerfile
+    ports:
+      - "${BACKOFFICE_EXPOSED_PORT}:3000"
+    environment:
+      - NODE_ENV
+      - POSTGRES_URI=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}
+      - KAFKA_BROKER_HOST=broker:9092
+      - KAFKA_CLIENT_ID=backoffice_admin
+    depends_on:
+      - db
+      - broker
+    command: bash -c "sleep 30 && cd /usr/src/app && npm install && npm run start"
+    volumes:
+      - ./backoffice:/usr/src/app
+      - /usr/src/app/node_modules
   scraper:
     container_name: scraper
     restart: unless-stopped
@@ -54,6 +121,10 @@ services:
       - scraper_logs:/logs
 
 volumes:
+  zookeeper-data:
+  zookeeper-log:
+  broker-data:
+  db-data:
   redis-data:
   mongo-data:
   scraper_logs:
