@@ -1,5 +1,5 @@
 const logger = require("../logger");
-const FACTOR = 10;
+const FACTOR = 50;
 
 const lookForCandidates = ({ timelineData, keywords }) => {
   const jumps = [];
