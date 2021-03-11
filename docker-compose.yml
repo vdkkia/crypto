@@ -124,6 +124,27 @@ services:
       - ./scraper:/usr/src/app
       - /usr/src/app/node_modules
       - scraper_logs:/logs
+  normalizer:
+    container_name: normalizer
+    restart: unless-stopped
+    build:
+      context: normalizer
+      dockerfile: Dockerfile
+    depends_on:
+      - backoffice
+    environment:
+      - NODE_ENV
+      - PYTHONUNBUFFERED=1
+      - KAFKA_BROKER_HOST=broker:9092
+    entrypoint:
+      - bash
+      - -c
+      - |
+        echo 'Giving Kafka a bit of time to start up…'
+        sleep 40
+        if [ $NODE_ENV = 'production' ]; then python -u index.py; else watchmedo auto-restart --recursive --pattern="*.py" --directory="." python index.py; fi;
+    volumes:
+      - ./normalizer:/usr/src/app
 
 volumes:
   zookeeper-data:

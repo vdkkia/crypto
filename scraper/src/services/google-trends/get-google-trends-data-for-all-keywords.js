@@ -1,3 +1,4 @@
+const fs = require("fs");
 const axios = require("axios");
 const Bottleneck = require("bottleneck");
 const logger = require("./../logger");
@@ -16,7 +17,9 @@ const getGoogleTrendsDataForAllKeywords = async (
 ) => {
   try {
     const startTime = Date.now();
-    const { batches, categoryMap } = await loadBatchInfo();
+    const { batches } = await loadBatchInfo();
+    // const { batches: tempBatches } = await loadBatchInfo();
+    // const batches = tempBatches.slice(0, 1);
     logger.info(
       `processing google trends for ${keywords.length} keywords in ${batches.length} batches`
     );
@@ -87,6 +90,14 @@ async function getTrendDataForBatch({
       topic: "new-google-trends-plain-data",
       payload: `B${batchNumber - 1}___SEP___${timelineData}`,
     });
+    // console.log("\n\n\n\n");
+    // console.log(`B${batchNumber - 1}___SEP___${timelineData}`);
+    // console.log("\n\n\n\n");
+    // fs.writeFileSync(
+    //   "./sample.txt",
+    //   `B${batchNumber - 1}___SEP___${timelineData}`,
+    //   "utf-8"
+    // );
 
     logger.info(
       `received timeline data for batch ${batchNumber}/${totalBatches}`

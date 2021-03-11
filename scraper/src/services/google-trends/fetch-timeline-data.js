@@ -36,11 +36,11 @@ const fetchTimelineData = async ({ widgets, obj, proxyUri }, plain = false) => {
     cancelToken: cancelTokenSource.token,
   });
 
-  if (plain) return dataResponse.data.slice(5);
+  if (plain) return dataResponse.data.slice(6);
 
   const {
     default: { timelineData },
-  } = JSON.parse(dataResponse.data.slice(5));
+  } = JSON.parse(dataResponse.data.slice(6));
 
   return timelineData;
 };
