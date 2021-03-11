@@ -2,7 +2,7 @@ const sendAlertQueue = require("../../queues/send-alert-queue");
 const logger = require("../logger");
 const saveAlert = require("./save-alert");
 
-const FACTORS = ["0.02", "0.05", "0.1"];
+const FACTORS = ["0.1"];
 
 const lookForComparedJumps = ({ timelineData, keywords, categoryMap }) => {
   const jumps = [];
