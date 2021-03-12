@@ -2,7 +2,7 @@ import json
 import pandas as pd
 
 
-def parse_input_data(input_str , separator = '___SEP___'):
+def parse_input_data(input_str, separator='___SEP___'):
     parts = input_str.split(separator)
     batch_index = int(parts[0][1:])
     timeline_info = json.loads(parts[1])['default']
@@ -22,8 +22,10 @@ def convert_to_dataframe(google_trends_data, batches):
         }
         for index, keyword_info in enumerate(batch):
             timeseries_item[keyword_info['term']] = data_point['value'][index]
-        timeseries_item['formattedValues'] = '-'.join(data_point['formattedValue'])
-        timeseries_item['hasData'] = '-'.join(['Y' if has_data else 'N' for has_data in data_point['hasData']])
+        timeseries_item['formattedValues'] = '-'.join(
+            data_point['formattedValue'])
+        timeseries_item['hasData'] = '-'.join(
+            ['Y' if has_data else 'N' for has_data in data_point['hasData']])
         timeseries_item['formattedTime'] = data_point['formattedTime']
         timeseries_item['formattedAxisTime'] = data_point['formattedAxisTime']
         timeseries_item['time'] = data_point['time']
