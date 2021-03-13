@@ -1,5 +1,5 @@
 const restify = require("restify");
-// const { ensureTopicsExist } = require("./services/events/processors");
+const { ensureTopicsExist } = require("./services/events/processors");
 const { initCointerestsStream } = require("./services/streams");
 const routes = require("./routes");
 
@@ -20,6 +20,7 @@ server.listen(3000, (err) => {
 (async () => {
   try {
     console.log("setting up...");
+    await ensureTopicsExist();
     await initCointerestsStream();
   } catch (err) {
     console.error(err);

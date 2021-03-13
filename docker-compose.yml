@@ -175,7 +175,7 @@ services:
     depends_on:
       - db
       - broker
-    command: bash -c "sleep 90 && cd /usr/src/app && npm install && npm run start"
+    command: bash -c "sleep 60 && cd /usr/src/app && npm install && npm run start"
     volumes:
       - ./backoffice:/usr/src/app
       - /usr/src/app/node_modules
@@ -206,28 +206,26 @@ services:
   #     - ./scraper:/usr/src/app
   #     - /usr/src/app/node_modules
   #     - scraper_logs:/logs
-  # normalizer:
-  #   container_name: normalizer
-  #   restart: unless-stopped
-  #   build:
-  #     context: normalizer
-  #     dockerfile: Dockerfile
-  #   depends_on:
-  #     - backoffice
-  #   environment:
-  #     - NODE_ENV
-  #     - PYTHONUNBUFFERED=1
-  #     - KAFKA_BROKER_HOST=broker:9092
-  #   entrypoint:
-  #     - bash
-  #     - -c
-  #     - |
-  #       echo 'Giving Kafka a bit of time to start up…'
-  #       sleep 40
-  #       if [ $NODE_ENV = 'production' ]; then python -u index.py; else watchmedo auto-restart --recursive --pattern="*.py" --directory="." python index.py; fi;
-  #   volumes:
-  #     - ./normalizer:/usr/src/app
-
+  normalizer:
+    container_name: normalizer
+    restart: unless-stopped
+    build:
+      context: normalizer
+      dockerfile: Dockerfile
+    environment:
+      - NODE_ENV
+      - REDIS_URI=redis://redis:6379
+      - KAFKA_BROKER_HOST=broker:9092
+      - KAFKA_CLIENT_ID=nodejs_1
+    depends_on:
+      - redis
+      - backoffice
+      - broker
+    command: bash -c "sleep 70 && cd /usr/src/app && npm install && npm run start"
+    volumes:
+      - ./normalizer:/usr/src/app
+      - /usr/src/app/node_modules
+      - normalizer_logs:/logs
 volumes:
   zookeeper-data:
   zookeeper-log:
@@ -237,3 +235,4 @@ volumes:
   redis-data:
   mongo-data:
   scraper_logs:
+  normalizer_logs:

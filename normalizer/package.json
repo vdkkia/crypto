@@ -1,0 +1,20 @@
+{
+  "name": "normalizer",
+  "version": "1.0.0",
+  "description": "This process is responsible for normalizing data received from google",
+  "main": "index.js",
+  "scripts": {
+    "start": "if [ $NODE_ENV = 'production' ]; then node index.js; else nodemon index.js -L; fi"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "2.0.7"
+  },
+  "dependencies": {
+    "ioredis": "4.23.0",
+    "kafkajs": "1.15.0",
+    "moment": "2.29.1",
+    "winston": "3.3.3"
+  }
+}
