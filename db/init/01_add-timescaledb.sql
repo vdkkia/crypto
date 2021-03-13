@@ -1,10 +1,17 @@
 CREATE EXTENSION IF NOT EXISTS timescaledb CASCADE;
 
--- CREATE TABLE conditions (
---   time        TIMESTAMPTZ       NOT NULL,
---   location    TEXT              NOT NULL,
---   temperature DOUBLE PRECISION  NULL,
---   humidity    DOUBLE PRECISION  NULL
--- );
+CREATE TABLE cointerests (
+  REPORT_KEY TEXT KEY,
+  INTEREST_PLAIN INTEGER,
+  INTEREST DOUBLE PRECISION,
+  KEYWORD TEXT,
+  TIMESTAMP TEXT,
+  REPORT_TIME BIGINT,
+  BATCH_NO INTEGER,
+  HAS_DATA BOOLEAN,
+  FORMATTED_AXIS_TIME TEXT,
+  FORMATTED_TIME TEXT,
+  FORMATTED_VALUE TEXT
+);
 
--- SELECT create_hypertable('conditions', 'time');
+SELECT create_hypertable('cointerests', 'REPORT_TIME');
