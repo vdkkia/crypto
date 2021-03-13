@@ -1,6 +1,10 @@
 const restify = require("restify");
-const { ensureTopicsExist } = require("./services/events/processors");
+const addPostgresConnector = require("./adapters/ksqldb/add-postgres-connector");
+const createCointerestsStream = require("./adapters/ksqldb/queries/create-cointerests-stream");
+const runKSQL = require("./adapters/ksqldb/run-ksql");
+// const { ensureTopicsExist } = require("./services/events/processors");
 const routes = require("./routes");
+const { initCointerestsStream } = require("./services/streams");
 
 const server = restify.createServer({
   name: "backoffice server",
@@ -18,8 +22,7 @@ server.listen(3000, (err) => {
 
 (async () => {
   try {
-    const result = await ensureTopicsExist();
-    console.log(`number of topics created: ${result.length}`);
+    await initCointerestsStream();
   } catch (err) {
     console.error(err);
   }
