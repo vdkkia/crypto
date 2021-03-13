@@ -85,6 +85,7 @@ services:
     depends_on:
       - broker
       - connect
+      - schemareg
     ports:
       - "8088:8088"
     environment:
@@ -96,6 +97,9 @@ services:
       KSQL_KSQL_SCHEMA_REGISTRY_URL: http://schemareg:8081
       KSQL_KSQL_SERVICE_ID: confluent_fkh_01
       KSQL_KSQL_HIDDEN_TOPICS: "^_.*"
+      # KSQL_KSQL_QUERIES_FILE: /queries/init.sql
+    volumes:
+      - ./ksqldb/queries:/queries
   kafdrop:
     image: obsidiandynamics/kafdrop:3.27.0
     container_name: kafdrop
@@ -171,7 +175,7 @@ services:
     depends_on:
       - db
       - broker
-    command: bash -c "sleep 30 && cd /usr/src/app && npm install && npm run start"
+    command: bash -c "sleep 90 && cd /usr/src/app && npm install && npm run start"
     volumes:
       - ./backoffice:/usr/src/app
       - /usr/src/app/node_modules

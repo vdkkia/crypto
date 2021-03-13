@@ -22,6 +22,7 @@ server.listen(3000, (err) => {
 
 (async () => {
   try {
+    console.log("setting up...");
     await initCointerestsStream();
   } catch (err) {
     console.error(err);
