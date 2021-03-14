@@ -20,17 +20,17 @@ const getGoogleTrendsDataForAllKeywords = async (
     const { batches } = await loadBatchInfo();
     // const { batches: tempBatches } = await loadBatchInfo();
     // const batches = tempBatches.slice(0, 1);
-    logger.info(
-      `processing google trends for ${keywords.length} keywords in ${batches.length} batches`
-    );
+    // logger.info(
+    //   `processing google trends for ${keywords.length} keywords in ${batches.length} batches`
+    // );
     const reqsPerSec = batches.length / secondsToComplete;
-    logger.info(`sending ${reqsPerSec} requests per seconds`);
+    // logger.info(`sending ${reqsPerSec} requests per seconds`);
     const msBetweenReqs = Math.ceil(
       (secondsToComplete * 1000) / batches.length
     );
-    logger.info(`time between requests: ${msBetweenReqs} ms`);
+    // logger.info(`time between requests: ${msBetweenReqs} ms`);
     const cookies = await loadCookies();
-    logger.info(`loaded ${cookies.length} cookies`);
+    // logger.info(`loaded ${cookies.length} cookies`);
     const batchPromises = [];
 
     const limiter = new Bottleneck({
@@ -71,11 +71,11 @@ async function getTrendDataForBatch({
   keywords,
 }) {
   try {
-    logger.info(
-      `getting data for batch ${batchNumber}/${totalBatches}: ${keywords.join(
-        " | "
-      )}`
-    );
+    // logger.info(
+    //   `getting data for batch ${batchNumber}/${totalBatches}: ${keywords.join(
+    //     " | "
+    //   )}`
+    // );
     const timelineDataKey = await getTimelineDataKey({
       keywords,
       startTime: new Date(Date.now() - FOUR_HOUR),
@@ -83,7 +83,7 @@ async function getTrendDataForBatch({
       proxyUri,
       cookie,
     });
-    logger.info(`received key for batch ${batchNumber}/${totalBatches}`);
+    // logger.info(`received key for batch ${batchNumber}/${totalBatches}`);
     const timelineData = await fetchTimelineData(timelineDataKey, true);
 
     await raiseEvent({
@@ -99,9 +99,9 @@ async function getTrendDataForBatch({
     //   "utf-8"
     // );
 
-    logger.info(
-      `received timeline data for batch ${batchNumber}/${totalBatches}`
-    );
+    // logger.info(
+    //   `received timeline data for batch ${batchNumber}/${totalBatches}`
+    // );
     return 1;
   } catch (err) {
     if (axios.isCancel(err)) {
