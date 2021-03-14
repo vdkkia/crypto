@@ -81,6 +81,7 @@ services:
   ksqldb:
     image: confluentinc/ksqldb-server:0.15.0
     hostname: ksqldb
+    restart: unless-stopped
     container_name: ksqldb
     depends_on:
       - broker
