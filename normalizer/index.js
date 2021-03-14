@@ -24,6 +24,7 @@ const normalizeIncomingData = require("./src/services/normalizaton/normalize-inc
       },
     });
   } catch (err) {
+    logger.error('error happened');
     logger.error(err.message);
   }
 })();

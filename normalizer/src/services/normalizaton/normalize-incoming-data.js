@@ -8,6 +8,7 @@ const SEPERATOR = "___SEP___";
 
 const normalizeIncomingData = async (inputData) => {
   try {
+    // logger.info(`processing incoming data`);
     const [batchLabel, timelineDataStr] = inputData.split(SEPERATOR);
     const [batchInfo, batchIndex] = await findBatchInfo(batchLabel);
 
@@ -22,6 +23,8 @@ const normalizeIncomingData = async (inputData) => {
       batchIndex,
     });
 
+    // logger.info(`inserting ${newRecords.length} in the db`);
+
     newRecords.forEach((record) =>
       saveRecord(record).catch((err) => logger.error(err.message))
     );
@@ -31,6 +34,7 @@ const normalizeIncomingData = async (inputData) => {
       )
     );
   } catch (err) {
+    logger.error('error in normalizeIncomingData');
     logger.error(err.message);
   }
 };

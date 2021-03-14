@@ -9,7 +9,7 @@ const findScaleFactor = ({ timelineData, history, indexInBatch }) => {
 
   if (!commonDataPoint) return 1;
   return (
-    history[commonDataPoint.formattedTime] / commonDataPoint.value[indexInBatch]
+    history[commonDataPoint.formattedTime].value / commonDataPoint.value[indexInBatch]
   );
 };
 
