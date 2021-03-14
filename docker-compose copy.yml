@@ -8,7 +8,6 @@ services:
       - "${ZOOKEEPER_EXPOSED_PORT}:2181"
     environment:
       ZOOKEEPER_CLIENT_PORT: 2181
-      ZOOKEEPER_TICK_TIME: 2000
     volumes:
       - zookeeper-data:/var/lib/zookeeper/data
       - zookeeper-log:/var/lib/zookeeper/log
@@ -22,15 +21,11 @@ services:
     environment:
       KAFKA_BROKER_ID: 1
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
-      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,CONNECTIONS_FROM_HOST:PLAINTEXT
-      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
       KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://broker:9092,CONNECTIONS_FROM_HOST://localhost:19092
-      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,CONNECTIONS_FROM_HOST:PLAINTEXT
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
       KAFKA_LOG_RETENTION_MINUTES: 30
       KAFKA_LOG_RETENTION_BYTES: 10733418240
-      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
-      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
     volumes:
       - broker-data:/var/lib/kafka/data
   schemareg:
@@ -38,68 +33,41 @@ services:
     container_name: schemareg
     restart: unless-stopped
     ports:
-      - "8081:8081"
+      - "${SCHEMA_REGISTRY_EXPOSED_PORT}:8081"
     depends_on:
-      - broker
       - zookeeper
+      - broker
     environment:
       SCHEMA_REGISTRY_KAFKASTORE_CONNECTION_URL: zookeeper:2181
       SCHEMA_REGISTRY_HOST_NAME: schemareg
-  connect:
+  kafkaconnect:
     image: confluentinc/cp-kafka-connect:6.1.0
-    container_name: connect
-    build:
-      context: connect
-      dockerfile: Dockerfile
+    container_name: kafkaconnect
     ports:
-      - "8083:8083"
+      - "${KAFKA_CONNECT_EXPOSED_PORT}:8083"
     depends_on:
       - broker
+      - zookeeper
       - schemareg
     environment:
+      # networking
       CONNECT_BOOTSTRAP_SERVERS: "broker:9092"
-      CONNECT_REST_ADVERTISED_HOST_NAME: "connect"
+      CONNECT_REST_ADVERTISED_HOST_NAME: "kafkaconnect"
       CONNECT_REST_PORT: 8083
-      CONNECT_GROUP_ID: connect
-      CONNECT_CONFIG_STORAGE_TOPIC: _kafka-connect-configs
-      CONNECT_OFFSET_STORAGE_TOPIC: _kafka-connect-offsets
-      CONNECT_STATUS_STORAGE_TOPIC: _kafka-connect-status
-      CONNECT_KEY_CONVERTER: io.confluent.connect.avro.AvroConverter
+      # kafka
+      CONNECT_GROUP_ID: "kc"
+      CONNECT_CONFIG_STORAGE_TOPIC: "kc-config"
+      CONNECT_OFFSET_STORAGE_TOPIC: "kc-offset"
+      CONNECT_STATUS_STORAGE_TOPIC: "kc-status"
+      # convertors
+      CONNECT_KEY_CONVERTER: "io.confluent.connect.avro.AvroConverter"
+      CONNECT_VALUE_CONVERTER: "io.confluent.connect.avro.AvroConverter"
       CONNECT_KEY_CONVERTER_SCHEMA_REGISTRY_URL: "http://schemareg:8081"
-      CONNECT_VALUE_CONVERTER: io.confluent.connect.avro.AvroConverter
       CONNECT_VALUE_CONVERTER_SCHEMA_REGISTRY_URL: "http://schemareg:8081"
       CONNECT_INTERNAL_KEY_CONVERTER: "org.apache.kafka.connect.json.JsonConverter"
       CONNECT_INTERNAL_VALUE_CONVERTER: "org.apache.kafka.connect.json.JsonConverter"
-      CONNECT_LOG4J_ROOT_LOGLEVEL: "INFO"
-      CONNECT_LOG4J_LOGGERS: "org.apache.kafka.connect.runtime.rest=WARN,org.reflections=ERROR"
-      CONNECT_CONFIG_STORAGE_REPLICATION_FACTOR: "1"
-      CONNECT_OFFSET_STORAGE_REPLICATION_FACTOR: "1"
-      CONNECT_STATUS_STORAGE_REPLICATION_FACTOR: "1"
-      CONNECT_PLUGIN_PATH: "/usr/share/java,/usr/share/confluent-hub-components/,/connectors/"
     volumes:
-      - connect-data:/tmp/data
-  ksqldb:
-    image: confluentinc/ksqldb-server:0.15.0
-    hostname: ksqldb
-    container_name: ksqldb
-    depends_on:
-      - broker
-      - connect
-      - schemareg
-    ports:
-      - "8088:8088"
-    environment:
-      KSQL_LISTENERS: http://0.0.0.0:8088
-      KSQL_BOOTSTRAP_SERVERS: broker:9092
-      KSQL_KSQL_LOGGING_PROCESSING_STREAM_AUTO_CREATE: "true"
-      KSQL_KSQL_LOGGING_PROCESSING_TOPIC_AUTO_CREATE: "true"
-      KSQL_KSQL_CONNECT_URL: http://connect:8083
-      KSQL_KSQL_SCHEMA_REGISTRY_URL: http://schemareg:8081
-      KSQL_KSQL_SERVICE_ID: confluent_fkh_01
-      KSQL_KSQL_HIDDEN_TOPICS: "^_.*"
-      # KSQL_KSQL_QUERIES_FILE: /queries/init.sql
-    volumes:
-      - ./ksqldb/queries:/queries
+      - kafkaconnect-data:/tmp/data
   kafdrop:
     image: obsidiandynamics/kafdrop:3.27.0
     container_name: kafdrop
@@ -164,18 +132,10 @@ services:
       - POSTGRES_URI=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}
       - KAFKA_BROKER_HOST=broker:9092
       - KAFKA_CLIENT_ID=backoffice_admin
-      - KSQLDB_REST_API_BASE=http://ksqldb:8088
-      - KAFKA_CONNECT_REST_API_BASE=http://connect:8083
-      - KAFKA_SCHEMA_REGISTRY_URI=http://schemareg:8081
-      - POSTGRES_HOST=db
-      - POSTGRES_PORT=5432
-      - POSTGRES_DB
-      - POSTGRES_USER
-      - POSTGRES_PASSWORD
     depends_on:
       - db
       - broker
-    command: bash -c "sleep 60 && cd /usr/src/app && npm install && npm run start"
+    command: bash -c "sleep 30 && cd /usr/src/app && npm install && npm run start"
     volumes:
       - ./backoffice:/usr/src/app
       - /usr/src/app/node_modules
@@ -212,28 +172,28 @@ services:
     build:
       context: normalizer
       dockerfile: Dockerfile
+    depends_on:
+      - backoffice
     environment:
       - NODE_ENV
-      - REDIS_URI=redis://redis:6379
+      - PYTHONUNBUFFERED=1
       - KAFKA_BROKER_HOST=broker:9092
-      - KAFKA_CLIENT_ID=normalizer
-      - KSQLDB_REST_API_BASE=http://ksqldb:8088
-    depends_on:
-      - redis
-      - backoffice
-      - broker
-    command: bash -c "sleep 70 && cd /usr/src/app && npm install && npm run start"
+    entrypoint:
+      - bash
+      - -c
+      - |
+        echo 'Giving Kafka a bit of time to start up…'
+        sleep 40
+        if [ $NODE_ENV = 'production' ]; then python -u index.py; else watchmedo auto-restart --recursive --pattern="*.py" --directory="." python index.py; fi;
     volumes:
       - ./normalizer:/usr/src/app
-      - /usr/src/app/node_modules
-      - normalizer_logs:/logs
+
 volumes:
   zookeeper-data:
   zookeeper-log:
   broker-data:
-  connect-data:
+  kafkaconnect-data:
   db-data:
   redis-data:
   mongo-data:
   scraper_logs:
-  normalizer_logs:

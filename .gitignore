@@ -1,12 +1,14 @@
 /aws
 node_modules
 .env
+.env.notebooks
 
 .prettierrc
 
 # /stress-test/logs
 # /stress-test/cookie-stock.json
 .DS_Store
+.ipynb_checkpoints
 
 # src/logs
 # /logs

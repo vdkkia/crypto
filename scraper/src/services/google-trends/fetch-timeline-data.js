@@ -4,7 +4,7 @@ const ProxyAgent = require("proxy-agent");
 const TIMEOUT = process.env.AXIOS_TIMEOUT;
 axios.defaults.timeout = TIMEOUT;
 
-const fetchTimelineData = async ({ widgets, obj, proxyUri }) => {
+const fetchTimelineData = async ({ widgets, obj, proxyUri }, plain = false) => {
   const resultObj = widgets.find(
     ({ id = "" }) => id.indexOf("TIMESERIES") > -1
   );
@@ -36,9 +36,11 @@ const fetchTimelineData = async ({ widgets, obj, proxyUri }) => {
     cancelToken: cancelTokenSource.token,
   });
 
+  if (plain) return dataResponse.data.slice(6);
+
   const {
     default: { timelineData },
-  } = JSON.parse(dataResponse.data.slice(5));
+  } = JSON.parse(dataResponse.data.slice(6));
 
   return timelineData;
 };
