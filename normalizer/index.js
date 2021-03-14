@@ -19,7 +19,7 @@ const normalizeIncomingData = require("./src/services/normalizaton/normalize-inc
     });
     logger.info("consumer subscribed to topic");
     await consumer.run({
-      eachMessage: ({ topic, partition, message }) => {
+      eachMessage: ({ message }) => {
         normalizeIncomingData(message.value.toString());
       },
     });
