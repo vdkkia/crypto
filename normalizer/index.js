@@ -1,30 +1,25 @@
-const fs = require("fs");
-const { consumer } = require("./src/adapters/kafka");
+const restify = require("restify");
+const routes = require("./src/routes");
 const redis = require("./src/adapters/redis");
 const logger = require("./src/services/logger");
-const normalizeIncomingData = require("./src/services/normalizaton/normalize-incoming-data");
-// const sampleInputData = fs.readFileSync("./data/sample-data.txt", "utf8");
-// const sampleNormalizedData = require("./data/sample-normalized-data.json");
-// const saveRecord = require("./src/services/records/save-record");
+
+const server = restify.createServer({ name: "data normalizer server" });
+routes(server);
 
 (async () => {
   try {
     await redis.init();
-    // await saveRecord(sampleNormalizedData);
-    // await normalizeIncomingData(sampleInputData);
-    // await consumer.connect();
-    await consumer.subscribe({
-      topic: "new-google-trends-plain-data",
-      fromBeginning: true,
-    });
-    logger.info("consumer subscribed to topic");
-    await consumer.run({
-      eachMessage: ({ message }) => {
-        normalizeIncomingData(message.value.toString());
-      },
+    server.listen(3000, (err) => {
+      if (err) {
+        logger.error(
+          `error happened when trying to run server ${server.name}:`
+        );
+        logger.error(err.message);
+      }
+      logger.info(`${server.name} listening at ${server.url}`);
     });
   } catch (err) {
-    logger.error('error happened');
+    logger.error("error happened");
     logger.error(err.message);
   }
 })();

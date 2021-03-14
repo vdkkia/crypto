@@ -4,17 +4,18 @@ const logger = require("../logger");
 const saveRecord = require("../records/save-record");
 const normalizeTimelines = require("./normalize-timelines");
 
-const SEPERATOR = "___SEP___";
-
-const normalizeIncomingData = async (inputData) => {
+const normalizeIncomingData = async ({
+  batchIndex,
+  timelineData,
+  averages,
+}) => {
   try {
-    // logger.info(`processing incoming data`);
-    const [batchLabel, timelineDataStr] = inputData.split(SEPERATOR);
-    const [batchInfo, batchIndex] = await findBatchInfo(batchLabel);
+    logger.info("normalizing");
+    const batchInfo = await findBatchInfo(batchIndex);
 
-    const {
-      default: { timelineData, averages },
-    } = JSON.parse(timelineDataStr);
+    // const {
+    //   default: { timelineData, averages },
+    // } = JSON.parse(timelineDataStr);
 
     const { newRecords, newHistoryMaps } = normalizeTimelines({
       batchInfo,
@@ -34,7 +35,7 @@ const normalizeIncomingData = async (inputData) => {
       )
     );
   } catch (err) {
-    logger.error('error in normalizeIncomingData');
+    logger.error("error in normalizeIncomingData");
     logger.error(err.message);
   }
 };

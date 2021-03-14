@@ -1,14 +1,12 @@
-const fs = require("fs");
 const axios = require("axios");
 const Bottleneck = require("bottleneck");
 const logger = require("./../logger");
 const getTimelineDataKey = require("./get-timeline-data-key");
 const fetchTimelineData = require("./fetch-timeline-data");
 const loadCookies = require("../cookies/load-cookies");
-const keywords = require("./../../../data/keywords.json");
 const printFinalReport = require("./utils/print-final-report");
-const { raiseEvent } = require("../../adapters/kafka");
 const { loadBatchInfo } = require("../batches");
+const sendDataForNormalization = require("../normalization/send-data-for-normalization");
 
 const FOUR_HOUR = 60 * 60 * 1000 * 4;
 
@@ -84,12 +82,17 @@ async function getTrendDataForBatch({
       cookie,
     });
     // logger.info(`received key for batch ${batchNumber}/${totalBatches}`);
-    const timelineData = await fetchTimelineData(timelineDataKey, true);
+    const timelineDataStr = await fetchTimelineData(timelineDataKey, true);
+    const {
+      default: { timelineData, averages },
+    } = JSON.parse(timelineDataStr);
 
-    await raiseEvent({
-      topic: "new-google-trends-plain-data",
-      payload: `B${batchNumber - 1}___SEP___${timelineData}`,
+    await sendDataForNormalization({
+      batchIndex: batchNumber - 1,
+      timelineData,
+      averages,
     });
+
     logger.info(
       `received timeline data for batch ${batchNumber}/${totalBatches}`
     );
