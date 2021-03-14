@@ -23,7 +23,7 @@ const normalizeIncomingData = async (inputData) => {
       batchIndex,
     });
 
-    // logger.info(`inserting ${newRecords.length} in the db`);
+    logger.info(`inserting ${newRecords.length} in the db`);
 
     newRecords.forEach((record) =>
       saveRecord(record).catch((err) => logger.error(err.message))

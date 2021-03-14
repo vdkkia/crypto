@@ -90,18 +90,9 @@ async function getTrendDataForBatch({
       topic: "new-google-trends-plain-data",
       payload: `B${batchNumber - 1}___SEP___${timelineData}`,
     });
-    // console.log("\n\n\n\n");
-    // console.log(`B${batchNumber - 1}___SEP___${timelineData}`);
-    // console.log("\n\n\n\n");
-    // fs.writeFileSync(
-    //   "./sample.txt",
-    //   `B${batchNumber - 1}___SEP___${timelineData}`,
-    //   "utf-8"
-    // );
-
-    // logger.info(
-    //   `received timeline data for batch ${batchNumber}/${totalBatches}`
-    // );
+    logger.info(
+      `received timeline data for batch ${batchNumber}/${totalBatches}`
+    );
     return 1;
   } catch (err) {
     if (axios.isCancel(err)) {
