@@ -179,33 +179,33 @@ services:
     volumes:
       - ./backoffice:/usr/src/app
       - /usr/src/app/node_modules
-  # scraper:
-  #   container_name: scraper
-  #   restart: unless-stopped
-  #   build:
-  #     context: scraper
-  #     dockerfile: Dockerfile
-  #   environment:
-  #     - NODE_ENV
-  #     - REDIS_URI=redis://redis:6379
-  #     - MONGO_URI=mongodb://${MONGO_INITDB_USERNAME}:${MONGO_INITDB_PASSWORD}@mongodb:27017/${MONGO_INITDB_DATABASE}
-  #     - PROXY_URI
-  #     - ACTIVE_SECONDS_PER_MIN
-  #     - COOKIE_STOCK_SIZE
-  #     - AXIOS_TIMEOUT
-  #     - MAX_CONCURRENCY
-  #     - SLACK_INCOMING_WEBHOOK
-  #     - KAFKA_BROKER_HOST=broker:9092
-  #     - KAFKA_CLIENT_ID=nodejs_1
-  #   depends_on:
-  #     - redis
-  #     - backoffice
-  #     - mongodb
-  #   command: bash -c "sleep 40 && cd /usr/src/app && npm install && npm run start"
-  #   volumes:
-  #     - ./scraper:/usr/src/app
-  #     - /usr/src/app/node_modules
-  #     - scraper_logs:/logs
+  scraper:
+    container_name: scraper
+    restart: unless-stopped
+    build:
+      context: scraper
+      dockerfile: Dockerfile
+    environment:
+      - NODE_ENV
+      - REDIS_URI=redis://redis:6379
+      - MONGO_URI=mongodb://${MONGO_INITDB_USERNAME}:${MONGO_INITDB_PASSWORD}@mongodb:27017/${MONGO_INITDB_DATABASE}
+      - PROXY_URI
+      - ACTIVE_SECONDS_PER_MIN
+      - COOKIE_STOCK_SIZE
+      - AXIOS_TIMEOUT
+      - MAX_CONCURRENCY
+      - SLACK_INCOMING_WEBHOOK
+      - KAFKA_BROKER_HOST=broker:9092
+      - KAFKA_CLIENT_ID=nodejs_1
+    depends_on:
+      - redis
+      - backoffice
+      - mongodb
+    command: bash -c "sleep 40 && cd /usr/src/app && npm install && npm run start"
+    volumes:
+      - ./scraper:/usr/src/app
+      - /usr/src/app/node_modules
+      - scraper_logs:/logs
   normalizer:
     container_name: normalizer
     restart: unless-stopped
@@ -216,7 +216,8 @@ services:
       - NODE_ENV
       - REDIS_URI=redis://redis:6379
       - KAFKA_BROKER_HOST=broker:9092
-      - KAFKA_CLIENT_ID=nodejs_1
+      - KAFKA_CLIENT_ID=normalizer
+      - KSQLDB_REST_API_BASE=http://ksqldb:8088
     depends_on:
       - redis
       - backoffice
