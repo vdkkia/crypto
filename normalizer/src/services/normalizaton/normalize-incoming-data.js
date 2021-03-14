@@ -10,7 +10,7 @@ const normalizeIncomingData = async ({
   averages,
 }) => {
   try {
-    logger.info("normalizing");
+    // logger.info("normalizing");
     const batchInfo = await findBatchInfo(batchIndex);
 
     // const {
