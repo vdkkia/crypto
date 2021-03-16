@@ -3,6 +3,7 @@ const { saveKeywordHistory } = require("../batches/keywords-history");
 const logger = require("../logger");
 const saveRecordsBatch = require("../records/save-records-batch");
 const normalizeTimelines = require("./normalize-timelines");
+const saveNormalizationSampleForChecking = require("./save-normalization-sample-for-checking");
 
 const normalizeIncomingData = async ({
   batchIndex,
@@ -10,12 +11,7 @@ const normalizeIncomingData = async ({
   averages,
 }) => {
   try {
-    // logger.info("normalizing");
     const batchInfo = await findBatchInfo(batchIndex);
-
-    // const {
-    //   default: { timelineData, averages },
-    // } = JSON.parse(timelineDataStr);
 
     const { newRecords, newHistoryMaps } = normalizeTimelines({
       batchInfo,
@@ -26,9 +22,6 @@ const normalizeIncomingData = async ({
 
     logger.info(`inserting ${newRecords.length} into the db`);
 
-    // newRecords.forEach((record) =>
-    //   saveRecord(record).catch((err) => logger.error(err.message))
-    // );
     saveRecordsBatch(newRecords)
       .then(() =>
         logger.info(`Successfully insertes ${newRecords.length} to the db`)
@@ -39,6 +32,14 @@ const normalizeIncomingData = async ({
         logger.error(err.message)
       )
     );
+    saveNormalizationSampleForChecking({
+      batchIndex,
+      batchInfo,
+      timelineData,
+      averages,
+      newRecords,
+      newHistoryMaps,
+    });
   } catch (err) {
     logger.error("error in normalizeIncomingData");
     logger.error(err.message);
