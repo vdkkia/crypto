@@ -1,7 +1,7 @@
 const { findBatchInfo } = require("../batches");
 const { saveKeywordHistory } = require("../batches/keywords-history");
 const logger = require("../logger");
-const saveRecord = require("../records/save-record");
+const saveRecordsBatch = require("../records/save-records-batch");
 const normalizeTimelines = require("./normalize-timelines");
 
 const normalizeIncomingData = async ({
@@ -24,11 +24,16 @@ const normalizeIncomingData = async ({
       batchIndex,
     });
 
-    logger.info(`inserting ${newRecords.length} in the db`);
+    logger.info(`inserting ${newRecords.length} into the db`);
 
-    newRecords.forEach((record) =>
-      saveRecord(record).catch((err) => logger.error(err.message))
-    );
+    // newRecords.forEach((record) =>
+    //   saveRecord(record).catch((err) => logger.error(err.message))
+    // );
+    saveRecordsBatch(newRecords)
+      .then(() =>
+        logger.info(`Successfully insertes ${newRecords.length} to the db`)
+      )
+      .catch((err) => logger.error(`[BATCH INSERT ERROR:] ${err.message}`));
     newHistoryMaps.forEach((historyMap, index) =>
       saveKeywordHistory(batchInfo[index].term, historyMap).catch((err) =>
         logger.error(err.message)
