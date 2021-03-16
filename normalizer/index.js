@@ -1,6 +1,7 @@
 const restify = require("restify");
 const routes = require("./src/routes");
 const redis = require("./src/adapters/redis");
+const mongodb = require("./src/adapters/mongodb");
 const logger = require("./src/services/logger");
 
 const server = restify.createServer({ name: "data normalizer server" });
@@ -9,6 +10,7 @@ routes(server);
 (async () => {
   try {
     await redis.init();
+    await mongodb.init();
     server.listen(3000, (err) => {
       if (err) {
         logger.error(

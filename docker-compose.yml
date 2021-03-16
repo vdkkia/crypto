@@ -34,6 +34,23 @@ services:
       options:
         max-size: "500m"
         max-file: "10"
+  mongodb:
+    image: mongo:4.4.4
+    container_name: coinmongo
+    restart: unless-stopped
+    command: mongod --auth --config /etc/mongod.conf
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME
+      - MONGO_INITDB_ROOT_PASSWORD
+      - MONGO_INITDB_USERNAME
+      - MONGO_INITDB_PASSWORD
+      - MONGO_INITDB_DATABASE
+    volumes:
+      - ./mongodb/001_init-mongo.sh:/docker-entrypoint-initdb.d/001_init-mongo.sh
+      - ./mongodb/mongod.conf:/etc/mongod.conf
+      - mongo-data:/data/db
+    ports:
+      - "${MONGO_EXPOSED_PORT}:27017"
   normalizer:
     container_name: normalizer
     restart: unless-stopped
@@ -44,6 +61,7 @@ services:
       - NODE_ENV
       - REDIS_URI=redis://redis:6379
       - POSTGRES_URI=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}
+      - MONGO_URI=mongodb://${MONGO_INITDB_USERNAME}:${MONGO_INITDB_PASSWORD}@mongodb:27017/${MONGO_INITDB_DATABASE}
     depends_on:
       - redis
       - db
@@ -89,6 +107,7 @@ services:
 
 volumes:
   db-data:
+  mongo-data:
   redis-data:
   scraper_logs:
   normalizer_logs:
