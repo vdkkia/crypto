@@ -1,4 +1,4 @@
-const logger = require('./../logger');
+const logger = require("./../logger");
 const findScaleFactor = require("./utils/find-scale-factor");
 
 const normalizeTimelines = ({
@@ -12,6 +12,7 @@ const normalizeTimelines = ({
   const scaleFactors = batchInfo.map(({ history }, indexInBatch) =>
     findScaleFactor({ timelineData, history, indexInBatch })
   );
+  logger.info(scaleFactors);
   // logger.info(`found scale factors: ${scaleFactors}`);
   batchInfo.forEach(({ term, category, history }, iInBatch) => {
     const batchNewHistory = {};
