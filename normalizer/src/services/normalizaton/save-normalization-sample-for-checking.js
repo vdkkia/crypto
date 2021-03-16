@@ -1,7 +1,7 @@
 const logger = require("../logger");
 const Normalization = require("./Normalization");
 
-const SAMPLING_SECONDS = 30 * 60;
+const SAMPLING_SECONDS = 30 * 60 * 1000;
 
 const saveNormalizationSampleForChecking = async (sample) => {
   try {
