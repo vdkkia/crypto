@@ -10,10 +10,15 @@ const { createBatches } = require("./src/services/batches");
     await redis.init();
     await updateCookieStock(false);
     await createBatches();
-    scheduler.schedule("0 */2 * * *", updateCookieStock);
-    scheduler.schedule("* * * * *", getGoogleTrendsDataForAllKeywords);
-    // await getGoogleTrendsDataForAllKeywords();
-    logger.info("All jobs are running");
+    if(NODE_ENV === 'production') {
+      scheduler.schedule("0 */2 * * *", updateCookieStock);
+      scheduler.schedule("* * * * *", getGoogleTrendsDataForAllKeywords);
+      logger.info("All jobs are running");
+    } else {
+      logger.info('no jobs scheduled.');
+      // await getGoogleTrendsDataForAllKeywords();
+    }
+    
   } catch (err) {
     logger.error(err.message);
   }
