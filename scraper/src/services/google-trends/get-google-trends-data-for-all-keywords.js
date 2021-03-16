@@ -104,7 +104,7 @@ async function getTrendDataForBatch({
       return 0;
     } else {
       logger.error(
-        `job ${batchNumber} failed with status ${err.response.status} and code ${err.code}.`
+        `job ${batchNumber} failed with status ${err?.response?.status} and code ${err?.code}.`
       );
       logger.error(err.message);
       return -1;
