@@ -34,6 +34,8 @@ services:
     build:
       context: scraper
       dockerfile: Dockerfile
+    ports:
+      - 5000:5000
     environment:
       - NODE_ENV
       - REDIS_URI=redis://redis:6379
@@ -44,6 +46,7 @@ services:
       - AXIOS_TIMEOUT
       - MAX_CONCURRENCY
       - SLACK_INCOMING_WEBHOOK
+      - EXPRESS_PORT=5000
     depends_on:
       - redis
     # command: bash -c "sleep 40 && cd /usr/src/app && npm install && npm run start"

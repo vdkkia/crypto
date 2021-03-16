@@ -1,0 +1,3606 @@
+[
+  {
+    "keyword": "link coin",
+    "Symbol": "link"
+  },
+  {
+    "keyword": "BTC coin",
+    "Symbol": "bitcoin"
+  },
+  {
+    "keyword": "ETH coin",
+    "Symbol": "ethereum"
+  },
+  {
+    "keyword": "ADA coin",
+    "Symbol": "cardano"
+  },
+  {
+    "keyword": "USDT coin",
+    "Symbol": "tether"
+  },
+  {
+    "keyword": "BNB coin",
+    "Symbol": "binance-coin"
+  },
+  {
+    "keyword": "DOT coin",
+    "Symbol": "polkadot"
+  },
+  {
+    "keyword": "XRP coin",
+    "Symbol": "xrp"
+  },
+  {
+    "keyword": "LTC coin",
+    "Symbol": "litecoin"
+  },
+  {
+    "keyword": "LINK coin",
+    "Symbol": "chainlink"
+  },
+  {
+    "keyword": "XLM coin",
+    "Symbol": "stellar"
+  },
+  {
+    "keyword": "BCH coin",
+    "Symbol": "bitcoin-cash"
+  },
+  {
+    "keyword": "USDC coin",
+    "Symbol": "usd-coin"
+  },
+  {
+    "keyword": "UNI coin",
+    "Symbol": "uniswap"
+  },
+  {
+    "keyword": "DOGE coin",
+    "Symbol": "dogecoin"
+  },
+  {
+    "keyword": "WBTC coin",
+    "Symbol": "wrapped-bitcoin"
+  },
+  {
+    "keyword": "XEM coin",
+    "Symbol": "nem"
+  },
+  {
+    "keyword": "ATOM coin",
+    "Symbol": "cosmos"
+  },
+  {
+    "keyword": "AAVE coin",
+    "Symbol": "aave"
+  },
+  {
+    "keyword": "XMR coin",
+    "Symbol": "monero"
+  },
+  {
+    "keyword": "CRO coin",
+    "Symbol": "crypto.com-coin"
+  },
+  {
+    "keyword": "EOS coin",
+    "Symbol": "eos"
+  },
+  {
+    "keyword": "SOL coin",
+    "Symbol": "solana"
+  },
+  {
+    "keyword": "BSV coin",
+    "Symbol": "bitcoin-sv"
+  },
+  {
+    "keyword": "TRX coin",
+    "Symbol": "tron"
+  },
+  {
+    "keyword": "MIOTA coin",
+    "Symbol": "iota"
+  },
+  {
+    "keyword": "THETA coin",
+    "Symbol": "theta-network"
+  },
+  {
+    "keyword": "HT coin",
+    "Symbol": "huobi-token"
+  },
+  {
+    "keyword": "SNX coin",
+    "Symbol": "synthetix-network-token"
+  },
+  {
+    "keyword": "XTZ coin",
+    "Symbol": "tezos"
+  },
+  {
+    "keyword": "VET coin",
+    "Symbol": "vechain"
+  },
+  {
+    "keyword": "NEO coin",
+    "Symbol": "neo"
+  },
+  {
+    "keyword": "LUNA coin",
+    "Symbol": "terra"
+  },
+  {
+    "keyword": "EGLD coin",
+    "Symbol": "elrond"
+  },
+  {
+    "keyword": "FTT coin",
+    "Symbol": "ftx-token"
+  },
+  {
+    "keyword": "BUSD coin",
+    "Symbol": "binance-usd"
+  },
+  {
+    "keyword": "DAI coin",
+    "Symbol": "dai"
+  },
+  {
+    "keyword": "CDAI coin",
+    "Symbol": "cdai"
+  },
+  {
+    "keyword": "DASH coin",
+    "Symbol": "dash"
+  },
+  {
+    "keyword": "SUSHI coin",
+    "Symbol": "sushi"
+  },
+  {
+    "keyword": "FIL coin",
+    "Symbol": "filecoin"
+  },
+  {
+    "keyword": "GRT coin",
+    "Symbol": "the-graph"
+  },
+  {
+    "keyword": "AVAX coin",
+    "Symbol": "avalanche"
+  },
+  {
+    "keyword": "CUSDC coin",
+    "Symbol": "cusdc"
+  },
+  {
+    "keyword": "MKR coin",
+    "Symbol": "maker"
+  },
+  {
+    "keyword": "COMP coin",
+    "Symbol": "compound"
+  },
+  {
+    "keyword": "CEL coin",
+    "Symbol": "celsius-network"
+  },
+  {
+    "keyword": "DCR coin",
+    "Symbol": "decred"
+  },
+  {
+    "keyword": "CETH coin",
+    "Symbol": "ceth"
+  },
+  {
+    "keyword": "VGX coin",
+    "Symbol": "voyager-token"
+  },
+  {
+    "keyword": "ZIL coin",
+    "Symbol": "zilliqa"
+  },
+  {
+    "keyword": "CAKE coin",
+    "Symbol": "pancakeswap"
+  },
+  {
+    "keyword": "ZEC coin",
+    "Symbol": "zcash"
+  },
+  {
+    "keyword": "ETC coin",
+    "Symbol": "ethereum-classic"
+  },
+  {
+    "keyword": "NEAR coin",
+    "Symbol": "near"
+  },
+  {
+    "keyword": "RVN coin",
+    "Symbol": "ravencoin"
+  },
+  {
+    "keyword": "XSUSHI coin",
+    "Symbol": "xsushi"
+  },
+  {
+    "keyword": "FTM coin",
+    "Symbol": "fantom"
+  },
+  {
+    "keyword": "YFI coin",
+    "Symbol": "yearn.finance"
+  },
+  {
+    "keyword": "UMA coin",
+    "Symbol": "uma"
+  },
+  {
+    "keyword": "HBTC coin",
+    "Symbol": "huobi-btc"
+  },
+  {
+    "keyword": "NEXO coin",
+    "Symbol": "nexo"
+  },
+  {
+    "keyword": "RUNE coin",
+    "Symbol": "thorchain"
+  },
+  {
+    "keyword": "MATIC coin",
+    "Symbol": "polygon"
+  },
+  {
+    "keyword": "ZRX coin",
+    "Symbol": "0x"
+  },
+  {
+    "keyword": "WAVES coin",
+    "Symbol": "waves"
+  },
+  {
+    "keyword": "STX coin",
+    "Symbol": "stacks"
+  },
+  {
+    "keyword": "REN coin",
+    "Symbol": "ren"
+  },
+  {
+    "keyword": "ICX coin",
+    "Symbol": "icon"
+  },
+  {
+    "keyword": "HBAR coin",
+    "Symbol": "hedera-hashgraph"
+  },
+  {
+    "keyword": "PAX coin",
+    "Symbol": "paxos-standard"
+  },
+  {
+    "keyword": "AMP coin",
+    "Symbol": "amp"
+  },
+  {
+    "keyword": "CHSB coin",
+    "Symbol": "swissborg"
+  },
+  {
+    "keyword": "RENBTC coin",
+    "Symbol": "renbtc"
+  },
+  {
+    "keyword": "DGB coin",
+    "Symbol": "digibyte"
+  },
+  {
+    "keyword": "BAT coin",
+    "Symbol": "basic-attention-token"
+  },
+  {
+    "keyword": "IOST coin",
+    "Symbol": "iost"
+  },
+  {
+    "keyword": "ONT coin",
+    "Symbol": "ontology"
+  },
+  {
+    "keyword": "MDX coin",
+    "Symbol": "mdex"
+  },
+  {
+    "keyword": "HUSD coin",
+    "Symbol": "husd"
+  },
+  {
+    "keyword": "NANO coin",
+    "Symbol": "nano"
+  },
+  {
+    "keyword": "LRC coin",
+    "Symbol": "loopring"
+  },
+  {
+    "keyword": "UST coin",
+    "Symbol": "terrausd"
+  },
+  {
+    "keyword": "OMG coin",
+    "Symbol": "omg-network"
+  },
+  {
+    "keyword": "KSM coin",
+    "Symbol": "kusama"
+  },
+  {
+    "keyword": "BNT coin",
+    "Symbol": "bancor-network-token"
+  },
+  {
+    "keyword": "QTUM coin",
+    "Symbol": "qtum"
+  },
+  {
+    "keyword": "BTMX coin",
+    "Symbol": "bitmax-token"
+  },
+  {
+    "keyword": "ENJ coin",
+    "Symbol": "enjin-coin"
+  },
+  {
+    "keyword": "ZEN coin",
+    "Symbol": "horizen"
+  },
+  {
+    "keyword": "RSR coin",
+    "Symbol": "reserve-rights-token"
+  },
+  {
+    "keyword": "NPXS coin",
+    "Symbol": "pundi-x"
+  },
+  {
+    "keyword": "HOT coin",
+    "Symbol": "holo"
+  },
+  {
+    "keyword": "SC coin",
+    "Symbol": "siacoin"
+  },
+  {
+    "keyword": "FLOW coin",
+    "Symbol": "flow---dapper-labs"
+  },
+  {
+    "keyword": "CRV coin",
+    "Symbol": "curve-dao-token"
+  },
+  {
+    "keyword": "ZKS coin",
+    "Symbol": "zkswap"
+  },
+  {
+    "keyword": "BTG coin",
+    "Symbol": "bitcoin-gold"
+  },
+  {
+    "keyword": "AR coin",
+    "Symbol": "arweave"
+  },
+  {
+    "keyword": "CELO coin",
+    "Symbol": "celo"
+  },
+  {
+    "keyword": "LSK coin",
+    "Symbol": "lisk"
+  },
+  {
+    "keyword": "1INCH coin",
+    "Symbol": "1inch"
+  },
+  {
+    "keyword": "EWT coin",
+    "Symbol": "energy-web-token"
+  },
+  {
+    "keyword": "DODO coin",
+    "Symbol": "dodo"
+  },
+  {
+    "keyword": "XVS coin",
+    "Symbol": "venus"
+  },
+  {
+    "keyword": "BAL coin",
+    "Symbol": "balancer"
+  },
+  {
+    "keyword": "QNT coin",
+    "Symbol": "quant"
+  },
+  {
+    "keyword": "CELO coin",
+    "Symbol": "celo"
+  },
+  {
+    "keyword": "NXM coin",
+    "Symbol": "nexus-mutual"
+  },
+  {
+    "keyword": "OCEAN coin",
+    "Symbol": "ocean-protocol"
+  },
+  {
+    "keyword": "KCS coin",
+    "Symbol": "kucoin-token"
+  },
+  {
+    "keyword": "KNC coin",
+    "Symbol": "kyber-network"
+  },
+  {
+    "keyword": "BADGER coin",
+    "Symbol": "badger-dao"
+  },
+  {
+    "keyword": "GLM coin",
+    "Symbol": "golem"
+  },
+  {
+    "keyword": "AMPL coin",
+    "Symbol": "ampleforth"
+  },
+  {
+    "keyword": "MANA coin",
+    "Symbol": "decentraland"
+  },
+  {
+    "keyword": "SNT coin",
+    "Symbol": "status"
+  },
+  {
+    "keyword": "TUSD coin",
+    "Symbol": "trueusd"
+  },
+  {
+    "keyword": "ALGO coin",
+    "Symbol": "algorand"
+  },
+  {
+    "keyword": "TFUEL coin",
+    "Symbol": "theta-fuel"
+  },
+  {
+    "keyword": "OKB coin",
+    "Symbol": "okb"
+  },
+  {
+    "keyword": "CUSDT coin",
+    "Symbol": "cusdt"
+  },
+  {
+    "keyword": "ALPHA coin",
+    "Symbol": "alpha-finance"
+  },
+  {
+    "keyword": "XVG coin",
+    "Symbol": "verge"
+  },
+  {
+    "keyword": "POLY coin",
+    "Symbol": "polymath-network"
+  },
+  {
+    "keyword": "BAND coin",
+    "Symbol": "band-protocol"
+  },
+  {
+    "keyword": "CHZ coin",
+    "Symbol": "chiliz"
+  },
+  {
+    "keyword": "HNT coin",
+    "Symbol": "helium"
+  },
+  {
+    "keyword": "BTT coin",
+    "Symbol": "bittorrent"
+  },
+  {
+    "keyword": "SRM coin",
+    "Symbol": "serum"
+  },
+  {
+    "keyword": "STETH coin",
+    "Symbol": "lido-staked-ether"
+  },
+  {
+    "keyword": "CKB coin",
+    "Symbol": "nervos-network"
+  },
+  {
+    "keyword": "SWAP coin",
+    "Symbol": "trustswap"
+  },
+  {
+    "keyword": "BCHA coin",
+    "Symbol": "bitcoin-cash-abc"
+  },
+  {
+    "keyword": "ORN coin",
+    "Symbol": "orion-protocol"
+  },
+  {
+    "keyword": "GT coin",
+    "Symbol": "gatetoken"
+  },
+  {
+    "keyword": "NU coin",
+    "Symbol": "nucypher"
+  },
+  {
+    "keyword": "CVC coin",
+    "Symbol": "civic"
+  },
+  {
+    "keyword": "ONE coin",
+    "Symbol": "harmony"
+  },
+  {
+    "keyword": "POLS coin",
+    "Symbol": "polkastarter"
+  },
+  {
+    "keyword": "NMR coin",
+    "Symbol": "numeraire"
+  },
+  {
+    "keyword": "AKT coin",
+    "Symbol": "akash-network"
+  },
+  {
+    "keyword": "GALA coin",
+    "Symbol": "gala"
+  },
+  {
+    "keyword": "SUSD coin",
+    "Symbol": "susd"
+  },
+  {
+    "keyword": "SCRT coin",
+    "Symbol": "secret"
+  },
+  {
+    "keyword": "KAVA coin",
+    "Symbol": "kava.io"
+  },
+  {
+    "keyword": "CUNI coin",
+    "Symbol": "cuni"
+  },
+  {
+    "keyword": "BTCST coin",
+    "Symbol": "btc-standard-hashrate-token"
+  },
+  {
+    "keyword": "LEND coin",
+    "Symbol": "aave-[old]"
+  },
+  {
+    "keyword": "ARK coin",
+    "Symbol": "ark"
+  },
+  {
+    "keyword": "AGI coin",
+    "Symbol": "singularitynet"
+  },
+  {
+    "keyword": "DDX coin",
+    "Symbol": "derivadao"
+  },
+  {
+    "keyword": "SXP coin",
+    "Symbol": "swipe"
+  },
+  {
+    "keyword": "SFP coin",
+    "Symbol": "safepal"
+  },
+  {
+    "keyword": "GNO coin",
+    "Symbol": "gnosis"
+  },
+  {
+    "keyword": "BCD coin",
+    "Symbol": "bitcoin-diamond"
+  },
+  {
+    "keyword": "MATH coin",
+    "Symbol": "math"
+  },
+  {
+    "keyword": "MIR coin",
+    "Symbol": "mirror-protocol"
+  },
+  {
+    "keyword": "TWT coin",
+    "Symbol": "trust-wallet-token"
+  },
+  {
+    "keyword": "FET coin",
+    "Symbol": "fetch.ai"
+  },
+  {
+    "keyword": "DNT coin",
+    "Symbol": "district0x"
+  },
+  {
+    "keyword": "ETN coin",
+    "Symbol": "electroneum"
+  },
+  {
+    "keyword": "TEL coin",
+    "Symbol": "telcoin"
+  },
+  {
+    "keyword": "ANKR coin",
+    "Symbol": "ankr"
+  },
+  {
+    "keyword": "MAID coin",
+    "Symbol": "maidsafecoin"
+  },
+  {
+    "keyword": "FUN coin",
+    "Symbol": "funfair"
+  },
+  {
+    "keyword": "RIF coin",
+    "Symbol": "rsk-infrastructure-framework"
+  },
+  {
+    "keyword": "STEEM coin",
+    "Symbol": "steem"
+  },
+  {
+    "keyword": "RFOX coin",
+    "Symbol": "redfox-labs"
+  },
+  {
+    "keyword": "XCM coin",
+    "Symbol": "coinmetro"
+  },
+  {
+    "keyword": "ARDR coin",
+    "Symbol": "ardor"
+  },
+  {
+    "keyword": "SFI coin",
+    "Symbol": "saffron.finance"
+  },
+  {
+    "keyword": "KMD coin",
+    "Symbol": "komodo"
+  },
+  {
+    "keyword": "INJ coin",
+    "Symbol": "injective-protocol"
+  },
+  {
+    "keyword": "SAND coin",
+    "Symbol": "sand"
+  },
+  {
+    "keyword": "USDN coin",
+    "Symbol": "neutrino-usd"
+  },
+  {
+    "keyword": "REP coin",
+    "Symbol": "augur"
+  },
+  {
+    "keyword": "WIN coin",
+    "Symbol": "wink"
+  },
+  {
+    "keyword": "SBTC coin",
+    "Symbol": "sbtc"
+  },
+  {
+    "keyword": "XDC coin",
+    "Symbol": "xdc-network"
+  },
+  {
+    "keyword": "UBT coin",
+    "Symbol": "unibright"
+  },
+  {
+    "keyword": "UTK coin",
+    "Symbol": "utrust"
+  },
+  {
+    "keyword": "DENT coin",
+    "Symbol": "dent"
+  },
+  {
+    "keyword": "VAI coin",
+    "Symbol": "vai"
+  },
+  {
+    "keyword": "CZRX coin",
+    "Symbol": "c0x"
+  },
+  {
+    "keyword": "TRAC coin",
+    "Symbol": "origintrail"
+  },
+  {
+    "keyword": "SETH coin",
+    "Symbol": "seth"
+  },
+  {
+    "keyword": "TOMO coin",
+    "Symbol": "tomochain"
+  },
+  {
+    "keyword": "ROOK coin",
+    "Symbol": "keeperdao"
+  },
+  {
+    "keyword": "VTHO coin",
+    "Symbol": "vethor-token"
+  },
+  {
+    "keyword": "ROSE coin",
+    "Symbol": "oasis-network"
+  },
+  {
+    "keyword": "ANT coin",
+    "Symbol": "aragon"
+  },
+  {
+    "keyword": "AUSDC coin",
+    "Symbol": "aave-usdc"
+  },
+  {
+    "keyword": "NOIA coin",
+    "Symbol": "syntropy"
+  },
+  {
+    "keyword": "LIT coin",
+    "Symbol": "litentry"
+  },
+  {
+    "keyword": "IOTX coin",
+    "Symbol": "iotex"
+  },
+  {
+    "keyword": "GAS coin",
+    "Symbol": "gas"
+  },
+  {
+    "keyword": "UOS coin",
+    "Symbol": "ultra"
+  },
+  {
+    "keyword": "PRQ coin",
+    "Symbol": "parsiq"
+  },
+  {
+    "keyword": "COTI coin",
+    "Symbol": "coti"
+  },
+  {
+    "keyword": "BTM coin",
+    "Symbol": "bytom"
+  },
+  {
+    "keyword": "MONA coin",
+    "Symbol": "monacoin"
+  },
+  {
+    "keyword": "XOR coin",
+    "Symbol": "sora"
+  },
+  {
+    "keyword": "SKL coin",
+    "Symbol": "skale"
+  },
+  {
+    "keyword": "RPL coin",
+    "Symbol": "rocket-pool"
+  },
+  {
+    "keyword": "MFT coin",
+    "Symbol": "hifi-finance"
+  },
+  {
+    "keyword": "WAN coin",
+    "Symbol": "wanchain"
+  },
+  {
+    "keyword": "XAUT coin",
+    "Symbol": "tether-gold"
+  },
+  {
+    "keyword": "SUPER coin",
+    "Symbol": "superfarm"
+  },
+  {
+    "keyword": "HTR coin",
+    "Symbol": "hathor"
+  },
+  {
+    "keyword": "WOO coin",
+    "Symbol": "wootrade-network"
+  },
+  {
+    "keyword": "LON coin",
+    "Symbol": "tokenlon"
+  },
+  {
+    "keyword": "RDD coin",
+    "Symbol": "reddcoin"
+  },
+  {
+    "keyword": "GUSD coin",
+    "Symbol": "gemini-dollar"
+  },
+  {
+    "keyword": "BTS coin",
+    "Symbol": "bitshares"
+  },
+  {
+    "keyword": "PAXG coin",
+    "Symbol": "pax-gold"
+  },
+  {
+    "keyword": "WAXP coin",
+    "Symbol": "wax"
+  },
+  {
+    "keyword": "ERG coin",
+    "Symbol": "ergo"
+  },
+  {
+    "keyword": "MWC coin",
+    "Symbol": "mimblewimblecoin"
+  },
+  {
+    "keyword": "STRAX coin",
+    "Symbol": "stratis"
+  },
+  {
+    "keyword": "HIVE coin",
+    "Symbol": "hive"
+  },
+  {
+    "keyword": "BONDLY coin",
+    "Symbol": "bondly"
+  },
+  {
+    "keyword": "ELF coin",
+    "Symbol": "elf"
+  },
+  {
+    "keyword": "KEEP coin",
+    "Symbol": "keep-network"
+  },
+  {
+    "keyword": "HNS coin",
+    "Symbol": "handshake"
+  },
+  {
+    "keyword": "EDG coin",
+    "Symbol": "edgeware"
+  },
+  {
+    "keyword": "LOOM coin",
+    "Symbol": "loom-network"
+  },
+  {
+    "keyword": "PERP coin",
+    "Symbol": "perpetual-protocol"
+  },
+  {
+    "keyword": "DPI coin",
+    "Symbol": "defipulse-index"
+  },
+  {
+    "keyword": "NYE coin",
+    "Symbol": "newyork-exchange"
+  },
+  {
+    "keyword": "LGO coin",
+    "Symbol": "lgo-token"
+  },
+  {
+    "keyword": "IRIS coin",
+    "Symbol": "irisnet"
+  },
+  {
+    "keyword": "FARM coin",
+    "Symbol": "harvest-finance"
+  },
+  {
+    "keyword": "NFTX coin",
+    "Symbol": "nftx"
+  },
+  {
+    "keyword": "STAKE coin",
+    "Symbol": "xdai-stake"
+  },
+  {
+    "keyword": "RLC coin",
+    "Symbol": "iexec-rlc"
+  },
+  {
+    "keyword": "PROM coin",
+    "Symbol": "prometeus"
+  },
+  {
+    "keyword": "LPT coin",
+    "Symbol": "livepeer"
+  },
+  {
+    "keyword": "HEGIC coin",
+    "Symbol": "hegic"
+  },
+  {
+    "keyword": "XHV coin",
+    "Symbol": "haven"
+  },
+  {
+    "keyword": "POWR coin",
+    "Symbol": "power-ledger"
+  },
+  {
+    "keyword": "CAS coin",
+    "Symbol": "cashaa"
+  },
+  {
+    "keyword": "PCX coin",
+    "Symbol": "chainx"
+  },
+  {
+    "keyword": "EXRD coin",
+    "Symbol": "e-radix"
+  },
+  {
+    "keyword": "MX coin",
+    "Symbol": "mx-token"
+  },
+  {
+    "keyword": "STORJ coin",
+    "Symbol": "storj"
+  },
+  {
+    "keyword": "MASK coin",
+    "Symbol": "mask-network"
+  },
+  {
+    "keyword": "AVA coin",
+    "Symbol": "travala.com"
+  },
+  {
+    "keyword": "ADX coin",
+    "Symbol": "adex"
+  },
+  {
+    "keyword": "AION coin",
+    "Symbol": "aion"
+  },
+  {
+    "keyword": "SHR coin",
+    "Symbol": "sharetoken"
+  },
+  {
+    "keyword": "JULD coin",
+    "Symbol": "julswap"
+  },
+  {
+    "keyword": "WHALE coin",
+    "Symbol": "whale"
+  },
+  {
+    "keyword": "STETH coin",
+    "Symbol": "stakehound-staked-ether"
+  },
+  {
+    "keyword": "AXS coin",
+    "Symbol": "axie-infinity"
+  },
+  {
+    "keyword": "SYS coin",
+    "Symbol": "syscoin"
+  },
+  {
+    "keyword": "API3 coin",
+    "Symbol": "api3"
+  },
+  {
+    "keyword": "LBC coin",
+    "Symbol": "lbry-credits"
+  },
+  {
+    "keyword": "VITAE coin",
+    "Symbol": "vitae"
+  },
+  {
+    "keyword": "C20 coin",
+    "Symbol": "crypto20"
+  },
+  {
+    "keyword": "PHA coin",
+    "Symbol": "phala-network"
+  },
+  {
+    "keyword": "UNFI coin",
+    "Symbol": "unifi-protocol-dao"
+  },
+  {
+    "keyword": "MXX coin",
+    "Symbol": "multiplier"
+  },
+  {
+    "keyword": "BCN coin",
+    "Symbol": "bytecoin"
+  },
+  {
+    "keyword": "AKRO coin",
+    "Symbol": "akropolis"
+  },
+  {
+    "keyword": "JUL coin",
+    "Symbol": "justliquidity"
+  },
+  {
+    "keyword": "NCP coin",
+    "Symbol": "newton-coin-project"
+  },
+  {
+    "keyword": "NRG coin",
+    "Symbol": "energi"
+  },
+  {
+    "keyword": "LTO coin",
+    "Symbol": "lto-network"
+  },
+  {
+    "keyword": "YFII coin",
+    "Symbol": "dfi.money"
+  },
+  {
+    "keyword": "CELR coin",
+    "Symbol": "celer-network"
+  },
+  {
+    "keyword": "UQC coin",
+    "Symbol": "uquid-coin"
+  },
+  {
+    "keyword": "YCC coin",
+    "Symbol": "yuan-chain-coin"
+  },
+  {
+    "keyword": "CREAM coin",
+    "Symbol": "cream"
+  },
+  {
+    "keyword": "PIVX coin",
+    "Symbol": "pivx"
+  },
+  {
+    "keyword": "VAL coin",
+    "Symbol": "sora-validator-token"
+  },
+  {
+    "keyword": "BOT coin",
+    "Symbol": "bounce-[old]"
+  },
+  {
+    "keyword": "MTL coin",
+    "Symbol": "metal"
+  },
+  {
+    "keyword": "STMX coin",
+    "Symbol": "stormx"
+  },
+  {
+    "keyword": "QKC coin",
+    "Symbol": "quarkchain"
+  },
+  {
+    "keyword": "DDIM coin",
+    "Symbol": "duckdaodime"
+  },
+  {
+    "keyword": "TITAN coin",
+    "Symbol": "titanswap"
+  },
+  {
+    "keyword": "FRAX coin",
+    "Symbol": "frax"
+  },
+  {
+    "keyword": "ALBT coin",
+    "Symbol": "allianceblock"
+  },
+  {
+    "keyword": "FXC coin",
+    "Symbol": "flexacoin"
+  },
+  {
+    "keyword": "RAY coin",
+    "Symbol": "raydium"
+  },
+  {
+    "keyword": "HXRO coin",
+    "Symbol": "hxro"
+  },
+  {
+    "keyword": "NXS coin",
+    "Symbol": "nexus"
+  },
+  {
+    "keyword": "DAG coin",
+    "Symbol": "constellation"
+  },
+  {
+    "keyword": "TORN coin",
+    "Symbol": "tornado-cash"
+  },
+  {
+    "keyword": "LINA coin",
+    "Symbol": "linear"
+  },
+  {
+    "keyword": "BOND coin",
+    "Symbol": "barnbridge"
+  },
+  {
+    "keyword": "BIFI coin",
+    "Symbol": "beefy.finance"
+  },
+  {
+    "keyword": "RGT coin",
+    "Symbol": "rari-governance-token"
+  },
+  {
+    "keyword": "DUSK coin",
+    "Symbol": "dusk-network"
+  },
+  {
+    "keyword": "TBTC coin",
+    "Symbol": "tbtc"
+  },
+  {
+    "keyword": "BOA coin",
+    "Symbol": "bosagora"
+  },
+  {
+    "keyword": "ZAI coin",
+    "Symbol": "zero-collateral-dai"
+  },
+  {
+    "keyword": "SWINGBY coin",
+    "Symbol": "swingby"
+  },
+  {
+    "keyword": "HARD coin",
+    "Symbol": "hard-protocol"
+  },
+  {
+    "keyword": "ORBS coin",
+    "Symbol": "orbs"
+  },
+  {
+    "keyword": "DIVI coin",
+    "Symbol": "divi"
+  },
+  {
+    "keyword": "JST coin",
+    "Symbol": "just"
+  },
+  {
+    "keyword": "WNXM coin",
+    "Symbol": "wrapped-nxm"
+  },
+  {
+    "keyword": "WRX coin",
+    "Symbol": "wazirx"
+  },
+  {
+    "keyword": "NEST coin",
+    "Symbol": "nest-protocol"
+  },
+  {
+    "keyword": "TRU coin",
+    "Symbol": "truefi"
+  },
+  {
+    "keyword": "DF coin",
+    "Symbol": "dforce-token"
+  },
+  {
+    "keyword": "OM coin",
+    "Symbol": "mantra-dao"
+  },
+  {
+    "keyword": "KAI coin",
+    "Symbol": "kardiachain"
+  },
+  {
+    "keyword": "SPARTA coin",
+    "Symbol": "spartan-protocol-token"
+  },
+  {
+    "keyword": "DATA coin",
+    "Symbol": "streamr-datacoin"
+  },
+  {
+    "keyword": "TON coin",
+    "Symbol": "tokamak-network"
+  },
+  {
+    "keyword": "FIO coin",
+    "Symbol": "fio-protocol"
+  },
+  {
+    "keyword": "AUDIO coin",
+    "Symbol": "audius"
+  },
+  {
+    "keyword": "REQ coin",
+    "Symbol": "request"
+  },
+  {
+    "keyword": "RUNE coin",
+    "Symbol": "thorchain-(erc20)"
+  },
+  {
+    "keyword": "PPT coin",
+    "Symbol": "populous"
+  },
+  {
+    "keyword": "ATUSD coin",
+    "Symbol": "aave-tusd"
+  },
+  {
+    "keyword": "IGNIS coin",
+    "Symbol": "ignis"
+  },
+  {
+    "keyword": "LAMB coin",
+    "Symbol": "lambda"
+  },
+  {
+    "keyword": "TT coin",
+    "Symbol": "thundercore"
+  },
+  {
+    "keyword": "FRONT coin",
+    "Symbol": "frontier"
+  },
+  {
+    "keyword": "WOZX coin",
+    "Symbol": "efforce"
+  },
+  {
+    "keyword": "FIRO coin",
+    "Symbol": "firo"
+  },
+  {
+    "keyword": "GHST coin",
+    "Symbol": "aavegotchi"
+  },
+  {
+    "keyword": "WICC coin",
+    "Symbol": "waykichain"
+  },
+  {
+    "keyword": "ID coin",
+    "Symbol": "everest"
+  },
+  {
+    "keyword": "ANY coin",
+    "Symbol": "anyswap"
+  },
+  {
+    "keyword": "CTK coin",
+    "Symbol": "certik"
+  },
+  {
+    "keyword": "DAO coin",
+    "Symbol": "dao-maker"
+  },
+  {
+    "keyword": "ESD coin",
+    "Symbol": "empty-set-dollar"
+  },
+  {
+    "keyword": "UFT coin",
+    "Symbol": "unilend-finance"
+  },
+  {
+    "keyword": "RING coin",
+    "Symbol": "darwinia-network-native-token"
+  },
+  {
+    "keyword": "AETH coin",
+    "Symbol": "ankreth"
+  },
+  {
+    "keyword": "OGN coin",
+    "Symbol": "origin-protocol"
+  },
+  {
+    "keyword": "KOBE coin",
+    "Symbol": "shabu-shabu"
+  },
+  {
+    "keyword": "TRB coin",
+    "Symbol": "tellor"
+  },
+  {
+    "keyword": "BSCX coin",
+    "Symbol": "bscex"
+  },
+  {
+    "keyword": "YLD coin",
+    "Symbol": "yield-app"
+  },
+  {
+    "keyword": "YVAULT-LP-YCURVE coin",
+    "Symbol": "yusd"
+  },
+  {
+    "keyword": "BZRX coin",
+    "Symbol": "bzx-protocol"
+  },
+  {
+    "keyword": "DIGG coin",
+    "Symbol": "digg"
+  },
+  {
+    "keyword": "ARRR coin",
+    "Symbol": "pirate-chain"
+  },
+  {
+    "keyword": "CENNZ coin",
+    "Symbol": "centrality"
+  },
+  {
+    "keyword": "PAN coin",
+    "Symbol": "pantos"
+  },
+  {
+    "keyword": "VLX coin",
+    "Symbol": "velas"
+  },
+  {
+    "keyword": "MAPS coin",
+    "Symbol": "maps"
+  },
+  {
+    "keyword": "DIA coin",
+    "Symbol": "dia"
+  },
+  {
+    "keyword": "FXS coin",
+    "Symbol": "frax-share"
+  },
+  {
+    "keyword": "MRPH coin",
+    "Symbol": "morpheus-network"
+  },
+  {
+    "keyword": "NULS coin",
+    "Symbol": "nuls"
+  },
+  {
+    "keyword": "SKEY coin",
+    "Symbol": "smartkey"
+  },
+  {
+    "keyword": "ZB coin",
+    "Symbol": "zb-token"
+  },
+  {
+    "keyword": "CBAT coin",
+    "Symbol": "cbat"
+  },
+  {
+    "keyword": "ZNN coin",
+    "Symbol": "zenon"
+  },
+  {
+    "keyword": "EMC2 coin",
+    "Symbol": "einsteinium"
+  },
+  {
+    "keyword": "KP3R coin",
+    "Symbol": "keep3rv1"
+  },
+  {
+    "keyword": "CTSI coin",
+    "Symbol": "cartesi"
+  },
+  {
+    "keyword": "AE coin",
+    "Symbol": "aeternity"
+  },
+  {
+    "keyword": "COVER coin",
+    "Symbol": "cover-protocol"
+  },
+  {
+    "keyword": "PAID coin",
+    "Symbol": "paid-network"
+  },
+  {
+    "keyword": "NIM coin",
+    "Symbol": "nimiq"
+  },
+  {
+    "keyword": "CRE coin",
+    "Symbol": "carry"
+  },
+  {
+    "keyword": "TLOS coin",
+    "Symbol": "telos"
+  },
+  {
+    "keyword": "FRM coin",
+    "Symbol": "ferrum-network"
+  },
+  {
+    "keyword": "AUTO coin",
+    "Symbol": "auto"
+  },
+  {
+    "keyword": "AUCTION coin",
+    "Symbol": "bounce"
+  },
+  {
+    "keyword": "SOLVE coin",
+    "Symbol": "solve"
+  },
+  {
+    "keyword": "POND coin",
+    "Symbol": "marlin"
+  },
+  {
+    "keyword": "USDX coin",
+    "Symbol": "usdx"
+  },
+  {
+    "keyword": "XHDX coin",
+    "Symbol": "hydradx"
+  },
+  {
+    "keyword": "GRS coin",
+    "Symbol": "groestlcoin"
+  },
+  {
+    "keyword": "BOR coin",
+    "Symbol": "boringdao"
+  },
+  {
+    "keyword": "RARI coin",
+    "Symbol": "rarible"
+  },
+  {
+    "keyword": "BAO coin",
+    "Symbol": "bao-finance"
+  },
+  {
+    "keyword": "ZAP coin",
+    "Symbol": "zap"
+  },
+  {
+    "keyword": "APY coin",
+    "Symbol": "apy.finance"
+  },
+  {
+    "keyword": "BZ coin",
+    "Symbol": "bitz-token"
+  },
+  {
+    "keyword": "PNT coin",
+    "Symbol": "pnetwork"
+  },
+  {
+    "keyword": "DUCK coin",
+    "Symbol": "unit-protocol-new"
+  },
+  {
+    "keyword": "BEL coin",
+    "Symbol": "bella-protocol"
+  },
+  {
+    "keyword": "OPIUM coin",
+    "Symbol": "opium"
+  },
+  {
+    "keyword": "ROOT coin",
+    "Symbol": "rootkit"
+  },
+  {
+    "keyword": "DIP coin",
+    "Symbol": "etherisc-dip-token"
+  },
+  {
+    "keyword": "BEAM coin",
+    "Symbol": "beam"
+  },
+  {
+    "keyword": "BIP coin",
+    "Symbol": "minter"
+  },
+  {
+    "keyword": "OXEN coin",
+    "Symbol": "oxen"
+  },
+  {
+    "keyword": "DUCK coin",
+    "Symbol": "dlp-duck-token"
+  },
+  {
+    "keyword": "MED coin",
+    "Symbol": "medibloc"
+  },
+  {
+    "keyword": "XBASE coin",
+    "Symbol": "eterbase-utility-token"
+  },
+  {
+    "keyword": "MUSD coin",
+    "Symbol": "mstable-usd"
+  },
+  {
+    "keyword": "SKY coin",
+    "Symbol": "skycoin"
+  },
+  {
+    "keyword": "ATRI coin",
+    "Symbol": "atari"
+  },
+  {
+    "keyword": "MLN coin",
+    "Symbol": "enzyme"
+  },
+  {
+    "keyword": "VSYS coin",
+    "Symbol": "v.systems"
+  },
+  {
+    "keyword": "BLZ coin",
+    "Symbol": "bluzelle"
+  },
+  {
+    "keyword": "UMI coin",
+    "Symbol": "universal-money-instrument"
+  },
+  {
+    "keyword": "DEXT coin",
+    "Symbol": "dextools"
+  },
+  {
+    "keyword": "COS coin",
+    "Symbol": "contentos"
+  },
+  {
+    "keyword": "KDA coin",
+    "Symbol": "kadena"
+  },
+  {
+    "keyword": "STPT coin",
+    "Symbol": "stp-network"
+  },
+  {
+    "keyword": "MTA coin",
+    "Symbol": "meta"
+  },
+  {
+    "keyword": "CORE coin",
+    "Symbol": "cvault.finance"
+  },
+  {
+    "keyword": "ELA coin",
+    "Symbol": "elastos"
+  },
+  {
+    "keyword": "HC coin",
+    "Symbol": "hypercash"
+  },
+  {
+    "keyword": "TVK coin",
+    "Symbol": "terra-virtua-kolect"
+  },
+  {
+    "keyword": "MORK coin",
+    "Symbol": "mork"
+  },
+  {
+    "keyword": "YAM coin",
+    "Symbol": "yam"
+  },
+  {
+    "keyword": "VALUE coin",
+    "Symbol": "value-liquidity"
+  },
+  {
+    "keyword": "AST coin",
+    "Symbol": "airswap"
+  },
+  {
+    "keyword": "CUSD coin",
+    "Symbol": "celo-dollar"
+  },
+  {
+    "keyword": "SBD coin",
+    "Symbol": "steem-dollars"
+  },
+  {
+    "keyword": "FIDA coin",
+    "Symbol": "bonfida"
+  },
+  {
+    "keyword": "EURS coin",
+    "Symbol": "stasis-euro"
+  },
+  {
+    "keyword": "SURE coin",
+    "Symbol": "insure-defi"
+  },
+  {
+    "keyword": "MEME coin",
+    "Symbol": "meme"
+  },
+  {
+    "keyword": "SPI coin",
+    "Symbol": "shopping.io"
+  },
+  {
+    "keyword": "ZERO coin",
+    "Symbol": "zero-exchange"
+  },
+  {
+    "keyword": "MHC coin",
+    "Symbol": "#metahash"
+  },
+  {
+    "keyword": "NSBT coin",
+    "Symbol": "neutrino-system-base-token"
+  },
+  {
+    "keyword": "KRT coin",
+    "Symbol": "terrakrw"
+  },
+  {
+    "keyword": "SOUL coin",
+    "Symbol": "phantasma"
+  },
+  {
+    "keyword": "UMB coin",
+    "Symbol": "umbrella-network"
+  },
+  {
+    "keyword": "RCN coin",
+    "Symbol": "ripio-credit-network"
+  },
+  {
+    "keyword": "ARPA coin",
+    "Symbol": "arpa-chain"
+  },
+  {
+    "keyword": "SX coin",
+    "Symbol": "sportx"
+  },
+  {
+    "keyword": "GXC coin",
+    "Symbol": "gxchain"
+  },
+  {
+    "keyword": "BTU coin",
+    "Symbol": "btu-protocol"
+  },
+  {
+    "keyword": "ACS coin",
+    "Symbol": "acryptos"
+  },
+  {
+    "keyword": "RBC coin",
+    "Symbol": "rubic"
+  },
+  {
+    "keyword": "MPH coin",
+    "Symbol": "88mph"
+  },
+  {
+    "keyword": "VERI coin",
+    "Symbol": "veritaseum"
+  },
+  {
+    "keyword": "NEBL coin",
+    "Symbol": "neblio"
+  },
+  {
+    "keyword": "BID coin",
+    "Symbol": "bidao"
+  },
+  {
+    "keyword": "WTC coin",
+    "Symbol": "waltonchain"
+  },
+  {
+    "keyword": "IDEX coin",
+    "Symbol": "idex"
+  },
+  {
+    "keyword": "KARMA coin",
+    "Symbol": "karma-dao"
+  },
+  {
+    "keyword": "VTC coin",
+    "Symbol": "vertcoin"
+  },
+  {
+    "keyword": "CHAIN coin",
+    "Symbol": "chain-games"
+  },
+  {
+    "keyword": "SEUR coin",
+    "Symbol": "seur"
+  },
+  {
+    "keyword": "BEST coin",
+    "Symbol": "bitpanda-ecosystem-token"
+  },
+  {
+    "keyword": "RNDR coin",
+    "Symbol": "render-token"
+  },
+  {
+    "keyword": "CHERRY coin",
+    "Symbol": "cherry"
+  },
+  {
+    "keyword": "PPAY coin",
+    "Symbol": "plasma-finance"
+  },
+  {
+    "keyword": "SENT coin",
+    "Symbol": "sentinel"
+  },
+  {
+    "keyword": "SRN coin",
+    "Symbol": "sirin-labs-token"
+  },
+  {
+    "keyword": "CND coin",
+    "Symbol": "cindicator"
+  },
+  {
+    "keyword": "BC coin",
+    "Symbol": "bitcoin-confidential"
+  },
+  {
+    "keyword": "XSN coin",
+    "Symbol": "stakenet"
+  },
+  {
+    "keyword": "ADAI coin",
+    "Symbol": "aave-dai"
+  },
+  {
+    "keyword": "FSN coin",
+    "Symbol": "fusion"
+  },
+  {
+    "keyword": "BRY coin",
+    "Symbol": "berry-data"
+  },
+  {
+    "keyword": "BYTS coin",
+    "Symbol": "bytus"
+  },
+  {
+    "keyword": "PNK coin",
+    "Symbol": "kleros"
+  },
+  {
+    "keyword": "DGD coin",
+    "Symbol": "digixdao"
+  },
+  {
+    "keyword": "MBX coin",
+    "Symbol": "mobiecoin"
+  },
+  {
+    "keyword": "DRGN coin",
+    "Symbol": "dragonchain"
+  },
+  {
+    "keyword": "USDK coin",
+    "Symbol": "usdk"
+  },
+  {
+    "keyword": "AERGO coin",
+    "Symbol": "aergo"
+  },
+  {
+    "keyword": "CRETH2 coin",
+    "Symbol": "cream-eth-2"
+  },
+  {
+    "keyword": "UNN coin",
+    "Symbol": "union-protocol-governance-token"
+  },
+  {
+    "keyword": "ORAI coin",
+    "Symbol": "oraichain-token"
+  },
+  {
+    "keyword": "NEC coin",
+    "Symbol": "nectar"
+  },
+  {
+    "keyword": "NXT coin",
+    "Symbol": "nxt"
+  },
+  {
+    "keyword": "VSP coin",
+    "Symbol": "vesper-finance"
+  },
+  {
+    "keyword": "REVV coin",
+    "Symbol": "revv"
+  },
+  {
+    "keyword": "FIS coin",
+    "Symbol": "stafi"
+  },
+  {
+    "keyword": "SERO coin",
+    "Symbol": "sero"
+  },
+  {
+    "keyword": "FXF coin",
+    "Symbol": "finxflo"
+  },
+  {
+    "keyword": "RFR coin",
+    "Symbol": "refereum"
+  },
+  {
+    "keyword": "HEZ coin",
+    "Symbol": "hermez-network"
+  },
+  {
+    "keyword": "TRYB coin",
+    "Symbol": "bilira"
+  },
+  {
+    "keyword": "FX coin",
+    "Symbol": "f(x)-coin"
+  },
+  {
+    "keyword": "RDN coin",
+    "Symbol": "raiden-network-token"
+  },
+  {
+    "keyword": "RAMP coin",
+    "Symbol": "ramp"
+  },
+  {
+    "keyword": "DHT coin",
+    "Symbol": "dhedge-dao"
+  },
+  {
+    "keyword": "EGG coin",
+    "Symbol": "goose-finance"
+  },
+  {
+    "keyword": "VRS coin",
+    "Symbol": "veros"
+  },
+  {
+    "keyword": "FWB coin",
+    "Symbol": "friends-with-benefits"
+  },
+  {
+    "keyword": "ALEPH coin",
+    "Symbol": "aleph.im"
+  },
+  {
+    "keyword": "VRSC coin",
+    "Symbol": "verus-coin"
+  },
+  {
+    "keyword": "HAI coin",
+    "Symbol": "hacken-token"
+  },
+  {
+    "keyword": "NWC coin",
+    "Symbol": "newscrypto-coin"
+  },
+  {
+    "keyword": "MUSE coin",
+    "Symbol": "muse"
+  },
+  {
+    "keyword": "COCOS coin",
+    "Symbol": "cocos-bcx"
+  },
+  {
+    "keyword": "MXC coin",
+    "Symbol": "mxc"
+  },
+  {
+    "keyword": "NKN coin",
+    "Symbol": "nkn"
+  },
+  {
+    "keyword": "FILDA coin",
+    "Symbol": "filda"
+  },
+  {
+    "keyword": "MCB coin",
+    "Symbol": "mcdex"
+  },
+  {
+    "keyword": "APL coin",
+    "Symbol": "apollo"
+  },
+  {
+    "keyword": "PLTC coin",
+    "Symbol": "platoncoin"
+  },
+  {
+    "keyword": "POOL coin",
+    "Symbol": "pooltogether"
+  },
+  {
+    "keyword": "SAI coin",
+    "Symbol": "sai"
+  },
+  {
+    "keyword": "XRT coin",
+    "Symbol": "robonomics-network"
+  },
+  {
+    "keyword": "SOCKS coin",
+    "Symbol": "unisocks"
+  },
+  {
+    "keyword": "PEAK coin",
+    "Symbol": "peakdefi"
+  },
+  {
+    "keyword": "EFX coin",
+    "Symbol": "effect.ai"
+  },
+  {
+    "keyword": "NAV coin",
+    "Symbol": "navcoin"
+  },
+  {
+    "keyword": "ELG coin",
+    "Symbol": "escoin-token"
+  },
+  {
+    "keyword": "CRU coin",
+    "Symbol": "crust-network"
+  },
+  {
+    "keyword": "MDT coin",
+    "Symbol": "measurable-data-token"
+  },
+  {
+    "keyword": "BAS coin",
+    "Symbol": "basis-share"
+  },
+  {
+    "keyword": "CARD coin",
+    "Symbol": "cardstack"
+  },
+  {
+    "keyword": "SVCS coin",
+    "Symbol": "givingtoservices"
+  },
+  {
+    "keyword": "WHITE coin",
+    "Symbol": "whiteheart"
+  },
+  {
+    "keyword": "EASY coin",
+    "Symbol": "easyfi"
+  },
+  {
+    "keyword": "ZCN coin",
+    "Symbol": "0chain"
+  },
+  {
+    "keyword": "FNT coin",
+    "Symbol": "falcon-project"
+  },
+  {
+    "keyword": "BAC coin",
+    "Symbol": "basis-cash"
+  },
+  {
+    "keyword": "FOR coin",
+    "Symbol": "fortube"
+  },
+  {
+    "keyword": "ZANO coin",
+    "Symbol": "zano"
+  },
+  {
+    "keyword": "GRIN coin",
+    "Symbol": "grin"
+  },
+  {
+    "keyword": "DEFI5 coin",
+    "Symbol": "defi-top-5-tokens-index"
+  },
+  {
+    "keyword": "GBYTE coin",
+    "Symbol": "obyte"
+  },
+  {
+    "keyword": "SWTH coin",
+    "Symbol": "switcheo"
+  },
+  {
+    "keyword": "AQT coin",
+    "Symbol": "alpha-quark-token"
+  },
+  {
+    "keyword": "CHR coin",
+    "Symbol": "chromia"
+  },
+  {
+    "keyword": "VIDT coin",
+    "Symbol": "vidt-datalink"
+  },
+  {
+    "keyword": "PHX coin",
+    "Symbol": "phoenix-global"
+  },
+  {
+    "keyword": "UPP coin",
+    "Symbol": "sentinel-protocol"
+  },
+  {
+    "keyword": "MET coin",
+    "Symbol": "metronome"
+  },
+  {
+    "keyword": "RFUEL coin",
+    "Symbol": "riodefi"
+  },
+  {
+    "keyword": "CFI coin",
+    "Symbol": "cyberfi"
+  },
+  {
+    "keyword": "ROOM coin",
+    "Symbol": "optionroom"
+  },
+  {
+    "keyword": "WING coin",
+    "Symbol": "wing-finance"
+  },
+  {
+    "keyword": "COVER coin",
+    "Symbol": "cover-protocol-[old]"
+  },
+  {
+    "keyword": "XDB coin",
+    "Symbol": "digitalbits"
+  },
+  {
+    "keyword": "SFT coin",
+    "Symbol": "safex-token"
+  },
+  {
+    "keyword": "MTXLT coin",
+    "Symbol": "tixl-[old]"
+  },
+  {
+    "keyword": "ULT coin",
+    "Symbol": "ultiledger"
+  },
+  {
+    "keyword": "EXNT coin",
+    "Symbol": "exnetwork-token"
+  },
+  {
+    "keyword": "ZMT coin",
+    "Symbol": "zipmex-token"
+  },
+  {
+    "keyword": "DEXTF coin",
+    "Symbol": "dextf"
+  },
+  {
+    "keyword": "ARMOR coin",
+    "Symbol": "armor"
+  },
+  {
+    "keyword": "KEY coin",
+    "Symbol": "selfkey"
+  },
+  {
+    "keyword": "NMC coin",
+    "Symbol": "namecoin"
+  },
+  {
+    "keyword": "REPO coin",
+    "Symbol": "repo-coin"
+  },
+  {
+    "keyword": "DERO coin",
+    "Symbol": "dero"
+  },
+  {
+    "keyword": "WXT coin",
+    "Symbol": "wirex"
+  },
+  {
+    "keyword": "DMT coin",
+    "Symbol": "dmarket"
+  },
+  {
+    "keyword": "PAC coin",
+    "Symbol": "pac-global"
+  },
+  {
+    "keyword": "BMI coin",
+    "Symbol": "bridge-mutual"
+  },
+  {
+    "keyword": "QRL coin",
+    "Symbol": "quantum-resistant-ledger"
+  },
+  {
+    "keyword": "QSP coin",
+    "Symbol": "quantstamp"
+  },
+  {
+    "keyword": "SPND coin",
+    "Symbol": "spendcoin"
+  },
+  {
+    "keyword": "SLT coin",
+    "Symbol": "smartlands-network"
+  },
+  {
+    "keyword": "AXEL coin",
+    "Symbol": "axel"
+  },
+  {
+    "keyword": "CVP coin",
+    "Symbol": "powerpool-concentrated-voting-power"
+  },
+  {
+    "keyword": "NAS coin",
+    "Symbol": "nebulas"
+  },
+  {
+    "keyword": "UNISTAKE coin",
+    "Symbol": "unistake"
+  },
+  {
+    "keyword": "PBTC35A coin",
+    "Symbol": "pbtc35a"
+  },
+  {
+    "keyword": "PRE coin",
+    "Symbol": "presearch"
+  },
+  {
+    "keyword": "SWG coin",
+    "Symbol": "swirge"
+  },
+  {
+    "keyword": "SHIFT coin",
+    "Symbol": "shift"
+  },
+  {
+    "keyword": "JNT coin",
+    "Symbol": "jibrel-network"
+  },
+  {
+    "keyword": "VXV coin",
+    "Symbol": "vectorspace-ai"
+  },
+  {
+    "keyword": "LGCY coin",
+    "Symbol": "lgcy-network"
+  },
+  {
+    "keyword": "LUA coin",
+    "Symbol": "lua-token"
+  },
+  {
+    "keyword": "ZEE coin",
+    "Symbol": "zeroswap"
+  },
+  {
+    "keyword": "POOLZ coin",
+    "Symbol": "poolz-finance"
+  },
+  {
+    "keyword": "MTLX coin",
+    "Symbol": "mettalex"
+  },
+  {
+    "keyword": "INDEX coin",
+    "Symbol": "index-cooperative"
+  },
+  {
+    "keyword": "LOC coin",
+    "Symbol": "locktrip"
+  },
+  {
+    "keyword": "QASH coin",
+    "Symbol": "qash"
+  },
+  {
+    "keyword": "CTXC coin",
+    "Symbol": "cortex"
+  },
+  {
+    "keyword": "SNL coin",
+    "Symbol": "sport-and-leisure"
+  },
+  {
+    "keyword": "SALT coin",
+    "Symbol": "salt"
+  },
+  {
+    "keyword": "PTF coin",
+    "Symbol": "powertrade-fuel"
+  },
+  {
+    "keyword": "DEC coin",
+    "Symbol": "decentr"
+  },
+  {
+    "keyword": "GO coin",
+    "Symbol": "gochain"
+  },
+  {
+    "keyword": "SDT coin",
+    "Symbol": "stake-dao"
+  },
+  {
+    "keyword": "OCTO coin",
+    "Symbol": "octofi"
+  },
+  {
+    "keyword": "TXL coin",
+    "Symbol": "tixl"
+  },
+  {
+    "keyword": "PROS coin",
+    "Symbol": "prosper"
+  },
+  {
+    "keyword": "IETH coin",
+    "Symbol": "ieth"
+  },
+  {
+    "keyword": "CRPT coin",
+    "Symbol": "crypterium"
+  },
+  {
+    "keyword": "SUKU coin",
+    "Symbol": "suku"
+  },
+  {
+    "keyword": "VID coin",
+    "Symbol": "videocoin"
+  },
+  {
+    "keyword": "DEGO coin",
+    "Symbol": "dego-finance"
+  },
+  {
+    "keyword": "AXN coin",
+    "Symbol": "axion"
+  },
+  {
+    "keyword": "IDLE coin",
+    "Symbol": "idle"
+  },
+  {
+    "keyword": "GVT coin",
+    "Symbol": "genesis-vision"
+  },
+  {
+    "keyword": "DEXE coin",
+    "Symbol": "dexe"
+  },
+  {
+    "keyword": "BLOCK coin",
+    "Symbol": "blocknet"
+  },
+  {
+    "keyword": "PIB coin",
+    "Symbol": "pibble"
+  },
+  {
+    "keyword": "DOCK coin",
+    "Symbol": "dock"
+  },
+  {
+    "keyword": "RLY coin",
+    "Symbol": "rally"
+  },
+  {
+    "keyword": "WOM coin",
+    "Symbol": "wom-protocol"
+  },
+  {
+    "keyword": "EVN coin",
+    "Symbol": "evolution-finance"
+  },
+  {
+    "keyword": "JULIEN coin",
+    "Symbol": "julien"
+  },
+  {
+    "keyword": "GET coin",
+    "Symbol": "get-protocol"
+  },
+  {
+    "keyword": "SNTVT coin",
+    "Symbol": "sentivate"
+  },
+  {
+    "keyword": "BTC2 coin",
+    "Symbol": "bitcoin-2"
+  },
+  {
+    "keyword": "DEC2 coin",
+    "Symbol": "darico-ecosystem-coin"
+  },
+  {
+    "keyword": "RUFF coin",
+    "Symbol": "ruff"
+  },
+  {
+    "keyword": "YOP coin",
+    "Symbol": "yield-optimization-platform-&-protocol"
+  },
+  {
+    "keyword": "CC10 coin",
+    "Symbol": "cryptocurrency-top-10-tokens-index"
+  },
+  {
+    "keyword": "KEX coin",
+    "Symbol": "kira-network"
+  },
+  {
+    "keyword": "DG coin",
+    "Symbol": "decentral-games"
+  },
+  {
+    "keyword": "AITRA coin",
+    "Symbol": "aitra"
+  },
+  {
+    "keyword": "AITRA coin",
+    "Symbol": "aitra"
+  },
+  {
+    "keyword": "MDA coin",
+    "Symbol": "moeda-loyalty-points"
+  },
+  {
+    "keyword": "ERSDL coin",
+    "Symbol": "unfederalreserve"
+  },
+  {
+    "keyword": "YLD coin",
+    "Symbol": "yield"
+  },
+  {
+    "keyword": "YOP coin",
+    "Symbol": "yield-optimization-platform-&-protocol"
+  },
+  {
+    "keyword": "SAFE2 coin",
+    "Symbol": "safe2"
+  },
+  {
+    "keyword": "FUEL coin",
+    "Symbol": "fuel-token"
+  },
+  {
+    "keyword": "YF-DAI coin",
+    "Symbol": "yfdai.finance"
+  },
+  {
+    "keyword": "PAY coin",
+    "Symbol": "tenx"
+  },
+  {
+    "keyword": "PMA coin",
+    "Symbol": "pumapay"
+  },
+  {
+    "keyword": "ZT coin",
+    "Symbol": "zbg-token"
+  },
+  {
+    "keyword": "SNOW coin",
+    "Symbol": "snowswap"
+  },
+  {
+    "keyword": "BFC coin",
+    "Symbol": "bifrost"
+  },
+  {
+    "keyword": "RAZOR coin",
+    "Symbol": "razor-network"
+  },
+  {
+    "keyword": "FCT coin",
+    "Symbol": "factom"
+  },
+  {
+    "keyword": "NDX coin",
+    "Symbol": "indexed-finance"
+  },
+  {
+    "keyword": "JRT coin",
+    "Symbol": "jarvis-reward-token"
+  },
+  {
+    "keyword": "1ST coin",
+    "Symbol": "first-blood"
+  },
+  {
+    "keyword": "HUNT coin",
+    "Symbol": "hunt"
+  },
+  {
+    "keyword": "DHC coin",
+    "Symbol": "deltahub-community"
+  },
+  {
+    "keyword": "HYDRA coin",
+    "Symbol": "hydra"
+  },
+  {
+    "keyword": "DEA coin",
+    "Symbol": "dea"
+  },
+  {
+    "keyword": "MIX coin",
+    "Symbol": "mixmarvel"
+  },
+  {
+    "keyword": "XED coin",
+    "Symbol": "exeedme"
+  },
+  {
+    "keyword": "L2 coin",
+    "Symbol": "leverj-gluon"
+  },
+  {
+    "keyword": "BRD coin",
+    "Symbol": "bread"
+  },
+  {
+    "keyword": "DSLA coin",
+    "Symbol": "dsla-protocol"
+  },
+  {
+    "keyword": "FWT coin",
+    "Symbol": "freeway-token"
+  },
+  {
+    "keyword": "CBC coin",
+    "Symbol": "casino-betting-coin"
+  },
+  {
+    "keyword": "EHRT coin",
+    "Symbol": "eight-hours"
+  },
+  {
+    "keyword": "MOC coin",
+    "Symbol": "mossland"
+  },
+  {
+    "keyword": "KAN coin",
+    "Symbol": "bitkan"
+  },
+  {
+    "keyword": "CUDOS coin",
+    "Symbol": "cudos"
+  },
+  {
+    "keyword": "MARK coin",
+    "Symbol": "benchmark-protocol"
+  },
+  {
+    "keyword": "ENG coin",
+    "Symbol": "enigma"
+  },
+  {
+    "keyword": "ICHI coin",
+    "Symbol": "ichi"
+  },
+  {
+    "keyword": "GTH coin",
+    "Symbol": "gather"
+  },
+  {
+    "keyword": "MITH coin",
+    "Symbol": "mithril"
+  },
+  {
+    "keyword": "YAX coin",
+    "Symbol": "yaxis"
+  },
+  {
+    "keyword": "POA coin",
+    "Symbol": "poa-network"
+  },
+  {
+    "keyword": "OPEN coin",
+    "Symbol": "open-governance-token"
+  },
+  {
+    "keyword": "VIA coin",
+    "Symbol": "viacoin"
+  },
+  {
+    "keyword": "COIN coin",
+    "Symbol": "coin"
+  },
+  {
+    "keyword": "BUIDL coin",
+    "Symbol": "dfohub"
+  },
+  {
+    "keyword": "SMART coin",
+    "Symbol": "smartcash"
+  },
+  {
+    "keyword": "UBQ coin",
+    "Symbol": "ubiq"
+  },
+  {
+    "keyword": "BYTZ coin",
+    "Symbol": "bytz"
+  },
+  {
+    "keyword": "BDT coin",
+    "Symbol": "blackdragon-token"
+  },
+  {
+    "keyword": "GOVI coin",
+    "Symbol": "govi"
+  },
+  {
+    "keyword": "XFT coin",
+    "Symbol": "offshift"
+  },
+  {
+    "keyword": "PBTC coin",
+    "Symbol": "ptokens-btc"
+  },
+  {
+    "keyword": "BNK coin",
+    "Symbol": "bankera"
+  },
+  {
+    "keyword": "TOP coin",
+    "Symbol": "top-network"
+  },
+  {
+    "keyword": "OAX coin",
+    "Symbol": "oax"
+  },
+  {
+    "keyword": "PBR coin",
+    "Symbol": "polkabridge"
+  },
+  {
+    "keyword": "PI coin",
+    "Symbol": "pchain"
+  },
+  {
+    "keyword": "SHROOM coin",
+    "Symbol": "shroom.finance"
+  },
+  {
+    "keyword": "ETP coin",
+    "Symbol": "metaverse-etp"
+  },
+  {
+    "keyword": "COL coin",
+    "Symbol": "unit-protocol"
+  },
+  {
+    "keyword": "BWF coin",
+    "Symbol": "beowulf"
+  },
+  {
+    "keyword": "NGM coin",
+    "Symbol": "e-money"
+  },
+  {
+    "keyword": "TROY coin",
+    "Symbol": "troy"
+  },
+  {
+    "keyword": "YVE-CRVDAO coin",
+    "Symbol": "vecrv-dao-yvault"
+  },
+  {
+    "keyword": "PRO coin",
+    "Symbol": "propy"
+  },
+  {
+    "keyword": "DUSD coin",
+    "Symbol": "defidollar"
+  },
+  {
+    "keyword": "TRTT coin",
+    "Symbol": "trittium"
+  },
+  {
+    "keyword": "QLC coin",
+    "Symbol": "qlc-chain"
+  },
+  {
+    "keyword": "BTSE coin",
+    "Symbol": "btse-token"
+  },
+  {
+    "keyword": "IQN coin",
+    "Symbol": "iqeon"
+  },
+  {
+    "keyword": "CUT coin",
+    "Symbol": "cutcoin"
+  },
+  {
+    "keyword": "SHA coin",
+    "Symbol": "safe-haven"
+  },
+  {
+    "keyword": "OST coin",
+    "Symbol": "ost"
+  },
+  {
+    "keyword": "BEPRO coin",
+    "Symbol": "bepro-network"
+  },
+  {
+    "keyword": "PROPS coin",
+    "Symbol": "props-token"
+  },
+  {
+    "keyword": "YFL coin",
+    "Symbol": "yf-link"
+  },
+  {
+    "keyword": "GTO coin",
+    "Symbol": "gifto"
+  },
+  {
+    "keyword": "HAKKA coin",
+    "Symbol": "hakka-finance"
+  },
+  {
+    "keyword": "CLO coin",
+    "Symbol": "callisto-network"
+  },
+  {
+    "keyword": "LDO coin",
+    "Symbol": "lido-dao"
+  },
+  {
+    "keyword": "JEX coin",
+    "Symbol": "jex-token"
+  },
+  {
+    "keyword": "HYN coin",
+    "Symbol": "hyperion"
+  },
+  {
+    "keyword": "ONX coin",
+    "Symbol": "onx-finance"
+  },
+  {
+    "keyword": "WPR coin",
+    "Symbol": "wepower"
+  },
+  {
+    "keyword": "ZEFU coin",
+    "Symbol": "zenfuse"
+  },
+  {
+    "keyword": "BBR coin",
+    "Symbol": "bitberry-token"
+  },
+  {
+    "keyword": "DEXG coin",
+    "Symbol": "dextoken-governance"
+  },
+  {
+    "keyword": "EDR coin",
+    "Symbol": "endor-protocol-token"
+  },
+  {
+    "keyword": "PREMIA coin",
+    "Symbol": "premia"
+  },
+  {
+    "keyword": "CS coin",
+    "Symbol": "credits"
+  },
+  {
+    "keyword": "WAULT coin",
+    "Symbol": "wault-finance"
+  },
+  {
+    "keyword": "NEBO coin",
+    "Symbol": "csp-dao-network"
+  },
+  {
+    "keyword": "HGET coin",
+    "Symbol": "hedget"
+  },
+  {
+    "keyword": "RKN coin",
+    "Symbol": "rakon"
+  },
+  {
+    "keyword": "QNTU coin",
+    "Symbol": "quanta"
+  },
+  {
+    "keyword": "UNCX coin",
+    "Symbol": "unicrypt"
+  },
+  {
+    "keyword": "MITX coin",
+    "Symbol": "morpheus-labs"
+  },
+  {
+    "keyword": "SWRV coin",
+    "Symbol": "swerve"
+  },
+  {
+    "keyword": "BOS coin",
+    "Symbol": "boscoin"
+  },
+  {
+    "keyword": "NEX coin",
+    "Symbol": "nash-exchange"
+  },
+  {
+    "keyword": "RFI coin",
+    "Symbol": "reflect.finance"
+  },
+  {
+    "keyword": "TERN coin",
+    "Symbol": "ternio"
+  },
+  {
+    "keyword": "MUST coin",
+    "Symbol": "must"
+  },
+  {
+    "keyword": "DEUS coin",
+    "Symbol": "deus-finance"
+  },
+  {
+    "keyword": "EGT coin",
+    "Symbol": "egretia"
+  },
+  {
+    "keyword": "ABT coin",
+    "Symbol": "arcblock"
+  },
+  {
+    "keyword": "DCN coin",
+    "Symbol": "dentacoin"
+  },
+  {
+    "keyword": "ABYSS coin",
+    "Symbol": "abyss"
+  },
+  {
+    "keyword": "VEE coin",
+    "Symbol": "blockv"
+  },
+  {
+    "keyword": "WABI coin",
+    "Symbol": "wabi"
+  },
+  {
+    "keyword": "PNG coin",
+    "Symbol": "pangolin"
+  },
+  {
+    "keyword": "CDT coin",
+    "Symbol": "blox"
+  },
+  {
+    "keyword": "TAU coin",
+    "Symbol": "lamden"
+  },
+  {
+    "keyword": "FSW coin",
+    "Symbol": "falconswap"
+  },
+  {
+    "keyword": "MBL coin",
+    "Symbol": "moviebloc"
+  },
+  {
+    "keyword": "CSC coin",
+    "Symbol": "casinocoin"
+  },
+  {
+    "keyword": "XPX coin",
+    "Symbol": "proximax"
+  },
+  {
+    "keyword": "XMY coin",
+    "Symbol": "myriad"
+  },
+  {
+    "keyword": "BIX coin",
+    "Symbol": "bibox-token"
+  },
+  {
+    "keyword": "EVX coin",
+    "Symbol": "everex"
+  },
+  {
+    "keyword": "MAAPL coin",
+    "Symbol": "mirrored-apple"
+  },
+  {
+    "keyword": "MNTIS coin",
+    "Symbol": "mantis-network"
+  },
+  {
+    "keyword": "TCT coin",
+    "Symbol": "tokenclub"
+  },
+  {
+    "keyword": "EUNO coin",
+    "Symbol": "euno"
+  },
+  {
+    "keyword": "KEBAB coin",
+    "Symbol": "kebab-token"
+  },
+  {
+    "keyword": "REAP coin",
+    "Symbol": "reapchain"
+  },
+  {
+    "keyword": "LCX coin",
+    "Symbol": "lcx"
+  },
+  {
+    "keyword": "FNX coin",
+    "Symbol": "finnexus"
+  },
+  {
+    "keyword": "GEO coin",
+    "Symbol": "geodb"
+  },
+  {
+    "keyword": "UDOO coin",
+    "Symbol": "hyprr-(howdoo)"
+  },
+  {
+    "keyword": "DOS coin",
+    "Symbol": "dos-network"
+  },
+  {
+    "keyword": "SPC coin",
+    "Symbol": "spacechain-(erc-20)"
+  },
+  {
+    "keyword": "UTNP coin",
+    "Symbol": "universa"
+  },
+  {
+    "keyword": "HYDRO coin",
+    "Symbol": "hydro"
+  },
+  {
+    "keyword": "ACH coin",
+    "Symbol": "alchemy-pay"
+  },
+  {
+    "keyword": "SAN coin",
+    "Symbol": "santiment-network-token"
+  },
+  {
+    "keyword": "AOA coin",
+    "Symbol": "aurora"
+  },
+  {
+    "keyword": "DYN coin",
+    "Symbol": "dynamic"
+  },
+  {
+    "keyword": "LAYER coin",
+    "Symbol": "unilayer"
+  },
+  {
+    "keyword": "FREE coin",
+    "Symbol": "free-coin"
+  },
+  {
+    "keyword": "DYP coin",
+    "Symbol": "defi-yield-protocol"
+  },
+  {
+    "keyword": "PPC coin",
+    "Symbol": "peercoin"
+  },
+  {
+    "keyword": "DUST coin",
+    "Symbol": "dust-token"
+  },
+  {
+    "keyword": "PICKLE coin",
+    "Symbol": "pickle-finance"
+  },
+  {
+    "keyword": "FTC coin",
+    "Symbol": "feathercoin"
+  },
+  {
+    "keyword": "UNC coin",
+    "Symbol": "unicrypt-(old)"
+  },
+  {
+    "keyword": "PART coin",
+    "Symbol": "particl"
+  },
+  {
+    "keyword": "NSURE coin",
+    "Symbol": "nsure-network"
+  },
+  {
+    "keyword": "PLU coin",
+    "Symbol": "pluton"
+  },
+  {
+    "keyword": "XMX coin",
+    "Symbol": "xmax"
+  },
+  {
+    "keyword": "SNGLS coin",
+    "Symbol": "singulardtv"
+  },
+  {
+    "keyword": "DSD coin",
+    "Symbol": "dynamic-set-dollar"
+  },
+  {
+    "keyword": "PIPT coin",
+    "Symbol": "power-index-pool-token"
+  },
+  {
+    "keyword": "SDEFI coin",
+    "Symbol": "sdefi"
+  },
+  {
+    "keyword": "GEN coin",
+    "Symbol": "daostack"
+  },
+  {
+    "keyword": "SIX coin",
+    "Symbol": "six-network"
+  },
+  {
+    "keyword": "LIKE coin",
+    "Symbol": "likecoin"
+  },
+  {
+    "keyword": "EPIC coin",
+    "Symbol": "epic-cash"
+  },
+  {
+    "keyword": "ARCH coin",
+    "Symbol": "archer-dao-governance-token"
+  },
+  {
+    "keyword": "SLP coin",
+    "Symbol": "small-love-potion"
+  },
+  {
+    "keyword": "UBXT coin",
+    "Symbol": "upbots"
+  },
+  {
+    "keyword": "BFT coin",
+    "Symbol": "bnktothefuture"
+  },
+  {
+    "keyword": "SWFTC coin",
+    "Symbol": "swft-blockchain"
+  },
+  {
+    "keyword": "FOAM coin",
+    "Symbol": "foam"
+  },
+  {
+    "keyword": "WCRES coin",
+    "Symbol": "wrapped-crescofin"
+  },
+  {
+    "keyword": "DTA coin",
+    "Symbol": "data"
+  },
+  {
+    "keyword": "ESS coin",
+    "Symbol": "essentia"
+  },
+  {
+    "keyword": "DLT coin",
+    "Symbol": "agrello"
+  },
+  {
+    "keyword": "CMT coin",
+    "Symbol": "cybermiles"
+  },
+  {
+    "keyword": "MAHA coin",
+    "Symbol": "mahadao"
+  },
+  {
+    "keyword": "TRADE coin",
+    "Symbol": "unitrade"
+  },
+  {
+    "keyword": "EAC coin",
+    "Symbol": "earthcoin"
+  },
+  {
+    "keyword": "DXD coin",
+    "Symbol": "dxdao"
+  },
+  {
+    "keyword": "XST coin",
+    "Symbol": "stealth"
+  },
+  {
+    "keyword": "VALOR coin",
+    "Symbol": "smart-valor"
+  },
+  {
+    "keyword": "CNTR coin",
+    "Symbol": "centaur"
+  },
+  {
+    "keyword": "UTU coin",
+    "Symbol": "utu-coin"
+  },
+  {
+    "keyword": "SLINK coin",
+    "Symbol": "slink"
+  },
+  {
+    "keyword": "XDN coin",
+    "Symbol": "digitalnote"
+  },
+  {
+    "keyword": "SNM coin",
+    "Symbol": "sonm"
+  },
+  {
+    "keyword": "CRDT coin",
+    "Symbol": "crdt"
+  },
+  {
+    "keyword": "GXT coin",
+    "Symbol": "gem-exchange-and-trading"
+  },
+  {
+    "keyword": "NLG coin",
+    "Symbol": "gulden"
+  },
+  {
+    "keyword": "ACT coin",
+    "Symbol": "achain"
+  },
+  {
+    "keyword": "FLO coin",
+    "Symbol": "flo"
+  },
+  {
+    "keyword": "VIB coin",
+    "Symbol": "viberate"
+  },
+  {
+    "keyword": "BOND coin",
+    "Symbol": "bonded-finance"
+  },
+  {
+    "keyword": "BMC coin",
+    "Symbol": "bountymarketcap"
+  },
+  {
+    "keyword": "BURST coin",
+    "Symbol": "burst"
+  },
+  {
+    "keyword": "SATT coin",
+    "Symbol": "satt"
+  },
+  {
+    "keyword": "EMC coin",
+    "Symbol": "emercoin"
+  },
+  {
+    "keyword": "USDP coin",
+    "Symbol": "usdp-stablecoin"
+  },
+  {
+    "keyword": "SASHIMI coin",
+    "Symbol": "sashimi"
+  },
+  {
+    "keyword": "AUC coin",
+    "Symbol": "auctus"
+  },
+  {
+    "keyword": "FUSE coin",
+    "Symbol": "fuse-network-token"
+  },
+  {
+    "keyword": "DRC coin",
+    "Symbol": "dracula-token"
+  },
+  {
+    "keyword": "OWC coin",
+    "Symbol": "oduwa-coin"
+  },
+  {
+    "keyword": "TIPS coin",
+    "Symbol": "fedoracoin"
+  },
+  {
+    "keyword": "SYNX coin",
+    "Symbol": "syndicate"
+  },
+  {
+    "keyword": "CREP coin",
+    "Symbol": "crep"
+  },
+  {
+    "keyword": "VAL coin",
+    "Symbol": "validity"
+  },
+  {
+    "keyword": "MOD coin",
+    "Symbol": "modefi"
+  },
+  {
+    "keyword": "NIOX coin",
+    "Symbol": "autonio"
+  },
+  {
+    "keyword": "SMT coin",
+    "Symbol": "smartmesh"
+  },
+  {
+    "keyword": "OCE coin",
+    "Symbol": "oceanex-token"
+  },
+  {
+    "keyword": "GNX coin",
+    "Symbol": "genaro-network"
+  },
+  {
+    "keyword": "ANJ coin",
+    "Symbol": "aragon-court"
+  },
+  {
+    "keyword": "DITTO coin",
+    "Symbol": "ditto"
+  },
+  {
+    "keyword": "COFI coin",
+    "Symbol": "cofix"
+  },
+  {
+    "keyword": "TKN coin",
+    "Symbol": "monolith"
+  },
+  {
+    "keyword": "LYM coin",
+    "Symbol": "lympo"
+  },
+  {
+    "keyword": "APPC coin",
+    "Symbol": "appcoins"
+  },
+  {
+    "keyword": "VECT coin",
+    "Symbol": "vectorium-flash"
+  },
+  {
+    "keyword": "ZEL coin",
+    "Symbol": "zel"
+  },
+  {
+    "keyword": "DOKI coin",
+    "Symbol": "doki-doki-finance"
+  },
+  {
+    "keyword": "CXO coin",
+    "Symbol": "cargox"
+  },
+  {
+    "keyword": "AGA coin",
+    "Symbol": "aga-token"
+  },
+  {
+    "keyword": "MYST coin",
+    "Symbol": "mysterium"
+  },
+  {
+    "keyword": "DFD coin",
+    "Symbol": "defidollar-dao"
+  },
+  {
+    "keyword": "RARE coin",
+    "Symbol": "unique-one"
+  },
+  {
+    "keyword": "WGR coin",
+    "Symbol": "wagerr"
+  },
+  {
+    "keyword": "GAME coin",
+    "Symbol": "gamecredits"
+  },
+  {
+    "keyword": "BTX coin",
+    "Symbol": "bitcore"
+  },
+  {
+    "keyword": "BULL coin",
+    "Symbol": "buysell"
+  },
+  {
+    "keyword": "CONI coin",
+    "Symbol": "coinbene-token"
+  },
+  {
+    "keyword": "BIRD coin",
+    "Symbol": "bird.money"
+  },
+  {
+    "keyword": "OPCT coin",
+    "Symbol": "opacity"
+  },
+  {
+    "keyword": "GRO coin",
+    "Symbol": "growth-defi"
+  },
+  {
+    "keyword": "NCT coin",
+    "Symbol": "polyswarm"
+  },
+  {
+    "keyword": "APM coin",
+    "Symbol": "apm-coin"
+  },
+  {
+    "keyword": "SCP coin",
+    "Symbol": "scprime"
+  },
+  {
+    "keyword": "LIEN coin",
+    "Symbol": "lien"
+  },
+  {
+    "keyword": "POT coin",
+    "Symbol": "potcoin"
+  },
+  {
+    "keyword": "UNIFI coin",
+    "Symbol": "covenants"
+  },
+  {
+    "keyword": "LEAD coin",
+    "Symbol": "lead-token"
+  },
+  {
+    "keyword": "SCC coin",
+    "Symbol": "stakecube"
+  },
+  {
+    "keyword": "CNNS coin",
+    "Symbol": "cnns"
+  },
+  {
+    "keyword": "DOUGH coin",
+    "Symbol": "piedao-dough-v2"
+  },
+  {
+    "keyword": "XCASH coin",
+    "Symbol": "x-cash"
+  },
+  {
+    "keyword": "ZHEGIC coin",
+    "Symbol": "zhegic"
+  },
+  {
+    "keyword": "COS coin",
+    "Symbol": "crypto-one-stop-solution"
+  },
+  {
+    "keyword": "PND coin",
+    "Symbol": "pandacoin"
+  },
+  {
+    "keyword": "XIO coin",
+    "Symbol": "blockzero-labs"
+  },
+  {
+    "keyword": "KLP coin",
+    "Symbol": "kulupu"
+  },
+  {
+    "keyword": "KOGE coin",
+    "Symbol": "bnb48-club-token"
+  },
+  {
+    "keyword": "PHR coin",
+    "Symbol": "phore"
+  },
+  {
+    "keyword": "DMD coin",
+    "Symbol": "diamond"
+  },
+  {
+    "keyword": "MTH coin",
+    "Symbol": "monetha"
+  },
+  {
+    "keyword": "EQUAD coin",
+    "Symbol": "quadrant-protocol"
+  },
+  {
+    "keyword": "SPANK coin",
+    "Symbol": "spankchain"
+  },
+  {
+    "keyword": "TNB coin",
+    "Symbol": "time-new-bank"
+  },
+  {
+    "keyword": "PRT coin",
+    "Symbol": "portion"
+  },
+  {
+    "keyword": "RBASE coin",
+    "Symbol": "rbase.finance"
+  },
+  {
+    "keyword": "LET coin",
+    "Symbol": "linkeye"
+  },
+  {
+    "keyword": "NFT coin",
+    "Symbol": "nft-protocol"
+  },
+  {
+    "keyword": "GEEQ coin",
+    "Symbol": "geeq"
+  },
+  {
+    "keyword": "FLEX coin",
+    "Symbol": "flex-coin"
+  },
+  {
+    "keyword": "42 coin",
+    "Symbol": "42-coin"
+  },
+  {
+    "keyword": "COMP coin",
+    "Symbol": "compound-coin"
+  },
+  {
+    "keyword": "EZW coin",
+    "Symbol": "ezoow"
+  },
+  {
+    "keyword": "EL coin",
+    "Symbol": "elysia"
+  },
+  {
+    "keyword": "YUKI coin",
+    "Symbol": "yuki-coin"
+  },
+  {
+    "keyword": "CWBTC coin",
+    "Symbol": "cwbtc"
+  },
+  {
+    "keyword": "TAD coin",
+    "Symbol": "tadpole"
+  },
+  {
+    "keyword": "DTX coin",
+    "Symbol": "data-exchange-token"
+  },
+  {
+    "keyword": "AOG coin",
+    "Symbol": "smartofgiving"
+  },
+  {
+    "keyword": "ARTE coin",
+    "Symbol": "items"
+  },
+  {
+    "keyword": "SEEN coin",
+    "Symbol": "seen"
+  },
+  {
+    "keyword": "LCC coin",
+    "Symbol": "litecoin-cash"
+  },
+  {
+    "keyword": "XCUR coin",
+    "Symbol": "curate"
+  },
+  {
+    "keyword": "SWAG coin",
+    "Symbol": "swag-finance"
+  },
+  {
+    "keyword": "FUND coin",
+    "Symbol": "unification"
+  },
+  {
+    "keyword": "XVIX coin",
+    "Symbol": "xvix"
+  },
+  {
+    "keyword": "MDS coin",
+    "Symbol": "midas-dollar-share"
+  },
+  {
+    "keyword": "STRONG coin",
+    "Symbol": "strong"
+  },
+  {
+    "keyword": "VEO coin",
+    "Symbol": "amoveo"
+  },
+  {
+    "keyword": "SMARTCREDIT coin",
+    "Symbol": "smartcredit-token"
+  },
+  {
+    "keyword": "NIX coin",
+    "Symbol": "nix"
+  },
+  {
+    "keyword": "ROBOT coin",
+    "Symbol": "robot"
+  },
+  {
+    "keyword": "THUGS coin",
+    "Symbol": "thugs-fi"
+  },
+  {
+    "keyword": "BOLT coin",
+    "Symbol": "bolt"
+  },
+  {
+    "keyword": "COV coin",
+    "Symbol": "covesting"
+  },
+  {
+    "keyword": "CHX coin",
+    "Symbol": "weown"
+  },
+  {
+    "keyword": "DEPAY coin",
+    "Symbol": "depay"
+  },
+  {
+    "keyword": "COVAL coin",
+    "Symbol": "circuits-of-value"
+  },
+  {
+    "keyword": "BITCNY coin",
+    "Symbol": "bitcny"
+  },
+  {
+    "keyword": "DUN coin",
+    "Symbol": "dune"
+  },
+  {
+    "keyword": "XCP coin",
+    "Symbol": "counterparty"
+  },
+  {
+    "keyword": "STBZ coin",
+    "Symbol": "stabilize"
+  },
+  {
+    "keyword": "BMX coin",
+    "Symbol": "bitmart-token"
+  },
+  {
+    "keyword": "STA coin",
+    "Symbol": "statera"
+  },
+  {
+    "keyword": "ODE coin",
+    "Symbol": "odem"
+  },
+  {
+    "keyword": "DBC coin",
+    "Symbol": "deepbrain-chain"
+  },
+  {
+    "keyword": "OUSD coin",
+    "Symbol": "origin-dollar"
+  },
+  {
+    "keyword": "AC coin",
+    "Symbol": "acoconut"
+  },
+  {
+    "keyword": "ASSY coin",
+    "Symbol": "assy-index"
+  },
+  {
+    "keyword": "LTX coin",
+    "Symbol": "lattice-token"
+  },
+  {
+    "keyword": "PLA coin",
+    "Symbol": "plair"
+  },
+  {
+    "keyword": "GRID coin",
+    "Symbol": "gridplus"
+  },
+  {
+    "keyword": "YOU coin",
+    "Symbol": "you-chain"
+  },
+  {
+    "keyword": "MOBI coin",
+    "Symbol": "mobius"
+  }
+]
