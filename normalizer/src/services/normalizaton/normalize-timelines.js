@@ -12,7 +12,7 @@ const normalizeTimelines = ({
   const scaleFactors = batchInfo.map(({ history }, indexInBatch) =>
     findScaleFactor({ timelineData, history, indexInBatch })
   );
-  logger.info(scaleFactors);
+  // logger.info(scaleFactors);
   // logger.info(`found scale factors: ${scaleFactors}`);
   batchInfo.forEach(({ term, category, history }, iInBatch) => {
     const batchNewHistory = {};
