@@ -1,3 +1,3 @@
 module.exports = {
-  saveRecord: require("./save-record"),
+  saveRecordsBatch: require("./save-records-batch"),
 };

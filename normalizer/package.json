@@ -14,8 +14,8 @@
   "dependencies": {
     "axios": "0.21.1",
     "ioredis": "4.23.0",
-    "kafkajs": "1.15.0",
     "moment": "2.29.1",
+    "pg-promise": "10.9.5",
     "restify": "8.5.1",
     "restify-errors": "8.0.2",
     "winston": "3.3.3"
