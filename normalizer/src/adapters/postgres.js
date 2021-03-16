@@ -2,14 +2,6 @@ const pgPromise = require("pg-promise");
 const logger = require("./../services/logger");
 
 const pgp = pgPromise({
-  connect(client, dc, useCount) {
-    const cp = client.connectionParameters;
-    logger.info("Connected to database:", cp.database);
-  },
-  disconnect(client, dc) {
-    const cp = client.connectionParameters;
-    logger.info("Disconnecting from database:", cp.database);
-  },
   error(err, e) {
     if (e.cn) {
       // this is a connection-related error

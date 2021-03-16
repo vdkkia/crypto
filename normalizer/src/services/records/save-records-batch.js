@@ -38,7 +38,7 @@ const saveRecordsBatch = (records) => {
       FORMATTED_VALUE: record.formattedValue,
     };
   });
-  const query = pgp.helpers.insert(values, cs);
+  const query = pgp.helpers.insert(values, cs) + "ON CONFLICT DO NOTHING";
   return db.none(query);
 };
 
