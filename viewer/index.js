@@ -4,16 +4,16 @@ const logger = require("./src/services/logger");
 const { processMovingAverage, getCoinWeeklyData } = require("./src/services/weeklyCompare");
 const express = require("express");
 const app = express();
+const EXPRESS_PORT = 5000;
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 app.use(express.static("./public"));
-
 app.get("/", async (req, res) => {
   res.render("pages/default", { data: await getCoinWeeklyData() });
 });
 
-app.listen(process.env.EXPRESS_PORT, () => {
-  require("./src/services/logger").info(`Server is listening to port ${process.env.EXPRESS_PORT}`);
+app.listen(EXPRESS_PORT, () => {
+  require("./src/services/logger").info(`Server is listening to port ${EXPRESS_PORT}`);
 });
 
 (async () => {
