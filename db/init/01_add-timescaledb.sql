@@ -14,4 +14,10 @@ CREATE TABLE cointerests (
   FORMATTED_VALUE TEXT
 );
 
+CREATE TABLE moving_average (
+  KEYWORD TEXT,
+  RATIO DOUBLE PRECISION,
+  CALC_TIME TEXT,
+);
+
 SELECT create_hypertable('cointerests', 'REPORT_TIME');
