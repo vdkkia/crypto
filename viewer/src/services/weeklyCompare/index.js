@@ -69,7 +69,7 @@ const getCoinWeeklyData = async () => {
 
   const query =
     `SELECT "KEYWORD", array_agg('[' || "INTEREST" || ',' || "TIMESTAMP" || ']')` +
-    ` FROM (SELECT * FROM cointerests WHERE "REPORT_TIME" <= ${lastWeek.getTime()}) AS X` +
+    ` FROM (SELECT * FROM cointerests WHERE "REPORT_TIME" >= ${lastWeek.getTime()}) AS X` +
     ` LEFT OUTER JOIN moving_average ON cointerests.KEYWORD = moving_average.KEYWORD GROUP BY "KEYWORD" limit 10 `;
 
   // const query = 'SELECT "KEYWORD"  FROM cointerests GROUP BY "KEYWORD" limit 10';
