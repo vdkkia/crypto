@@ -18,7 +18,7 @@ const processMovingAverage = async () => {
     maxConcurrent: process.env.MAX_CONCURRENCY,
   });
 
-  const throttledQuery = limiter.wrap(process);
+  const throttledQuery = limiter.wrap(_process);
   const promises = [];
   for (let i = 0; i < testCoins.length; i++) {
     promises.push(
@@ -43,15 +43,16 @@ const saveMovingAverage = async (records) => {
   await db.none(query);
 };
 
-const process = async ({ keyword, movingAverageWindow, movingAverageSize }) => {
+const _process = async ({ keyword, movingAverageWindow, movingAverageSize }) => {
   try {
-    const movingAverageWindowQuery = `SELECT AVG("INTEREST") FROM cointerests WHERE LOWER("KEYWORD")=LOWER('${keyword}') limit ${movingAverageWindow}`;
-    const movingAverageSizeQuery = `SELECT AVG("INTEREST") FROM cointerests WHERE LOWER("KEYWORD")=LOWER('${keyword}') limit ${movingAverageSize}`;
+    const movingAverageWindowQuery = `SELECT AVG("INTEREST") AS AVG1 FROM cointerests WHERE LOWER("KEYWORD")=LOWER('${keyword}') limit ${movingAverageWindow}`;
+    const movingAverageSizeQuery = `SELECT AVG("INTEREST") AS AVG2 FROM cointerests WHERE LOWER("KEYWORD")=LOWER('${keyword}') limit ${movingAverageSize}`;
     const ratio = await db.any(
-      `WITH daily AS (${movingAverageWindowQuery}), weekly AS (${movingAverageSizeQuery}) SELECT CAST((SELECT * FROM daily) AS FLOAT) / CAST((SELECT * FROM weekly) AS FLOAT) AS result`
+      `WITH daily AS (${movingAverageWindowQuery}), weekly AS (${movingAverageSizeQuery}) SELECT` +
+        ` CASE WHEN CAST((SELECT AVG2 FROM weekly) AS FLOAT) > 0 THEN CAST((SELECT AVG1 FROM daily) AS FLOAT)/CAST((SELECT AVG2 FROM weekly) AS FLOAT) ELSE 0 END AS RESULT`
     );
     logger.info(`keyword: ${keyword}, ratio: ${ratio[0].result}`);
-    return { keyword, ratio };
+    return { keyword, ratio: parseFloat(ratio[0].result) };
   } catch (e) {
     logger.error("Error: " + e);
     return { keyword, ratio: 0 };
@@ -59,28 +60,20 @@ const process = async ({ keyword, movingAverageWindow, movingAverageSize }) => {
 };
 
 const getCoinWeeklyData = async () => {
-  // const result = `SELECT * FROM moving_average ORDER BY time DESC, ratio DESC limit ${testCoins.length}`;
-
-  // const query =
-  //   "SELECT s.ratio, array_agg(g.INTEREST) as marks FROM moving_average s " +
-  //   "LEFT JOIN cointerests g ON g.KEYWORD = s.KEYWORD GROUP BY s.KEYWORD";
   const today = new Date();
-  const lastWeek = new Date(today.getFullYear(), today.getMonth(), today.getDate() - 7);
-
+  const lastWeek = new Date(today.getTime() - 7 * 24 * 60 * 60 * 1000);
   const query =
-    `SELECT "KEYWORD", array_agg('[' || "INTEREST" || ',' || "TIMESTAMP" || ']')` +
-    ` FROM (SELECT * FROM cointerests WHERE "REPORT_TIME" >= ${lastWeek.getTime()}) AS X` +
-    ` LEFT OUTER JOIN moving_average ON cointerests.KEYWORD = moving_average.KEYWORD GROUP BY "KEYWORD" limit 10 `;
-
-  // const query = 'SELECT "KEYWORD"  FROM cointerests GROUP BY "KEYWORD" limit 10';
+    `SELECT moving_average."RATIO", "KEYWORD", array_agg("INTEREST" || ',' || "TIMESTAMP")` +
+    ` FROM (SELECT * FROM cointerests WHERE "REPORT_TIME" >= ${lastWeek.getTime() / 1000}) AS X` +
+    ` FULL OUTER JOIN moving_average USING("KEYWORD") GROUP BY "KEYWORD", moving_average."RATIO"` +
+    ` ORDER BY nullif(moving_average."RATIO", 'NaN') DESC NULLS LAST`; //LIMIT 5
   const result = await db.query(query);
-  // const data = result.map((x) => ({
-  //   trends: x.data.map((t) => t.value),
-  //   time: x.data.map((t) => t.timeStamp),
-  //   coin: coins.find((m) => m.keyword == x.KEYWORD)?.Symbol,
-  // }));
-
-  return result;
+  const data = result.map((x) => ({
+    trends: x.array_agg.map((t) => t.split(",")[0]),
+    time: x.array_agg.map((t) => t.split(",")[1]),
+    coin: coins.find((m) => m.keyword == x.KEYWORD)?.Symbol,
+  }));
+  return data;
 };
 
 module.exports = { processMovingAverage, getCoinWeeklyData };
