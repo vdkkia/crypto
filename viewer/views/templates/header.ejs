@@ -29,6 +29,7 @@
     }
 
     const displayChart = (data, chartId) => {
+        console.log(data)
         const elem = `<div class="col-sm-4">
                             <div class="row box">
                                 <span class="title"> ${data.coin}</span>
@@ -45,10 +46,10 @@
         var chartPrice = new Chart(ctx, {
             type: 'line',
             data: {
-                labels: data.timeStamp,
+                labels: data.time,
                 datasets: [{
                     label: `Weekly price`,
-                    data: data.coinPrice,
+                    data: data.trends,
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
                     ],
