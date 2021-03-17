@@ -13,13 +13,13 @@ app.get("/", async (req, res) => {
 });
 
 app.listen(EXPRESS_PORT, () => {
-  require("./src/services/logger").info(`Server is listening to port ${EXPRESS_PORT}`);
+  require("./src/services/logger").info(`Viewer server is listening to port ${EXPRESS_PORT}`);
 });
 
 (async () => {
   try {
     scheduler.schedule("0 1 * * *", processMovingAverage);
-    console.log(await getCoinWeeklyData());
+    // processMovingAverage()
   } catch (err) {
     logger.error(err.message);
   }
