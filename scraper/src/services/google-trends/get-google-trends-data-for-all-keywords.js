@@ -51,11 +51,11 @@ const getGoogleTrendsDataForAllKeywords = async (
 
     const results = await Promise.all(batchPromises);
     const endTime = Date.now();
-    logger.info(
-      `The whole process took ${(endTime - startTime) / 1000} seconds to finish`
-    );
+    // logger.info(
+    //   `The whole process took ${(endTime - startTime) / 1000} seconds to finish`
+    // );
 
-    printFinalReport(results);
+    printFinalReport(results, "per minute trends");
   } catch (err) {
     logger.error(err.message);
   }
@@ -93,9 +93,9 @@ async function getTrendDataForBatch({
       averages,
     });
 
-    logger.info(
-      `received timeline data for batch ${batchNumber}/${totalBatches}`
-    );
+    // logger.info(
+    //   `received timeline data for batch ${batchNumber}/${totalBatches}`
+    // );
     return 1;
   } catch (err) {
     if (axios.isCancel(err)) {

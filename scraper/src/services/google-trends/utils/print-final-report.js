@@ -1,10 +1,12 @@
 const logger = require("./../../logger");
 
-const printFinalReport = (results) => {
+const printFinalReport = (results, reportTitle = "") => {
   logger.info("---------------------------");
   logger.info("---------------------------");
   logger.info("---------------------------");
   logger.info("-----------REPORT----------");
+  logger.info("---------------------------");
+  logger.info(reportTitle);
   logger.info(`Total requests: ${results.length}`);
   const validDataPoints = results.filter((result) => result >= 1);
   const jumps = validDataPoints.reduce((acc, d) => acc + d - 1, 0);
