@@ -1,5 +1,7 @@
 const { loadWeeklyTrendForKeyword } = require("../weekly-trends");
 const findScaleFactor = require("./find-scale-factor");
+const parseDailyTrendsData = require("./parse-daily-trends-data");
+const saveDailyTrendRecord = require("./save-daily-trend-record");
 
 const updateDailyTrend = async ({
   keyword,
@@ -7,14 +9,17 @@ const updateDailyTrend = async ({
   timelineData,
   averages,
 }) => {
-  console.log("processing daily trend");
-  console.log(keyword);
-  console.log(reference);
-  console.log(averages);
-  console.log(timelineData.length);
   const weeklyTrend = await loadWeeklyTrendForKeyword(keyword);
   const scaleFactor = findScaleFactor(weeklyTrend, timelineData);
-  console.log(scaleFactor);
+  const parsedDailyTrend = parseDailyTrendsData({
+    timelineData,
+    averages,
+    keyword,
+    reference,
+    scaleFactor,
+    weeklyTrend,
+  });
+  saveDailyTrendRecord(parsedDailyTrend);
 };
 
 module.exports = updateDailyTrend;

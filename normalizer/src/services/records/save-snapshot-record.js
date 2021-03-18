@@ -12,7 +12,7 @@ const saveSnapshotRecord = async ({
 }) => {
   try {
     if (timeSpan === "week") {
-      console.log(timelineData[timelineData.length - 1]);
+      // console.log(timelineData[timelineData.length - 1]);
       // console.log(JSON.stringify({ timelineData, averages }));
       // fs.writeFileSync(
       //   "./sample-weekly-data.json",
@@ -25,7 +25,7 @@ const saveSnapshotRecord = async ({
         averages,
       });
     } else {
-      console.log(timelineData[timelineData.length - 1]);
+      // console.log(timelineData[timelineData.length - 1]);
       // console.log(JSON.stringify({ timelineData, averages }));
       // fs.writeFileSync(
       //   "./sample-daily-data.json",

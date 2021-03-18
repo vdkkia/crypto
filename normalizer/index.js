@@ -20,11 +20,11 @@ routes(server);
     // const weeklyTrends = parseWeeklyTrendsData(sampleWeeklyData);
     // const weeklyTrend = await loadWeeklyTrendForKeyword("bepro coin");
     // console.log(JSON.stringify(weeklyTrend));
-    await updateDailyTrend({
-      keyword: "bepro coin",
-      reference: "arweave",
-      ...sampleDailyData,
-    });
+    // await updateDailyTrend({
+    //   keyword: "bepro coin",
+    //   reference: "arweave",
+    //   ...sampleDailyData,
+    // });
 
     server.listen(3000, (err) => {
       if (err) {

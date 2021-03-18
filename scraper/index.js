@@ -33,7 +33,7 @@ const sendDataForNormalization = require("./src/services/normalization/send-data
       // await getComparedTrendsDataForKeyword("bepro coin");
       // await getGoogleTrendsDataForAllKeywords();
       // await getComparedTrendsDataForAllKeywords("day", 1);
-      await getComparedTrendsDataForAllKeywords("day", 1);
+      // await getComparedTrendsDataForAllKeywords("day", 1);
       // await sendDataForNormalization({
       //   keyword: "thekey",
       //   compareWith: "arweave",
