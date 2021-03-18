@@ -32,7 +32,8 @@ const sendDataForNormalization = require("./src/services/normalization/send-data
       logger.info("no jobs scheduled.");
       // await getComparedTrendsDataForKeyword("bepro coin");
       // await getGoogleTrendsDataForAllKeywords();
-      await getComparedTrendsDataForAllKeywords("week", 1);
+      // await getComparedTrendsDataForAllKeywords("day", 1);
+      await getComparedTrendsDataForAllKeywords("day", 1);
       // await sendDataForNormalization({
       //   keyword: "thekey",
       //   compareWith: "arweave",
