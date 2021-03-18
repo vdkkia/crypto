@@ -33,16 +33,16 @@ const normalizeIncomingData = async ({
 
     logger.info(`inserting ${newRecords.length} into the db`);
 
-    saveRecordsBatch(newRecords)
-      .then(() =>
-        logger.info(`Successfully inserted ${newRecords.length} to the db`)
-      )
-      .catch((err) => logger.error(`[BATCH INSERT ERROR:] ${err.message}`));
-    newHistoryMaps.forEach((historyMap, index) =>
-      saveKeywordHistory(batchInfo[index].term, historyMap).catch((err) =>
-        logger.error(err.message)
-      )
-    );
+    // saveRecordsBatch(newRecords)
+    //   .then(() =>
+    //     logger.info(`Successfully inserted ${newRecords.length} to the db`)
+    //   )
+    //   .catch((err) => logger.error(`[BATCH INSERT ERROR:] ${err.message}`));
+    // newHistoryMaps.forEach((historyMap, index) =>
+    //   saveKeywordHistory(batchInfo[index].term, historyMap).catch((err) =>
+    //     logger.error(err.message)
+    //   )
+    // );
     saveNormalizationSampleForChecking({
       batchIndex,
       batchInfo,

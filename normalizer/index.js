@@ -7,6 +7,7 @@ const sampleDailyData = require("./src/data/sample-past-day-data.json");
 const sampleWeeklyData = require("./src/data/sample-seven-days-data.json");
 const buildHourlyChartFromDaily = require("./src/services/normalizaton/utils/build-hourly-chart-from-daily");
 const parseWeeklyTrendsData = require("./src/services/weekly-trends/parse-weekly-trends-data");
+const { loadWeeklyTrendForKeyword } = require("./src/services/weekly-trends");
 
 const server = restify.createServer({ name: "data normalizer server" });
 routes(server);
