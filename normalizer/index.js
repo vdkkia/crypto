@@ -3,11 +3,7 @@ const routes = require("./src/routes");
 const redis = require("./src/adapters/redis");
 const mongodb = require("./src/adapters/mongodb");
 const logger = require("./src/services/logger");
-const sampleDailyData = require("./src/data/sample-daily-data.json");
-const sampleWeeklyData = require("./src/data/sample-weekly-data.json");
-const parseWeeklyTrendsData = require("./src/services/weekly-trends/parse-weekly-trends-data");
-const { loadWeeklyTrendForKeyword } = require("./src/services/weekly-trends");
-const { updateDailyTrend } = require("./src/services/daily-trends");
+const checkForFastJump = require("./src/services/alerts/check-for-fast-jump");
 
 const server = restify.createServer({ name: "data normalizer server" });
 routes(server);
@@ -16,15 +12,6 @@ routes(server);
   try {
     await redis.init();
     await mongodb.init();
-    // const hourlyValues = buildHourlyChartFromDaily(sampleDailyData);
-    // const weeklyTrends = parseWeeklyTrendsData(sampleWeeklyData);
-    // const weeklyTrend = await loadWeeklyTrendForKeyword("bepro coin");
-    // console.log(JSON.stringify(weeklyTrend));
-    // await updateDailyTrend({
-    //   keyword: "bepro coin",
-    //   reference: "arweave",
-    //   ...sampleDailyData,
-    // });
 
     server.listen(3000, (err) => {
       if (err) {

@@ -1,3 +1,4 @@
+const checkForFastJump = require("../alerts/check-for-fast-jump");
 const { loadWeeklyTrendForKeyword } = require("../weekly-trends");
 const findScaleFactor = require("./find-scale-factor");
 const parseDailyTrendsData = require("./parse-daily-trends-data");
@@ -20,6 +21,7 @@ const updateDailyTrend = async ({
     weeklyTrend,
   });
   saveDailyTrendRecord(parsedDailyTrend);
+  checkForFastJump(parsedDailyTrend);
 };
 
 module.exports = updateDailyTrend;

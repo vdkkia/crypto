@@ -1,13 +1,13 @@
 const axios = require("axios");
 const Bottleneck = require("bottleneck");
 const logger = require("./../logger");
-// const keywords = require("./../../../data/keywords.json").map(
-//   ({ term, category }) => ({
-//     term: term.trim(),
-//     category,
-//   })
-// );
-const keywords = [{ term: "bepro coin" }];
+const keywords = require("./../../../data/keywords.json").map(
+  ({ term, category }) => ({
+    term: term.trim(),
+    category,
+  })
+);
+// const keywords = [{ term: "bepro coin" }];
 const loadCookies = require("../cookies/load-cookies");
 const getComparedTrendsDataForKeyword = require("./get-compared-trends-data-for-keyword");
 const printFinalReport = require("./utils/print-final-report");
