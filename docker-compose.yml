@@ -62,6 +62,7 @@ services:
       - REDIS_URI=redis://redis:6379
       - POSTGRES_URI=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}
       - MONGO_URI=mongodb://${MONGO_INITDB_USERNAME}:${MONGO_INITDB_PASSWORD}@mongodb:27017/${MONGO_INITDB_DATABASE}
+      - SLACK_INCOMING_WEBHOOK
     depends_on:
       - redis
       - db

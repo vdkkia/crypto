@@ -7,9 +7,6 @@ const {
   getComparedTrendsDataForAllKeywords,
   getGoogleTrendsDataForAllKeywords,
 } = require("./src/services/google-trends");
-const sampleDailyData = require("./data/sample-past-day-data.json");
-const dampleWeeklyData = require("./data/sample-seven-days-data.json");
-const sendDataForNormalization = require("./src/services/normalization/send-data-for-normalization");
 
 (async () => {
   try {
@@ -18,21 +15,22 @@ const sendDataForNormalization = require("./src/services/normalization/send-data
     await createBatches();
     if (process.env.NODE_ENV === "production") {
       scheduler.schedule("*/30 * * * *", updateCookieStock);
-      scheduler.schedule("* * * * *", getGoogleTrendsDataForAllKeywords);
-      // scheduler.schedule(
-      //   "*/10 * * * *",
-      //   getComparedTrendsDataForAllKeywords.bind(null, "day", 8)
-      // );
-      // scheduler.schedule(
-      //   "0 * * * *",
-      //   getComparedTrendsDataForAllKeywords.bind(null, "week", 10)
-      // );
+      // scheduler.schedule("* * * * *", getCompa);
+      scheduler.schedule(
+        "*/5 * * * *",
+        getComparedTrendsDataForAllKeywords.bind(null, "day", 4)
+      );
+      scheduler.schedule(
+        "0 * * * *",
+        getComparedTrendsDataForAllKeywords.bind(null, "week", 40)
+      );
       logger.info("All jobs are running");
     } else {
       logger.info("no jobs scheduled.");
       // await getComparedTrendsDataForKeyword("bepro coin");
       // await getGoogleTrendsDataForAllKeywords();
-      // await getComparedTrendsDataForAllKeywords();
+      // await getComparedTrendsDataForAllKeywords("day", 1);
+      // await getComparedTrendsDataForAllKeywords("day", 1);
       // await sendDataForNormalization({
       //   keyword: "thekey",
       //   compareWith: "arweave",

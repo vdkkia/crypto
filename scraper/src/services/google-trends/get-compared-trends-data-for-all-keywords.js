@@ -7,6 +7,7 @@ const keywords = require("./../../../data/keywords.json").map(
     category,
   })
 );
+// const keywords = [{ term: "bepro coin" }];
 const loadCookies = require("../cookies/load-cookies");
 const getComparedTrendsDataForKeyword = require("./get-compared-trends-data-for-keyword");
 const printFinalReport = require("./utils/print-final-report");
@@ -99,6 +100,7 @@ async function getComperedTrendsForKeyword({
         `job ${jobNumber} failed with status ${err?.response?.status} and code ${err?.code}.`
       );
       logger.error(err.message);
+      console.error(err);
       return -1;
     }
   }
