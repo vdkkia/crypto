@@ -1,3 +1,1 @@
-module.exports = {
-  saveCookie: require("./save-cookie"),
-};
+module.exports = {};

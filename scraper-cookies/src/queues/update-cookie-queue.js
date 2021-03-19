@@ -14,9 +14,16 @@ updateCookieQueue.process(async (job) => {
   } = job;
   const cookie = await getNewCookie();
   await saveCookie({ index, cookie });
-  logger.info(`cookie ${index} saved to redis`);
 
   return true;
+});
+
+updateCookieQueue.on("completed", (job, result) => {
+  logger.info(`job ${job.id}: cookie ${job.data.index} saved to redis`);
+});
+
+updateCookieQueue.on("failed", (job, errorMessage) => {
+  logger.error(`job ${job.id}: failed with result: ${errorMessage}`);
 });
 
 module.exports = updateCookieQueue;
