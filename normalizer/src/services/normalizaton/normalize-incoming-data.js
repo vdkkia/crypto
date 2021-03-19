@@ -6,12 +6,11 @@ const normalizeTimelines = require("./normalize-timelines");
 const saveNormalizationSampleForChecking = require("./save-normalization-sample-for-checking");
 
 const normalizeIncomingData = async ({
-  batchIndex,
+  keyword,
+  reference,
   timelineData,
   averages,
   timeSpan,
-  keyword,
-  compareWith,
 }) => {
   try {
     console.log("received data for normalization...");

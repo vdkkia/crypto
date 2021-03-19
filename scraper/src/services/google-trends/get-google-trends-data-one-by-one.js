@@ -97,7 +97,7 @@ async function getGoogleTrendsDataForOneKeyword({
     // );
     sendDataForNormalization({
       keyword,
-      compareWith,
+      refereice: compareWith,
       timelineData,
       averages,
       timeSpan,
