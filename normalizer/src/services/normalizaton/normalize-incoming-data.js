@@ -14,24 +14,25 @@ const normalizeIncomingData = async ({
   compareWith,
 }) => {
   try {
-    if (timeSpan)
-      return saveSnapshotRecord({
-        timelineData,
-        averages,
-        timeSpan,
-        keyword,
-        compareWith,
-      });
-    const batchInfo = await findBatchInfo(batchIndex);
+    console.log("received data for normalization...");
+    // if (timeSpan)
+    //   return saveSnapshotRecord({
+    //     timelineData,
+    //     averages,
+    //     timeSpan,
+    //     keyword,
+    //     compareWith,
+    //   });
+    // const batchInfo = await findBatchInfo(batchIndex);
 
-    const { newRecords, newHistoryMaps } = normalizeTimelines({
-      batchInfo,
-      timelineData,
-      averages,
-      batchIndex,
-    });
+    // const { newRecords, newHistoryMaps } = normalizeTimelines({
+    //   batchInfo,
+    //   timelineData,
+    //   averages,
+    //   batchIndex,
+    // });
 
-    logger.info(`inserting ${newRecords.length} into the db`);
+    // logger.info(`inserting ${newRecords.length} into the db`);
 
     // saveRecordsBatch(newRecords)
     //   .then(() =>
@@ -43,14 +44,14 @@ const normalizeIncomingData = async ({
     //     logger.error(err.message)
     //   )
     // );
-    saveNormalizationSampleForChecking({
-      batchIndex,
-      batchInfo,
-      timelineData,
-      averages,
-      newRecords,
-      newHistoryMaps,
-    });
+    // saveNormalizationSampleForChecking({
+    //   batchIndex,
+    //   batchInfo,
+    //   timelineData,
+    //   averages,
+    //   newRecords,
+    //   newHistoryMaps,
+    // });
   } catch (err) {
     logger.error("error in normalizeIncomingData");
     logger.error(err.message);

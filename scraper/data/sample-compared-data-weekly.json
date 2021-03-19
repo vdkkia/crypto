@@ -1,413 +1,6 @@
 {
+  "averages": [31, 4],
   "timelineData": [
-    {
-      "time": "1615356000",
-      "formattedTime": "Mar 10, 2021 at 6:00 AM",
-      "formattedAxisTime": "Mar 10 at 6:00 AM",
-      "value": [4, 4],
-      "hasData": [true, true],
-      "formattedValue": ["4", "4"]
-    },
-    {
-      "time": "1615359600",
-      "formattedTime": "Mar 10, 2021 at 7:00 AM",
-      "formattedAxisTime": "Mar 10 at 7:00 AM",
-      "value": [8, 4],
-      "hasData": [true, true],
-      "formattedValue": ["8", "4"]
-    },
-    {
-      "time": "1615363200",
-      "formattedTime": "Mar 10, 2021 at 8:00 AM",
-      "formattedAxisTime": "Mar 10 at 8:00 AM",
-      "value": [3, 3],
-      "hasData": [true, true],
-      "formattedValue": ["3", "3"]
-    },
-    {
-      "time": "1615366800",
-      "formattedTime": "Mar 10, 2021 at 9:00 AM",
-      "formattedAxisTime": "Mar 10 at 9:00 AM",
-      "value": [4, 5],
-      "hasData": [true, true],
-      "formattedValue": ["4", "5"]
-    },
-    {
-      "time": "1615370400",
-      "formattedTime": "Mar 10, 2021 at 10:00 AM",
-      "formattedAxisTime": "Mar 10 at 10:00 AM",
-      "value": [8, 3],
-      "hasData": [true, true],
-      "formattedValue": ["8", "3"]
-    },
-    {
-      "time": "1615374000",
-      "formattedTime": "Mar 10, 2021 at 11:00 AM",
-      "formattedAxisTime": "Mar 10 at 11:00 AM",
-      "value": [7, 7],
-      "hasData": [true, true],
-      "formattedValue": ["7", "7"]
-    },
-    {
-      "time": "1615377600",
-      "formattedTime": "Mar 10, 2021 at 12:00 PM",
-      "formattedAxisTime": "Mar 10 at 12:00 PM",
-      "value": [6, 5],
-      "hasData": [true, true],
-      "formattedValue": ["6", "5"]
-    },
-    {
-      "time": "1615381200",
-      "formattedTime": "Mar 10, 2021 at 1:00 PM",
-      "formattedAxisTime": "Mar 10 at 1:00 PM",
-      "value": [4, 3],
-      "hasData": [true, true],
-      "formattedValue": ["4", "3"]
-    },
-    {
-      "time": "1615384800",
-      "formattedTime": "Mar 10, 2021 at 2:00 PM",
-      "formattedAxisTime": "Mar 10 at 2:00 PM",
-      "value": [8, 2],
-      "hasData": [true, true],
-      "formattedValue": ["8", "2"]
-    },
-    {
-      "time": "1615388400",
-      "formattedTime": "Mar 10, 2021 at 3:00 PM",
-      "formattedAxisTime": "Mar 10 at 3:00 PM",
-      "value": [5, 2],
-      "hasData": [true, true],
-      "formattedValue": ["5", "2"]
-    },
-    {
-      "time": "1615392000",
-      "formattedTime": "Mar 10, 2021 at 4:00 PM",
-      "formattedAxisTime": "Mar 10 at 4:00 PM",
-      "value": [4, 4],
-      "hasData": [true, true],
-      "formattedValue": ["4", "4"]
-    },
-    {
-      "time": "1615395600",
-      "formattedTime": "Mar 10, 2021 at 5:00 PM",
-      "formattedAxisTime": "Mar 10 at 5:00 PM",
-      "value": [4, 5],
-      "hasData": [true, true],
-      "formattedValue": ["4", "5"]
-    },
-    {
-      "time": "1615399200",
-      "formattedTime": "Mar 10, 2021 at 6:00 PM",
-      "formattedAxisTime": "Mar 10 at 6:00 PM",
-      "value": [4, 3],
-      "hasData": [true, true],
-      "formattedValue": ["4", "3"]
-    },
-    {
-      "time": "1615402800",
-      "formattedTime": "Mar 10, 2021 at 7:00 PM",
-      "formattedAxisTime": "Mar 10 at 7:00 PM",
-      "value": [5, 3],
-      "hasData": [true, true],
-      "formattedValue": ["5", "3"]
-    },
-    {
-      "time": "1615406400",
-      "formattedTime": "Mar 10, 2021 at 8:00 PM",
-      "formattedAxisTime": "Mar 10 at 8:00 PM",
-      "value": [7, 4],
-      "hasData": [true, true],
-      "formattedValue": ["7", "4"]
-    },
-    {
-      "time": "1615410000",
-      "formattedTime": "Mar 10, 2021 at 9:00 PM",
-      "formattedAxisTime": "Mar 10 at 9:00 PM",
-      "value": [7, 6],
-      "hasData": [true, true],
-      "formattedValue": ["7", "6"]
-    },
-    {
-      "time": "1615413600",
-      "formattedTime": "Mar 10, 2021 at 10:00 PM",
-      "formattedAxisTime": "Mar 10 at 10:00 PM",
-      "value": [5, 4],
-      "hasData": [true, true],
-      "formattedValue": ["5", "4"]
-    },
-    {
-      "time": "1615417200",
-      "formattedTime": "Mar 10, 2021 at 11:00 PM",
-      "formattedAxisTime": "Mar 10 at 11:00 PM",
-      "value": [6, 2],
-      "hasData": [true, true],
-      "formattedValue": ["6", "2"]
-    },
-    {
-      "time": "1615420800",
-      "formattedTime": "Mar 11, 2021 at 12:00 AM",
-      "formattedAxisTime": "Mar 11 at 12:00 AM",
-      "value": [5, 3],
-      "hasData": [true, true],
-      "formattedValue": ["5", "3"]
-    },
-    {
-      "time": "1615424400",
-      "formattedTime": "Mar 11, 2021 at 1:00 AM",
-      "formattedAxisTime": "Mar 11 at 1:00 AM",
-      "value": [4, 5],
-      "hasData": [true, true],
-      "formattedValue": ["4", "5"]
-    },
-    {
-      "time": "1615428000",
-      "formattedTime": "Mar 11, 2021 at 2:00 AM",
-      "formattedAxisTime": "Mar 11 at 2:00 AM",
-      "value": [3, 10],
-      "hasData": [true, true],
-      "formattedValue": ["3", "10"]
-    },
-    {
-      "time": "1615431600",
-      "formattedTime": "Mar 11, 2021 at 3:00 AM",
-      "formattedAxisTime": "Mar 11 at 3:00 AM",
-      "value": [7, 5],
-      "hasData": [true, true],
-      "formattedValue": ["7", "5"]
-    },
-    {
-      "time": "1615435200",
-      "formattedTime": "Mar 11, 2021 at 4:00 AM",
-      "formattedAxisTime": "Mar 11 at 4:00 AM",
-      "value": [9, 5],
-      "hasData": [true, true],
-      "formattedValue": ["9", "5"]
-    },
-    {
-      "time": "1615438800",
-      "formattedTime": "Mar 11, 2021 at 5:00 AM",
-      "formattedAxisTime": "Mar 11 at 5:00 AM",
-      "value": [3, 4],
-      "hasData": [true, true],
-      "formattedValue": ["3", "4"]
-    },
-    {
-      "time": "1615442400",
-      "formattedTime": "Mar 11, 2021 at 6:00 AM",
-      "formattedAxisTime": "Mar 11 at 6:00 AM",
-      "value": [5, 7],
-      "hasData": [true, true],
-      "formattedValue": ["5", "7"]
-    },
-    {
-      "time": "1615446000",
-      "formattedTime": "Mar 11, 2021 at 7:00 AM",
-      "formattedAxisTime": "Mar 11 at 7:00 AM",
-      "value": [6, 6],
-      "hasData": [true, true],
-      "formattedValue": ["6", "6"]
-    },
-    {
-      "time": "1615449600",
-      "formattedTime": "Mar 11, 2021 at 8:00 AM",
-      "formattedAxisTime": "Mar 11 at 8:00 AM",
-      "value": [5, 7],
-      "hasData": [true, true],
-      "formattedValue": ["5", "7"]
-    },
-    {
-      "time": "1615453200",
-      "formattedTime": "Mar 11, 2021 at 9:00 AM",
-      "formattedAxisTime": "Mar 11 at 9:00 AM",
-      "value": [5, 4],
-      "hasData": [true, true],
-      "formattedValue": ["5", "4"]
-    },
-    {
-      "time": "1615456800",
-      "formattedTime": "Mar 11, 2021 at 10:00 AM",
-      "formattedAxisTime": "Mar 11 at 10:00 AM",
-      "value": [4, 2],
-      "hasData": [true, true],
-      "formattedValue": ["4", "2"]
-    },
-    {
-      "time": "1615460400",
-      "formattedTime": "Mar 11, 2021 at 11:00 AM",
-      "formattedAxisTime": "Mar 11 at 11:00 AM",
-      "value": [6, 2],
-      "hasData": [true, true],
-      "formattedValue": ["6", "2"]
-    },
-    {
-      "time": "1615464000",
-      "formattedTime": "Mar 11, 2021 at 12:00 PM",
-      "formattedAxisTime": "Mar 11 at 12:00 PM",
-      "value": [7, 2],
-      "hasData": [true, true],
-      "formattedValue": ["7", "2"]
-    },
-    {
-      "time": "1615467600",
-      "formattedTime": "Mar 11, 2021 at 1:00 PM",
-      "formattedAxisTime": "Mar 11 at 1:00 PM",
-      "value": [7, 2],
-      "hasData": [true, true],
-      "formattedValue": ["7", "2"]
-    },
-    {
-      "time": "1615471200",
-      "formattedTime": "Mar 11, 2021 at 2:00 PM",
-      "formattedAxisTime": "Mar 11 at 2:00 PM",
-      "value": [5, 3],
-      "hasData": [true, true],
-      "formattedValue": ["5", "3"]
-    },
-    {
-      "time": "1615474800",
-      "formattedTime": "Mar 11, 2021 at 3:00 PM",
-      "formattedAxisTime": "Mar 11 at 3:00 PM",
-      "value": [5, 5],
-      "hasData": [true, true],
-      "formattedValue": ["5", "5"]
-    },
-    {
-      "time": "1615478400",
-      "formattedTime": "Mar 11, 2021 at 4:00 PM",
-      "formattedAxisTime": "Mar 11 at 4:00 PM",
-      "value": [4, 2],
-      "hasData": [true, true],
-      "formattedValue": ["4", "2"]
-    },
-    {
-      "time": "1615482000",
-      "formattedTime": "Mar 11, 2021 at 5:00 PM",
-      "formattedAxisTime": "Mar 11 at 5:00 PM",
-      "value": [4, 3],
-      "hasData": [true, true],
-      "formattedValue": ["4", "3"]
-    },
-    {
-      "time": "1615485600",
-      "formattedTime": "Mar 11, 2021 at 6:00 PM",
-      "formattedAxisTime": "Mar 11 at 6:00 PM",
-      "value": [4, 2],
-      "hasData": [true, true],
-      "formattedValue": ["4", "2"]
-    },
-    {
-      "time": "1615489200",
-      "formattedTime": "Mar 11, 2021 at 7:00 PM",
-      "formattedAxisTime": "Mar 11 at 7:00 PM",
-      "value": [6, 2],
-      "hasData": [true, true],
-      "formattedValue": ["6", "2"]
-    },
-    {
-      "time": "1615492800",
-      "formattedTime": "Mar 11, 2021 at 8:00 PM",
-      "formattedAxisTime": "Mar 11 at 8:00 PM",
-      "value": [6, 2],
-      "hasData": [true, true],
-      "formattedValue": ["6", "2"]
-    },
-    {
-      "time": "1615496400",
-      "formattedTime": "Mar 11, 2021 at 9:00 PM",
-      "formattedAxisTime": "Mar 11 at 9:00 PM",
-      "value": [8, 1],
-      "hasData": [true, true],
-      "formattedValue": ["8", "1"]
-    },
-    {
-      "time": "1615500000",
-      "formattedTime": "Mar 11, 2021 at 10:00 PM",
-      "formattedAxisTime": "Mar 11 at 10:00 PM",
-      "value": [9, 7],
-      "hasData": [true, true],
-      "formattedValue": ["9", "7"]
-    },
-    {
-      "time": "1615503600",
-      "formattedTime": "Mar 11, 2021 at 11:00 PM",
-      "formattedAxisTime": "Mar 11 at 11:00 PM",
-      "value": [8, 6],
-      "hasData": [true, true],
-      "formattedValue": ["8", "6"]
-    },
-    {
-      "time": "1615507200",
-      "formattedTime": "Mar 12, 2021 at 12:00 AM",
-      "formattedAxisTime": "Mar 12 at 12:00 AM",
-      "value": [6, 6],
-      "hasData": [true, true],
-      "formattedValue": ["6", "6"]
-    },
-    {
-      "time": "1615510800",
-      "formattedTime": "Mar 12, 2021 at 1:00 AM",
-      "formattedAxisTime": "Mar 12 at 1:00 AM",
-      "value": [6, 3],
-      "hasData": [true, true],
-      "formattedValue": ["6", "3"]
-    },
-    {
-      "time": "1615514400",
-      "formattedTime": "Mar 12, 2021 at 2:00 AM",
-      "formattedAxisTime": "Mar 12 at 2:00 AM",
-      "value": [8, 3],
-      "hasData": [true, true],
-      "formattedValue": ["8", "3"]
-    },
-    {
-      "time": "1615518000",
-      "formattedTime": "Mar 12, 2021 at 3:00 AM",
-      "formattedAxisTime": "Mar 12 at 3:00 AM",
-      "value": [18, 3],
-      "hasData": [true, true],
-      "formattedValue": ["18", "3"]
-    },
-    {
-      "time": "1615521600",
-      "formattedTime": "Mar 12, 2021 at 4:00 AM",
-      "formattedAxisTime": "Mar 12 at 4:00 AM",
-      "value": [11, 3],
-      "hasData": [true, true],
-      "formattedValue": ["11", "3"]
-    },
-    {
-      "time": "1615525200",
-      "formattedTime": "Mar 12, 2021 at 5:00 AM",
-      "formattedAxisTime": "Mar 12 at 5:00 AM",
-      "value": [15, 3],
-      "hasData": [true, true],
-      "formattedValue": ["15", "3"]
-    },
-    {
-      "time": "1615528800",
-      "formattedTime": "Mar 12, 2021 at 6:00 AM",
-      "formattedAxisTime": "Mar 12 at 6:00 AM",
-      "value": [8, 6],
-      "hasData": [true, true],
-      "formattedValue": ["8", "6"]
-    },
-    {
-      "time": "1615532400",
-      "formattedTime": "Mar 12, 2021 at 7:00 AM",
-      "formattedAxisTime": "Mar 12 at 7:00 AM",
-      "value": [11, 4],
-      "hasData": [true, true],
-      "formattedValue": ["11", "4"]
-    },
-    {
-      "time": "1615536000",
-      "formattedTime": "Mar 12, 2021 at 8:00 AM",
-      "formattedAxisTime": "Mar 12 at 8:00 AM",
-      "value": [15, 3],
-      "hasData": [true, true],
-      "formattedValue": ["15", "3"]
-    },
     {
       "time": "1615539600",
       "formattedTime": "Mar 12, 2021 at 9:00 AM",
@@ -556,9 +149,9 @@
       "time": "1615604400",
       "formattedTime": "Mar 13, 2021 at 3:00 AM",
       "formattedAxisTime": "Mar 13 at 3:00 AM",
-      "value": [10, 2],
+      "value": [9, 2],
       "hasData": [true, true],
-      "formattedValue": ["10", "2"]
+      "formattedValue": ["9", "2"]
     },
     {
       "time": "1615608000",
@@ -596,17 +189,17 @@
       "time": "1615622400",
       "formattedTime": "Mar 13, 2021 at 8:00 AM",
       "formattedAxisTime": "Mar 13 at 8:00 AM",
-      "value": [8, 4],
+      "value": [7, 4],
       "hasData": [true, true],
-      "formattedValue": ["8", "4"]
+      "formattedValue": ["7", "4"]
     },
     {
       "time": "1615626000",
       "formattedTime": "Mar 13, 2021 at 9:00 AM",
       "formattedAxisTime": "Mar 13 at 9:00 AM",
-      "value": [8, 4],
+      "value": [9, 4],
       "hasData": [true, true],
-      "formattedValue": ["8", "4"]
+      "formattedValue": ["9", "4"]
     },
     {
       "time": "1615629600",
@@ -628,9 +221,9 @@
       "time": "1615636800",
       "formattedTime": "Mar 13, 2021 at 12:00 PM",
       "formattedAxisTime": "Mar 13 at 12:00 PM",
-      "value": [6, 1],
+      "value": [7, 1],
       "hasData": [true, true],
-      "formattedValue": ["6", "1"]
+      "formattedValue": ["7", "1"]
     },
     {
       "time": "1615640400",
@@ -756,9 +349,9 @@
       "time": "1615694400",
       "formattedTime": "Mar 14, 2021 at 4:00 AM",
       "formattedAxisTime": "Mar 14 at 4:00 AM",
-      "value": [9, 3],
+      "value": [10, 3],
       "hasData": [true, true],
-      "formattedValue": ["9", "3"]
+      "formattedValue": ["10", "3"]
     },
     {
       "time": "1615698000",
@@ -778,7 +371,7 @@
     },
     {
       "time": "1615705200",
-      "formattedTime": "Mar 14, 2021 at 7:00 2021-03-17T05:26:43.009729000Z AM",
+      "formattedTime": "Mar 14, 2021 at 7:00 AM",
       "formattedAxisTime": "Mar 14 at 7:00 AM",
       "value": [12, 3],
       "hasData": [true, true],
@@ -868,9 +461,9 @@
       "time": "1615744800",
       "formattedTime": "Mar 14, 2021 at 6:00 PM",
       "formattedAxisTime": "Mar 14 at 6:00 PM",
-      "value": [37, 6],
+      "value": [36, 6],
       "hasData": [true, true],
-      "formattedValue": ["37", "6"]
+      "formattedValue": ["36", "6"]
     },
     {
       "time": "1615748400",
@@ -900,25 +493,25 @@
       "time": "1615759200",
       "formattedTime": "Mar 14, 2021 at 10:00 PM",
       "formattedAxisTime": "Mar 14 at 10:00 PM",
-      "value": [72, 6],
+      "value": [71, 6],
       "hasData": [true, true],
-      "formattedValue": ["72", "6"]
+      "formattedValue": ["71", "6"]
     },
     {
       "time": "1615762800",
       "formattedTime": "Mar 14, 2021 at 11:00 PM",
       "formattedAxisTime": "Mar 14 at 11:00 PM",
-      "value": [50, 4],
+      "value": [49, 4],
       "hasData": [true, true],
-      "formattedValue": ["50", "4"]
+      "formattedValue": ["49", "4"]
     },
     {
       "time": "1615766400",
       "formattedTime": "Mar 15, 2021 at 12:00 AM",
       "formattedAxisTime": "Mar 15 at 12:00 AM",
-      "value": [52, 3],
+      "value": [53, 3],
       "hasData": [true, true],
-      "formattedValue": ["52", "3"]
+      "formattedValue": ["53", "3"]
     },
     {
       "time": "1615770000",
@@ -932,9 +525,9 @@
       "time": "1615773600",
       "formattedTime": "Mar 15, 2021 at 2:00 AM",
       "formattedAxisTime": "Mar 15 at 2:00 AM",
-      "value": [55, 3],
+      "value": [54, 3],
       "hasData": [true, true],
-      "formattedValue": ["55", "3"]
+      "formattedValue": ["54", "3"]
     },
     {
       "time": "1615777200",
@@ -1004,9 +597,9 @@
       "time": "1615806000",
       "formattedTime": "Mar 15, 2021 at 11:00 AM",
       "formattedAxisTime": "Mar 15 at 11:00 AM",
-      "value": [40, 1],
+      "value": [40, 2],
       "hasData": [true, true],
-      "formattedValue": ["40", "1"]
+      "formattedValue": ["40", "2"]
     },
     {
       "time": "1615809600",
@@ -1020,9 +613,9 @@
       "time": "1615813200",
       "formattedTime": "Mar 15, 2021 at 1:00 PM",
       "formattedAxisTime": "Mar 15 at 1:00 PM",
-      "value": [33, 3],
+      "value": [32, 3],
       "hasData": [true, true],
-      "formattedValue": ["33", "3"]
+      "formattedValue": ["32", "3"]
     },
     {
       "time": "1615816800",
@@ -1036,25 +629,25 @@
       "time": "1615820400",
       "formattedTime": "Mar 15, 2021 at 3:00 PM",
       "formattedAxisTime": "Mar 15 at 3:00 PM",
-      "value": [31, 3],
+      "value": [30, 3],
       "hasData": [true, true],
-      "formattedValue": ["31", "3"]
+      "formattedValue": ["30", "3"]
     },
     {
       "time": "1615824000",
       "formattedTime": "Mar 15, 2021 at 4:00 PM",
       "formattedAxisTime": "Mar 15 at 4:00 PM",
-      "value": [34, 6],
+      "value": [32, 6],
       "hasData": [true, true],
-      "formattedValue": ["34", "6"]
+      "formattedValue": ["32", "6"]
     },
     {
       "time": "1615827600",
       "formattedTime": "Mar 15, 2021 at 5:00 PM",
       "formattedAxisTime": "Mar 15 at 5:00 PM",
-      "value": [27, 5],
+      "value": [27, 6],
       "hasData": [true, true],
-      "formattedValue": ["27", "5"]
+      "formattedValue": ["27", "6"]
     },
     {
       "time": "1615831200",
@@ -1076,25 +669,25 @@
       "time": "1615838400",
       "formattedTime": "Mar 15, 2021 at 8:00 PM",
       "formattedAxisTime": "Mar 15 at 8:00 PM",
-      "value": [60, 9],
+      "value": [59, 8],
       "hasData": [true, true],
-      "formattedValue": ["60", "9"]
+      "formattedValue": ["59", "8"]
     },
     {
       "time": "1615842000",
       "formattedTime": "Mar 15, 2021 at 9:00 PM",
       "formattedAxisTime": "Mar 15 at 9:00 PM",
-      "value": [66, 7],
+      "value": [69, 6],
       "hasData": [true, true],
-      "formattedValue": ["66", "7"]
+      "formattedValue": ["69", "6"]
     },
     {
       "time": "1615845600",
       "formattedTime": "Mar 15, 2021 at 10:00 PM",
       "formattedAxisTime": "Mar 15 at 10:00 PM",
-      "value": [76, 14],
+      "value": [75, 13],
       "hasData": [true, true],
-      "formattedValue": ["76", "14"]
+      "formattedValue": ["75", "13"]
     },
     {
       "time": "1615849200",
@@ -1116,9 +709,9 @@
       "time": "1615856400",
       "formattedTime": "Mar 16, 2021 at 1:00 AM",
       "formattedAxisTime": "Mar 16 at 1:00 AM",
-      "value": [66, 3],
+      "value": [63, 3],
       "hasData": [true, true],
-      "formattedValue": ["66", "3"]
+      "formattedValue": ["63", "3"]
     },
     {
       "time": "1615860000",
@@ -1140,25 +733,25 @@
       "time": "1615867200",
       "formattedTime": "Mar 16, 2021 at 4:00 AM",
       "formattedAxisTime": "Mar 16 at 4:00 AM",
-      "value": [60, 4],
+      "value": [62, 3],
       "hasData": [true, true],
-      "formattedValue": ["60", "4"]
+      "formattedValue": ["62", "3"]
     },
     {
       "time": "1615870800",
       "formattedTime": "Mar 16, 2021 at 5:00 AM",
       "formattedAxisTime": "Mar 16 at 5:00 AM",
-      "value": [60, 1],
+      "value": [63, 1],
       "hasData": [true, true],
-      "formattedValue": ["60", "1"]
+      "formattedValue": ["63", "1"]
     },
     {
       "time": "1615874400",
       "formattedTime": "Mar 16, 2021 at 6:00 AM",
       "formattedAxisTime": "Mar 16 at 6:00 AM",
-      "value": [97, 2],
+      "value": [96, 2],
       "hasData": [true, true],
-      "formattedValue": ["97", "2"]
+      "formattedValue": ["96", "2"]
     },
     {
       "time": "1615878000",
@@ -1172,9 +765,9 @@
       "time": "1615881600",
       "formattedTime": "Mar 16, 2021 at 8:00 AM",
       "formattedAxisTime": "Mar 16 at 8:00 AM",
-      "value": [88, 2],
+      "value": [90, 4],
       "hasData": [true, true],
-      "formattedValue": ["88", "2"]
+      "formattedValue": ["90", "4"]
     },
     {
       "time": "1615885200",
@@ -1188,163 +781,572 @@
       "time": "1615888800",
       "formattedTime": "Mar 16, 2021 at 10:00 AM",
       "formattedAxisTime": "Mar 16 at 10:00 AM",
-      "value": [70, 1],
+      "value": [67, 1],
       "hasData": [true, true],
-      "formattedValue": ["70", "1"]
+      "formattedValue": ["67", "1"]
     },
     {
       "time": "1615892400",
       "formattedTime": "Mar 16, 2021 at 11:00 AM",
       "formattedAxisTime": "Mar 16 at 11:00 AM",
-      "value": [86, 2],
+      "value": [67, 5],
       "hasData": [true, true],
-      "formattedValue": ["86", "2"]
+      "formattedValue": ["67", "5"]
     },
     {
       "time": "1615896000",
       "formattedTime": "Mar 16, 2021 at 12:00 PM",
       "formattedAxisTime": "Mar 16 at 12:00 PM",
-      "value": [83, 3],
+      "value": [77, 3],
       "hasData": [true, true],
-      "formattedValue": ["83", "3"]
+      "formattedValue": ["77", "3"]
     },
     {
       "time": "1615899600",
       "formattedTime": "Mar 16, 2021 at 1:00 PM",
       "formattedAxisTime": "Mar 16 at 1:00 PM",
-      "value": [57, 3],
+      "value": [52, 3],
       "hasData": [true, true],
-      "formattedValue": ["57", "3"]
+      "formattedValue": ["52", "3"]
     },
     {
       "time": "1615903200",
       "formattedTime": "Mar 16, 2021 at 2:00 PM",
       "formattedAxisTime": "Mar 16 at 2:00 PM",
-      "value": [48, 4],
+      "value": [62, 6],
       "hasData": [true, true],
-      "formattedValue": ["48", "4"]
+      "formattedValue": ["62", "6"]
     },
     {
       "time": "1615906800",
       "formattedTime": "Mar 16, 2021 at 3:00 PM",
       "formattedAxisTime": "Mar 16 at 3:00 PM",
-      "value": [57, 4],
+      "value": [58, 3],
       "hasData": [true, true],
-      "formattedValue": ["57", "4"]
+      "formattedValue": ["58", "3"]
     },
     {
       "time": "1615910400",
       "formattedTime": "Mar 16, 2021 at 4:00 PM",
       "formattedAxisTime": "Mar 16 at 4:00 PM",
-      "value": [53, 2],
+      "value": [59, 2],
       "hasData": [true, true],
-      "formattedValue": ["53", "2"]
+      "formattedValue": ["59", "2"]
     },
     {
       "time": "1615914000",
       "formattedTime": "Mar 16, 2021 at 5:00 PM",
       "formattedAxisTime": "Mar 16 at 5:00 PM",
-      "value": [53, 7],
+      "value": [49, 5],
       "hasData": [true, true],
-      "formattedValue": ["53", "7"]
+      "formattedValue": ["49", "5"]
     },
     {
       "time": "1615917600",
       "formattedTime": "Mar 16, 2021 at 6:00 PM",
       "formattedAxisTime": "Mar 16 at 6:00 PM",
-      "value": [57, 5],
+      "value": [58, 6],
       "hasData": [true, true],
-      "formattedValue": ["57", "5"]
+      "formattedValue": ["58", "6"]
     },
     {
       "time": "1615921200",
       "formattedTime": "Mar 16, 2021 at 7:00 PM",
       "formattedAxisTime": "Mar 16 at 7:00 PM",
-      "value": [52, 1],
+      "value": [51, 2],
       "hasData": [true, true],
-      "formattedValue": ["52", "1"]
+      "formattedValue": ["51", "2"]
     },
     {
       "time": "1615924800",
       "formattedTime": "Mar 16, 2021 at 8:00 PM",
       "formattedAxisTime": "Mar 16 at 8:00 PM",
-      "value": [38, 1],
+      "value": [37, 2],
       "hasData": [true, true],
-      "formattedValue": ["38", "1"]
+      "formattedValue": ["37", "2"]
     },
     {
       "time": "1615928400",
       "formattedTime": "Mar 16, 2021 at 9:00 PM",
       "formattedAxisTime": "Mar 16 at 9:00 PM",
-      "value": [46, 6],
+      "value": [53, 4],
       "hasData": [true, true],
-      "formattedValue": ["46", "6"]
+      "formattedValue": ["53", "4"]
     },
     {
       "time": "1615932000",
       "formattedTime": "Mar 16, 2021 at 10:00 PM",
       "formattedAxisTime": "Mar 16 at 10:00 PM",
-      "value": [65, 6],
+      "value": [63, 6],
       "hasData": [true, true],
-      "formattedValue": ["65", "6"]
+      "formattedValue": ["63", "6"]
     },
     {
       "time": "1615935600",
       "formattedTime": "Mar 16, 2021 at 11:00 PM",
       "formattedAxisTime": "Mar 16 at 11:00 PM",
-      "value": [50, 6],
+      "value": [44, 5],
       "hasData": [true, true],
-      "formattedValue": ["50", "6"]
+      "formattedValue": ["44", "5"]
     },
     {
       "time": "1615939200",
       "formattedTime": "Mar 17, 2021 at 12:00 AM",
       "formattedAxisTime": "Mar 17 at 12:00 AM",
-      "value": [46, 3],
+      "value": [45, 4],
       "hasData": [true, true],
-      "formattedValue": ["46", "3"]
+      "formattedValue": ["45", "4"]
     },
     {
       "time": "1615942800",
       "formattedTime": "Mar 17, 2021 at 1:00 AM",
       "formattedAxisTime": "Mar 17 at 1:00 AM",
-      "value": [46, 6],
+      "value": [37, 3],
       "hasData": [true, true],
-      "formattedValue": ["46", "6"]
+      "formattedValue": ["37", "3"]
     },
     {
       "time": "1615946400",
       "formattedTime": "Mar 17, 2021 at 2:00 AM",
       "formattedAxisTime": "Mar 17 at 2:00 AM",
-      "value": [34, 8],
+      "value": [35, 9],
       "hasData": [true, true],
-      "formattedValue": ["34", "8"]
+      "formattedValue": ["35", "9"]
     },
     {
       "time": "1615950000",
       "formattedTime": "Mar 17, 2021 at 3:00 AM",
       "formattedAxisTime": "Mar 17 at 3:00 AM",
-      "value": [30, 2],
+      "value": [34, 7],
       "hasData": [true, true],
-      "formattedValue": ["30", "2"]
+      "formattedValue": ["34", "7"]
     },
     {
       "time": "1615953600",
       "formattedTime": "Mar 17, 2021 at 4:00 AM",
       "formattedAxisTime": "Mar 17 at 4:00 AM",
-      "value": [29, 0],
-      "hasData": [true, false],
-      "formattedValue": ["29", "0"]
+      "value": [32, 1],
+      "hasData": [true, true],
+      "formattedValue": ["32", "1"]
     },
     {
       "time": "1615957200",
       "formattedTime": "Mar 17, 2021 at 5:00 AM",
       "formattedAxisTime": "Mar 17 at 5:00 AM",
-      "value": [38, 4],
+      "value": [39, 1],
       "hasData": [true, true],
-      "formattedValue": ["38", "4"],
+      "formattedValue": ["39", "1"]
+    },
+    {
+      "time": "1615960800",
+      "formattedTime": "Mar 17, 2021 at 6:00 AM",
+      "formattedAxisTime": "Mar 17 at 6:00 AM",
+      "value": [28, 2],
+      "hasData": [true, true],
+      "formattedValue": ["28", "2"]
+    },
+    {
+      "time": "1615964400",
+      "formattedTime": "Mar 17, 2021 at 7:00 AM",
+      "formattedAxisTime": "Mar 17 at 7:00 AM",
+      "value": [24, 1],
+      "hasData": [true, true],
+      "formattedValue": ["24", "1"]
+    },
+    {
+      "time": "1615968000",
+      "formattedTime": "Mar 17, 2021 at 8:00 AM",
+      "formattedAxisTime": "Mar 17 at 8:00 AM",
+      "value": [24, 6],
+      "hasData": [true, true],
+      "formattedValue": ["24", "6"]
+    },
+    {
+      "time": "1615971600",
+      "formattedTime": "Mar 17, 2021 at 9:00 AM",
+      "formattedAxisTime": "Mar 17 at 9:00 AM",
+      "value": [30, 3],
+      "hasData": [true, true],
+      "formattedValue": ["30", "3"]
+    },
+    {
+      "time": "1615975200",
+      "formattedTime": "Mar 17, 2021 at 10:00 AM",
+      "formattedAxisTime": "Mar 17 at 10:00 AM",
+      "value": [35, 4],
+      "hasData": [true, true],
+      "formattedValue": ["35", "4"]
+    },
+    {
+      "time": "1615978800",
+      "formattedTime": "Mar 17, 2021 at 11:00 AM",
+      "formattedAxisTime": "Mar 17 at 11:00 AM",
+      "value": [21, 3],
+      "hasData": [true, true],
+      "formattedValue": ["21", "3"]
+    },
+    {
+      "time": "1615982400",
+      "formattedTime": "Mar 17, 2021 at 12:00 PM",
+      "formattedAxisTime": "Mar 17 at 12:00 PM",
+      "value": [20, 3],
+      "hasData": [true, true],
+      "formattedValue": ["20", "3"]
+    },
+    {
+      "time": "1615986000",
+      "formattedTime": "Mar 17, 2021 at 1:00 PM",
+      "formattedAxisTime": "Mar 17 at 1:00 PM",
+      "value": [31, 3],
+      "hasData": [true, true],
+      "formattedValue": ["31", "3"]
+    },
+    {
+      "time": "1615989600",
+      "formattedTime": "Mar 17, 2021 at 2:00 PM",
+      "formattedAxisTime": "Mar 17 at 2:00 PM",
+      "value": [26, 6],
+      "hasData": [true, true],
+      "formattedValue": ["26", "6"]
+    },
+    {
+      "time": "1615993200",
+      "formattedTime": "Mar 17, 2021 at 3:00 PM",
+      "formattedAxisTime": "Mar 17 at 3:00 PM",
+      "value": [38, 8],
+      "hasData": [true, true],
+      "formattedValue": ["38", "8"]
+    },
+    {
+      "time": "1615996800",
+      "formattedTime": "Mar 17, 2021 at 4:00 PM",
+      "formattedAxisTime": "Mar 17 at 4:00 PM",
+      "value": [32, 4],
+      "hasData": [true, true],
+      "formattedValue": ["32", "4"]
+    },
+    {
+      "time": "1616000400",
+      "formattedTime": "Mar 17, 2021 at 5:00 PM",
+      "formattedAxisTime": "Mar 17 at 5:00 PM",
+      "value": [28, 2],
+      "hasData": [true, true],
+      "formattedValue": ["28", "2"]
+    },
+    {
+      "time": "1616004000",
+      "formattedTime": "Mar 17, 2021 at 6:00 PM",
+      "formattedAxisTime": "Mar 17 at 6:00 PM",
+      "value": [25, 6],
+      "hasData": [true, true],
+      "formattedValue": ["25", "6"]
+    },
+    {
+      "time": "1616007600",
+      "formattedTime": "Mar 17, 2021 at 7:00 PM",
+      "formattedAxisTime": "Mar 17 at 7:00 PM",
+      "value": [31, 6],
+      "hasData": [true, true],
+      "formattedValue": ["31", "6"]
+    },
+    {
+      "time": "1616011200",
+      "formattedTime": "Mar 17, 2021 at 8:00 PM",
+      "formattedAxisTime": "Mar 17 at 8:00 PM",
+      "value": [32, 6],
+      "hasData": [true, true],
+      "formattedValue": ["32", "6"]
+    },
+    {
+      "time": "1616014800",
+      "formattedTime": "Mar 17, 2021 at 9:00 PM",
+      "formattedAxisTime": "Mar 17 at 9:00 PM",
+      "value": [33, 5],
+      "hasData": [true, true],
+      "formattedValue": ["33", "5"]
+    },
+    {
+      "time": "1616018400",
+      "formattedTime": "Mar 17, 2021 at 10:00 PM",
+      "formattedAxisTime": "Mar 17 at 10:00 PM",
+      "value": [36, 9],
+      "hasData": [true, true],
+      "formattedValue": ["36", "9"]
+    },
+    {
+      "time": "1616022000",
+      "formattedTime": "Mar 17, 2021 at 11:00 PM",
+      "formattedAxisTime": "Mar 17 at 11:00 PM",
+      "value": [42, 9],
+      "hasData": [true, true],
+      "formattedValue": ["42", "9"]
+    },
+    {
+      "time": "1616025600",
+      "formattedTime": "Mar 18, 2021 at 12:00 AM",
+      "formattedAxisTime": "Mar 18 at 12:00 AM",
+      "value": [34, 9],
+      "hasData": [true, true],
+      "formattedValue": ["34", "9"]
+    },
+    {
+      "time": "1616029200",
+      "formattedTime": "Mar 18, 2021 at 1:00 AM",
+      "formattedAxisTime": "Mar 18 at 1:00 AM",
+      "value": [29, 9],
+      "hasData": [true, true],
+      "formattedValue": ["29", "9"]
+    },
+    {
+      "time": "1616032800",
+      "formattedTime": "Mar 18, 2021 at 2:00 AM",
+      "formattedAxisTime": "Mar 18 at 2:00 AM",
+      "value": [24, 6],
+      "hasData": [true, true],
+      "formattedValue": ["24", "6"]
+    },
+    {
+      "time": "1616036400",
+      "formattedTime": "Mar 18, 2021 at 3:00 AM",
+      "formattedAxisTime": "Mar 18 at 3:00 AM",
+      "value": [38, 6],
+      "hasData": [true, true],
+      "formattedValue": ["38", "6"]
+    },
+    {
+      "time": "1616040000",
+      "formattedTime": "Mar 18, 2021 at 4:00 AM",
+      "formattedAxisTime": "Mar 18 at 4:00 AM",
+      "value": [31, 4],
+      "hasData": [true, true],
+      "formattedValue": ["31", "4"]
+    },
+    {
+      "time": "1616043600",
+      "formattedTime": "Mar 18, 2021 at 5:00 AM",
+      "formattedAxisTime": "Mar 18 at 5:00 AM",
+      "value": [22, 1],
+      "hasData": [true, true],
+      "formattedValue": ["22", "1"]
+    },
+    {
+      "time": "1616047200",
+      "formattedTime": "Mar 18, 2021 at 6:00 AM",
+      "formattedAxisTime": "Mar 18 at 6:00 AM",
+      "value": [24, 3],
+      "hasData": [true, true],
+      "formattedValue": ["24", "3"]
+    },
+    {
+      "time": "1616050800",
+      "formattedTime": "Mar 18, 2021 at 7:00 AM",
+      "formattedAxisTime": "Mar 18 at 7:00 AM",
+      "value": [19, 8],
+      "hasData": [true, true],
+      "formattedValue": ["19", "8"]
+    },
+    {
+      "time": "1616054400",
+      "formattedTime": "Mar 18, 2021 at 8:00 AM",
+      "formattedAxisTime": "Mar 18 at 8:00 AM",
+      "value": [17, 5],
+      "hasData": [true, true],
+      "formattedValue": ["17", "5"]
+    },
+    {
+      "time": "1616058000",
+      "formattedTime": "Mar 18, 2021 at 9:00 AM",
+      "formattedAxisTime": "Mar 18 at 9:00 AM",
+      "value": [20, 4],
+      "hasData": [true, true],
+      "formattedValue": ["20", "4"]
+    },
+    {
+      "time": "1616061600",
+      "formattedTime": "Mar 18, 2021 at 10:00 AM",
+      "formattedAxisTime": "Mar 18 at 10:00 AM",
+      "value": [24, 6],
+      "hasData": [true, true],
+      "formattedValue": ["24", "6"]
+    },
+    {
+      "time": "1616065200",
+      "formattedTime": "Mar 18, 2021 at 11:00 AM",
+      "formattedAxisTime": "Mar 18 at 11:00 AM",
+      "value": [17, 3],
+      "hasData": [true, true],
+      "formattedValue": ["17", "3"]
+    },
+    {
+      "time": "1616068800",
+      "formattedTime": "Mar 18, 2021 at 12:00 PM",
+      "formattedAxisTime": "Mar 18 at 12:00 PM",
+      "value": [20, 3],
+      "hasData": [true, true],
+      "formattedValue": ["20", "3"]
+    },
+    {
+      "time": "1616072400",
+      "formattedTime": "Mar 18, 2021 at 1:00 PM",
+      "formattedAxisTime": "Mar 18 at 1:00 PM",
+      "value": [19, 3],
+      "hasData": [true, true],
+      "formattedValue": ["19", "3"]
+    },
+    {
+      "time": "1616076000",
+      "formattedTime": "Mar 18, 2021 at 2:00 PM",
+      "formattedAxisTime": "Mar 18 at 2:00 PM",
+      "value": [25, 5],
+      "hasData": [true, true],
+      "formattedValue": ["25", "5"]
+    },
+    {
+      "time": "1616079600",
+      "formattedTime": "Mar 18, 2021 at 3:00 PM",
+      "formattedAxisTime": "Mar 18 at 3:00 PM",
+      "value": [21, 3],
+      "hasData": [true, true],
+      "formattedValue": ["21", "3"]
+    },
+    {
+      "time": "1616083200",
+      "formattedTime": "Mar 18, 2021 at 4:00 PM",
+      "formattedAxisTime": "Mar 18 at 4:00 PM",
+      "value": [23, 5],
+      "hasData": [true, true],
+      "formattedValue": ["23", "5"]
+    },
+    {
+      "time": "1616086800",
+      "formattedTime": "Mar 18, 2021 at 5:00 PM",
+      "formattedAxisTime": "Mar 18 at 5:00 PM",
+      "value": [22, 10],
+      "hasData": [true, true],
+      "formattedValue": ["22", "10"]
+    },
+    {
+      "time": "1616090400",
+      "formattedTime": "Mar 18, 2021 at 6:00 PM",
+      "formattedAxisTime": "Mar 18 at 6:00 PM",
+      "value": [22, 9],
+      "hasData": [true, true],
+      "formattedValue": ["22", "9"]
+    },
+    {
+      "time": "1616094000",
+      "formattedTime": "Mar 18, 2021 at 7:00 PM",
+      "formattedAxisTime": "Mar 18 at 7:00 PM",
+      "value": [32, 12],
+      "hasData": [true, true],
+      "formattedValue": ["32", "12"]
+    },
+    {
+      "time": "1616097600",
+      "formattedTime": "Mar 18, 2021 at 8:00 PM",
+      "formattedAxisTime": "Mar 18 at 8:00 PM",
+      "value": [26, 11],
+      "hasData": [true, true],
+      "formattedValue": ["26", "11"]
+    },
+    {
+      "time": "1616101200",
+      "formattedTime": "Mar 18, 2021 at 9:00 PM",
+      "formattedAxisTime": "Mar 18 at 9:00 PM",
+      "value": [28, 6],
+      "hasData": [true, true],
+      "formattedValue": ["28", "6"]
+    },
+    {
+      "time": "1616104800",
+      "formattedTime": "Mar 18, 2021 at 10:00 PM",
+      "formattedAxisTime": "Mar 18 at 10:00 PM",
+      "value": [33, 7],
+      "hasData": [true, true],
+      "formattedValue": ["33", "7"]
+    },
+    {
+      "time": "1616108400",
+      "formattedTime": "Mar 18, 2021 at 11:00 PM",
+      "formattedAxisTime": "Mar 18 at 11:00 PM",
+      "value": [35, 5],
+      "hasData": [true, true],
+      "formattedValue": ["35", "5"]
+    },
+    {
+      "time": "1616112000",
+      "formattedTime": "Mar 19, 2021 at 12:00 AM",
+      "formattedAxisTime": "Mar 19 at 12:00 AM",
+      "value": [24, 3],
+      "hasData": [true, true],
+      "formattedValue": ["24", "3"]
+    },
+    {
+      "time": "1616115600",
+      "formattedTime": "Mar 19, 2021 at 1:00 AM",
+      "formattedAxisTime": "Mar 19 at 1:00 AM",
+      "value": [20, 8],
+      "hasData": [true, true],
+      "formattedValue": ["20", "8"]
+    },
+    {
+      "time": "1616119200",
+      "formattedTime": "Mar 19, 2021 at 2:00 AM",
+      "formattedAxisTime": "Mar 19 at 2:00 AM",
+      "value": [26, 3],
+      "hasData": [true, true],
+      "formattedValue": ["26", "3"]
+    },
+    {
+      "time": "1616122800",
+      "formattedTime": "Mar 19, 2021 at 3:00 AM",
+      "formattedAxisTime": "Mar 19 at 3:00 AM",
+      "value": [29, 8],
+      "hasData": [true, true],
+      "formattedValue": ["29", "8"]
+    },
+    {
+      "time": "1616126400",
+      "formattedTime": "Mar 19, 2021 at 4:00 AM",
+      "formattedAxisTime": "Mar 19 at 4:00 AM",
+      "value": [26, 4],
+      "hasData": [true, true],
+      "formattedValue": ["26", "4"]
+    },
+    {
+      "time": "1616130000",
+      "formattedTime": "Mar 19, 2021 at 5:00 AM",
+      "formattedAxisTime": "Mar 19 at 5:00 AM",
+      "value": [27, 11],
+      "hasData": [true, true],
+      "formattedValue": ["27", "11"]
+    },
+    {
+      "time": "1616133600",
+      "formattedTime": "Mar 19, 2021 at 6:00 AM",
+      "formattedAxisTime": "Mar 19 at 6:00 AM",
+      "value": [32, 11],
+      "hasData": [true, true],
+      "formattedValue": ["32", "11"]
+    },
+    {
+      "time": "1616137200",
+      "formattedTime": "Mar 19, 2021 at 7:00 AM",
+      "formattedAxisTime": "Mar 19 at 7:00 AM",
+      "value": [33, 7],
+      "hasData": [true, true],
+      "formattedValue": ["33", "7"]
+    },
+    {
+      "time": "1616140800",
+      "formattedTime": "Mar 19, 2021 at 8:00 AM",
+      "formattedAxisTime": "Mar 19 at 8:00 AM",
+      "value": [26, 5],
+      "hasData": [true, true],
+      "formattedValue": ["26", "5"],
       "isPartial": true
     }
   ],
-  "averages": [25, 4]
+  "keyword": "bepro coin",
+  "compareWith": "arweave"
 }

@@ -16,7 +16,7 @@ const {
     await createBatches();
     if (process.env.NODE_ENV === "production") {
       scheduler.schedule("0 * * * *", updateCookieStock);
-      await getGoogleTrendsDataOneByOne('day', 5);
+      await getGoogleTrendsDataOneByOne("day", 5);
       // await getGoogleTrendsDataForAllKeywords();
       // await getComparedTrendsDataForAllKeywords('day', 1)
       // scheduler.schedule("* * * * *", getCompa);
@@ -31,6 +31,11 @@ const {
       logger.info("All jobs are running");
     } else {
       logger.info("no jobs scheduled.");
+      await getGoogleTrendsDataOneByOne({
+        timeSpan: "week",
+        minsToComplete: 5,
+        compareWith: "arweave",
+      });
       // await getComparedTrendsDataForKeyword("bepro coin");
       // await getGoogleTrendsDataForAllKeywords();
       // await getComparedTrendsDataForAllKeywords("day", 1);

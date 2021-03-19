@@ -1,4 +1,5 @@
 const axios = require("axios");
+const fs = require("fs");
 const Bottleneck = require("bottleneck");
 const logger = require("./../logger");
 const getTimelineDataKey = require("./get-timeline-data-key");
@@ -6,12 +7,13 @@ const fetchTimelineData = require("./fetch-timeline-data");
 const loadCookies = require("../cookies/load-cookies");
 const printFinalReport = require("./utils/print-final-report");
 const sendDataForNormalization = require("../normalization/send-data-for-normalization");
-const keywords = require("./../../../data/keywords.json").map(
-  ({ term, category }) => ({
-    term: term.trim(),
-    category,
-  })
-);
+const keywords = [{ term: "bepro coin" }];
+// const keywords = require("./../../../data/keywords.json")
+//   .map(({ term, category }) => ({
+//     term: term.trim(),
+//     category,
+//   }));
+
 // const keywords = require("./../../../data/keywords.json").map(
 //   ({ term, category }) => ({
 //     term: term.trim(),
@@ -19,11 +21,14 @@ const keywords = require("./../../../data/keywords.json").map(
 //   })
 // ).slice(0, 250);
 
-
 const ONE_DAY = 60 * 60 * 1000 * 24;
 const SEVEN_DAYS = 60 * 1000 * (60 * 24 * 7 - 1);
 
-const getGoogleTrendsDataOneByOne = async (timeSpan = 'week', minsToComplete = 6) => {
+const getGoogleTrendsDataOneByOne = async ({
+  timeSpan = "week",
+  minsToComplete = 6,
+  compareWith,
+}) => {
   try {
     const startTime = Date.now();
     const reqsPerSec = keywords.length / (minsToComplete * 60);
@@ -45,7 +50,7 @@ const getGoogleTrendsDataOneByOne = async (timeSpan = 'week', minsToComplete = 6
           cookie: cookies[i % cookies.length],
           timeSpan,
           keyword: keywords[i].term,
-          compareWith: 'arweave',
+          compareWith,
         })
       );
     }
@@ -62,21 +67,22 @@ const getGoogleTrendsDataOneByOne = async (timeSpan = 'week', minsToComplete = 6
 
 module.exports = getGoogleTrendsDataOneByOne;
 
-async function getGoogleTrendsDataForOneKeyword({ 
+async function getGoogleTrendsDataForOneKeyword({
   keyword,
-  proxyUri = process.env.PROXY_URI, 
-  jobNumber, 
-  totalJobs, 
-  cookie, 
+  proxyUri = process.env.PROXY_URI,
+  jobNumber,
+  totalJobs,
+  cookie,
   compareWith,
   timeSpan,
 }) {
   try {
     const timelineDataKey = await getTimelineDataKey({
-      // keywords: [keyword, compareWith],
-      keywords: [keyword],
-      startTime: new Date(Date.now() - (timeSpan === 'day' ? ONE_DAY : SEVEN_DAYS)),
-      granularTimeResolution: false,
+      keywords: compareWith ? [keyword, compareWith] : [keyword],
+      startTime: new Date(
+        Date.now() - (timeSpan === "day" ? ONE_DAY : SEVEN_DAYS)
+      ),
+      granularTimeResolution: true,
       proxyUri,
       cookie,
     });
@@ -84,13 +90,18 @@ async function getGoogleTrendsDataForOneKeyword({
     const {
       default: { timelineData, averages },
     } = JSON.parse(timelineDataStr);
-    // await sendDataForNormalization({
-    //   keyword,
-    //   compareWith,
-    //   timelineData,
-    //   averages,
-    //   timeSpan,
-    // });
+    // console.log(JSON.stringify({ timelineData, averages }));
+    // fs.writeFileSync(
+    //   "./data/sample-daily-data.json",
+    //   JSON.stringify({ averages, timelineData, keyword, compareWith })
+    // );
+    sendDataForNormalization({
+      keyword,
+      compareWith,
+      timelineData,
+      averages,
+      timeSpan,
+    });
     logger.info(
       `received timeline data for job ${jobNumber}/${totalJobs}: ${keyword} - ${timeSpan}`
     );
