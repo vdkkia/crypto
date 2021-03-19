@@ -10,17 +10,13 @@ const buildHourlyChartFromDailyTrend = (timelineData) => {
     // );
 
     let addToCurrent = dp.value[0];
-    let addToCurrentRef = dp.value[1];
     let addToNext = null;
-    let addToNextRef = null;
     let addCountCurrent = 2;
     let addCountNext = 0;
 
     if (remainingPoints === 0 && totalPointsInHour === 8) {
       addToCurrent = dp.value[0] / 2.0;
-      addToCurrentRef = dp.value[1] / 2.0;
       addToNext = dp.value[0] / 2.0;
-      addToNextRef = dp.value[1] / 2.0;
       addCountCurrent = 1;
       addCountNext = 1;
     }
@@ -31,7 +27,6 @@ const buildHourlyChartFromDailyTrend = (timelineData) => {
       newDatapoints[hourlyTimestamp + 3600] = {
         count: addCountNext,
         value: addToNext,
-        refValue: addToNextRef,
       };
     }
 
@@ -41,12 +36,10 @@ const buildHourlyChartFromDailyTrend = (timelineData) => {
             ...acc[hourlyTimestamp],
             count: acc[hourlyTimestamp].count + addCountCurrent,
             value: acc[hourlyTimestamp].value + addToCurrent,
-            refValue: acc[hourlyTimestamp].refValue + addToCurrentRef,
           }
         : {
             count: addCountCurrent,
             value: addToCurrent,
-            refValue: addToCurrentRef,
           };
 
     return { ...acc, ...newDatapoints };

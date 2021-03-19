@@ -11,10 +11,10 @@ const parseWeeklyTrendsData = (weeklyTrends) => {
     time: moment.unix(Number(lastDatapoint.time)).format(),
     last_value: lastDatapoint.value[0],
     is_last_value_partial: lastDatapoint.isPartial ? true : false,
-    average: weeklyTrends.averages[0],
-    ref_average: weeklyTrends.averages[1],
+    average: weeklyTrends.reference ? weeklyTrends.averages[0] : null,
+    ref_average: weeklyTrends.reference ? weeklyTrends.averages[1] : null,
     keyword,
-    reference: weeklyTrends.reference || "UNKNOWN",
+    reference: weeklyTrends.reference || null,
   };
 
   const timeMap = {};
@@ -22,10 +22,13 @@ const parseWeeklyTrendsData = (weeklyTrends) => {
   weeklyTrends.timelineData.forEach((dp) => {
     if (!dp.isPartial) {
       record.interest_values.push(dp.value[0]);
-      record.ref_values.push(dp.value[1]);
+      if (weeklyTrends.reference) {
+        record.ref_values.push(dp.value[1]);
+      }
+
       timeMap[Number(dp.time)] = {
         value: dp.value[0],
-        refValue: dp.value[1],
+        refValue: weeklyTrends.reference ? dp.value[1] : undefined,
       };
     }
   });

@@ -87,7 +87,7 @@ async function getComperedTrendsForKeyword({
     });
     await sendDataForNormalization({
       keyword,
-      compareWith,
+      reference: compareWith,
       timelineData,
       averages,
       timeSpan,
