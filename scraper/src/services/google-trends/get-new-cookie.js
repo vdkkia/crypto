@@ -7,7 +7,7 @@ const MAX_TRIES = 500;
 const keywords = ["Are you", "feeling well"];
 
 const getNewCookie = async ({ proxyUri = process.env.PROXY_URI } = {}) => {
-  logger.info(`getting new cookie`);
+  // logger.info(`getting new cookie`);
   let cookie;
   let totalTries = 0;
 
@@ -35,11 +35,11 @@ const getNewCookie = async ({ proxyUri = process.env.PROXY_URI } = {}) => {
     }
     totalTries += 1;
   } while (!cookie && totalTries < MAX_TRIES);
-  if (cookie) {
-    logger.info(`got new cookie`);
-  } else {
-    logger.info(`failed to new cookie`);
-  }
+  // if (cookie) {
+  //   logger.info(`got new cookie`);
+  // } else {
+  //   logger.info(`failed to new cookie`);
+  // }
   return cookie;
 };
 

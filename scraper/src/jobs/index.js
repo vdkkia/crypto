@@ -4,7 +4,6 @@ const updateCookies = require("./update-cookies");
 const schedulerOptions = { timezone: "Etc/UTC" };
 
 const run = async () => {
-  console.log("running jobs...");
   await updateCookieQueue.empty();
   await updateCookies(5);
   scheduler.schedule(
