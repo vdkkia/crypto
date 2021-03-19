@@ -7,7 +7,7 @@ const MAX_TRIES = 500;
 const keywords = ["Creditcoin", "Velas"];
 
 const getNewCookie = async ({ proxyUri = process.env.PROXY_URI } = {}) => {
-  logger.info(`getting new cookie for ${proxyUri}`);
+  logger.info(`getting new cookie`);
   let cookie;
   let totalTries = 0;
 
@@ -36,9 +36,9 @@ const getNewCookie = async ({ proxyUri = process.env.PROXY_URI } = {}) => {
     totalTries += 1;
   } while (!cookie && totalTries < MAX_TRIES);
   if (cookie) {
-    logger.info(`got new cookie for ${proxyUri}`);
+    logger.info(`got new cookie`);
   } else {
-    logger.info(`failed to new cookie for ${proxyUri}`);
+    logger.info(`failed to new cookie`);
   }
   return cookie;
 };

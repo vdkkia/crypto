@@ -19,6 +19,7 @@ const getComparedTrendsDataForKeyword = async ({
     keywords: [keyword, compareWith],
     startTime,
     cookie,
+    proxyUri: process.env.PROXY_URI,
     granularTimeResolution: true,
   });
   const timelineDataStr = await fetchTimelineData(timelineDataKey, true);

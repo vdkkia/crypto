@@ -6,6 +6,7 @@ const { createBatches } = require("./src/services/batches");
 const {
   getComparedTrendsDataForAllKeywords,
   getGoogleTrendsDataForAllKeywords,
+  getGoogleTrendsDataOneByOne,
 } = require("./src/services/google-trends");
 
 (async () => {
@@ -14,16 +15,19 @@ const {
     await updateCookieStock(false);
     await createBatches();
     if (process.env.NODE_ENV === "production") {
-      scheduler.schedule("*/30 * * * *", updateCookieStock);
+      scheduler.schedule("0 * * * *", updateCookieStock);
+      await getGoogleTrendsDataOneByOne('day', 5);
+      // await getGoogleTrendsDataForAllKeywords();
+      // await getComparedTrendsDataForAllKeywords('day', 1)
       // scheduler.schedule("* * * * *", getCompa);
-      scheduler.schedule(
-        "*/5 * * * *",
-        getComparedTrendsDataForAllKeywords.bind(null, "day", 4)
-      );
-      scheduler.schedule(
-        "0 * * * *",
-        getComparedTrendsDataForAllKeywords.bind(null, "week", 40)
-      );
+      // scheduler.schedule(
+      //   "*/5 * * * *",
+      //   getComparedTrendsDataForAllKeywords.bind(null, "day", 4)
+      // );
+      // scheduler.schedule(
+      //   "0 * * * *",
+      //   getComparedTrendsDataForAllKeywords.bind(null, "week", 40)
+      // );
       logger.info("All jobs are running");
     } else {
       logger.info("no jobs scheduled.");

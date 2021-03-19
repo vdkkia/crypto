@@ -76,8 +76,9 @@ async function getTrendDataForBatch({
     // );
     const timelineDataKey = await getTimelineDataKey({
       keywords,
-      startTime: new Date(Date.now() - FOUR_HOUR),
-      granularTimeResolution: true,
+      // startTime: new Date(Date.now() - FOUR_HOUR),
+      startTime: new Date(Date.now() - 60 * 60 * 1000 * 24),
+      granularTimeResolution: false,
       proxyUri,
       cookie,
     });
@@ -93,9 +94,9 @@ async function getTrendDataForBatch({
       averages,
     });
 
-    // logger.info(
-    //   `received timeline data for batch ${batchNumber}/${totalBatches}`
-    // );
+    logger.info(
+      `received timeline data for batch ${batchNumber}/${totalBatches}`
+    );
     return 1;
   } catch (err) {
     if (axios.isCancel(err)) {
