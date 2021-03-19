@@ -16,7 +16,7 @@ const {
     await createBatches();
     if (process.env.NODE_ENV === "production") {
       scheduler.schedule("0 * * * *", updateCookieStock);
-      await getGoogleTrendsDataOneByOne("day", 5);
+      await getGoogleTrendsDataOneByOne({timeSpan: 'week', compareWith: 'arweave', minsToComplete: 5});
       // await getGoogleTrendsDataForAllKeywords();
       // await getComparedTrendsDataForAllKeywords('day', 1)
       // scheduler.schedule("* * * * *", getCompa);

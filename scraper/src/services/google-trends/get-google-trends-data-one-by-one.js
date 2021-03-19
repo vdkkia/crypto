@@ -32,10 +32,12 @@ const getGoogleTrendsDataOneByOne = async ({
   try {
     const startTime = Date.now();
     const reqsPerSec = keywords.length / (minsToComplete * 60);
+    logger.info(`sending ${reqsPerSec} requests per seconds`);
     const msBetweenReqs = Math.ceil(
       (minsToComplete * 60 * 1000) / keywords.length
     );
     const cookies = await loadCookies();
+    logger.info(`loaded ${cookies.length} cookies`);
     const batchPromises = [];
     const limiter = new Bottleneck({
       minTime: msBetweenReqs,
@@ -97,7 +99,7 @@ async function getGoogleTrendsDataForOneKeyword({
     // );
     sendDataForNormalization({
       keyword,
-      refereice: compareWith,
+      reference: compareWith,
       timelineData,
       averages,
       timeSpan,
