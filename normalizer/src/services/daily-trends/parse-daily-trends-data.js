@@ -2,9 +2,7 @@ const moment = require("moment");
 
 const parseDailyTrendsData = ({
   timelineData,
-  averages,
   keyword = "UNKNOWN",
-  reference = "UNKNOWN",
   scaleFactor,
   weeklyTrend,
 }) => {
@@ -14,9 +12,9 @@ const parseDailyTrendsData = ({
     : lastDatapoint;
   const lastThreeDays = weeklyTrend.record.interest_values.slice(-73, -1);
   const threeDayAverage =
-    lastThreeDays.reduce((a, b) => a + b, 0) / lastThreeDays.length;
-  const jumpFactor =
-    (lastFixedDatapoint.value[0] * 7.5 * scaleFactor) / threeDayAverage;
+    lastThreeDays.reduce((a, b) => a + b, 0) /
+    (lastThreeDays.length * scaleFactor * 7.5);
+  const jumpFactor = lastFixedDatapoint.value[0] / threeDayAverage;
   const record = {
     interest_values: [],
     ref_values: [],
@@ -25,10 +23,8 @@ const parseDailyTrendsData = ({
     last_value: lastDatapoint.value[0],
     is_last_value_partial: lastDatapoint.isPartial ? true : false,
     last_fixed_value: lastFixedDatapoint.value[0],
-    average: averages[0],
-    ref_average: averages[1],
     keyword,
-    reference,
+    reference: weeklyTrend.record.reference,
     scale_factor: scaleFactor,
     jump_factor: jumpFactor,
     three_day_average: threeDayAverage,
@@ -37,9 +33,13 @@ const parseDailyTrendsData = ({
   timelineData.forEach((dp) => {
     if (!dp.isPartial) {
       record.interest_values.push(dp.value[0]);
-      record.ref_values.push(dp.value[1]);
     }
   });
+
+  record.average =
+    record.interest_values.reduce((tot, v) => tot + v, 0) /
+    record.interest_values.length;
+  record.ref_average = weeklyTrend.record.ref_average / (scaleFactor * 7.5);
 
   return record;
 };
