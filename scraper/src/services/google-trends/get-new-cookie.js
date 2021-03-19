@@ -4,7 +4,7 @@ const logger = require("./../logger");
 
 const FOUR_HOUR = 60 * 60 * 1000 * 4;
 const MAX_TRIES = 500;
-const keywords = ["Creditcoin", "Velas"];
+const keywords = ["Are you", "feeling well"];
 
 const getNewCookie = async ({ proxyUri = process.env.PROXY_URI } = {}) => {
   logger.info(`getting new cookie`);
