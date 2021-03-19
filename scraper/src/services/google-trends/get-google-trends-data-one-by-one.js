@@ -7,12 +7,12 @@ const fetchTimelineData = require("./fetch-timeline-data");
 const loadCookies = require("../cookies/load-cookies");
 const printFinalReport = require("./utils/print-final-report");
 const sendDataForNormalization = require("../normalization/send-data-for-normalization");
-const keywords = [{ term: "bepro coin" }];
-// const keywords = require("./../../../data/keywords.json")
-//   .map(({ term, category }) => ({
-//     term: term.trim(),
-//     category,
-//   }));
+// const keywords = [{ term: "bepro coin" }];
+const keywords = require("./../../../data/keywords.json")
+  .map(({ term, category }) => ({
+    term: term.trim(),
+    category,
+  }));
 
 // const keywords = require("./../../../data/keywords.json").map(
 //   ({ term, category }) => ({
@@ -30,6 +30,7 @@ const getGoogleTrendsDataOneByOne = async ({
   compareWith,
 }) => {
   try {
+    logger.info(`running schedule with parameters: timeSpan=${timeSpan}, minsToComplete=${minsToComplete}, compareWith=${compareWith}`);
     const startTime = Date.now();
     const reqsPerSec = keywords.length / (minsToComplete * 60);
     logger.info(`sending ${reqsPerSec} requests per seconds`);
