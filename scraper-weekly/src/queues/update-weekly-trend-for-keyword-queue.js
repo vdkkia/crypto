@@ -6,28 +6,28 @@ const {
   getTimelineDataKey,
   fetchTimelineData,
 } = require("../services/google-trends");
+
 const sendDataForNormalization = require("../services/normalization/send-data-for-normalization");
 
 const SEVEN_DAYS = 60 * 1000 * (60 * 24 * 7 - 1);
 
-const updateWeeklyRefForKeywordQueue = new Queue(
-  "update-weekly-ref-for-keyword-queue",
+const updateWeeklyTrendForKeywordQueue = new Queue(
+  "update-weekly-trend-for-keyword-queue",
   process.env.REDIS_URI
 );
 
-updateWeeklyRefForKeywordQueue.process(async (job) => {
+updateWeeklyTrendForKeywordQueue.process(async (job) => {
   const {
     data: {
       index,
       keyword: { term, category },
       totalKeywords,
-      ref,
     },
   } = job;
   logger.info(
-    `getting weekly refs for keyword ${term} (${
+    `[job ${job.id}]: getting weekly refs for keyword ${term} (${
       index + 1
-    }/${totalKeywords}) compared with ${ref}`
+    }/${totalKeywords})`
   );
   const cookie = await loadCookie(index % process.env.COOKIE_STOCK_SIZE);
   if (!cookie) {
@@ -36,7 +36,7 @@ updateWeeklyRefForKeywordQueue.process(async (job) => {
   }
 
   const timelineDataKey = await getTimelineDataKey({
-    keywords: [term, ref],
+    keywords: [term],
     startTime: new Date(Date.now() - SEVEN_DAYS),
     granularTimeResolution: true,
     proxyUri: process.env.PROXY_URI,
@@ -48,7 +48,6 @@ updateWeeklyRefForKeywordQueue.process(async (job) => {
   } = JSON.parse(timelineDataStr);
   sendDataForNormalization({
     keyword: term,
-    reference: ref,
     timelineData,
     averages,
     timeSpan: "week",
@@ -57,23 +56,23 @@ updateWeeklyRefForKeywordQueue.process(async (job) => {
   return timelineData.length;
 });
 
-updateWeeklyRefForKeywordQueue.on("completed", (job, result) => {
+updateWeeklyTrendForKeywordQueue.on("completed", (job, result) => {
   if (result) {
     logger.info(
-      `job ${job.id}: received ${result} data points for keyword ${
+      `[job ${job.id}]: received ${result} data points for keyword ${
         job.data.keyword.term
       } (${job.data.index + 1}/${job.data.totalKeywords})`
     );
   }
 });
 
-updateWeeklyRefForKeywordQueue.on("failed", (job, error) => {
+updateWeeklyTrendForKeywordQueue.on("failed", (job, error) => {
   logger.error(
-    `job ${job.id}: unable to update weekly ref for keyword ${
+    `[job ${job.id}]: unable to update weekly ref for keyword ${
       job.data.keyword.term
     } (${job.data.index + 1}/${job.data.totalKeywords})`
   );
   logger.error(error.message);
 });
 
-module.exports = updateWeeklyRefForKeywordQueue;
+module.exports = updateWeeklyTrendForKeywordQueue;

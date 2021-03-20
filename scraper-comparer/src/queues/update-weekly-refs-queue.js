@@ -47,13 +47,13 @@ updateWeeklyRefsQueue.process("schedule", async (job) => {
 
 updateWeeklyRefsQueue.on("completed", (job, result) => {
   logger.info(
-    `[SCHEDULER]: job "${job.name}" with id ${job.id}: weekly ref updated for keyword`
+    `[SCHEDULER]: job "${job.name}" with id ${job.id}: weekly ref updated`
   );
 });
 
 updateWeeklyRefsQueue.on("failed", (job, errorMessage) => {
   logger.error(
-    `[SCHEDULER]: job "${job.name}" with id ${job.id}: unable to update weekly ref for keyword`
+    `[SCHEDULER]: job "${job.name}" with id ${job.id}: unable to update weekly ref`
   );
 });
 

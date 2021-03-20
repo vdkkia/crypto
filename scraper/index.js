@@ -15,19 +15,8 @@ const schedulerOptions = { timezone: "Etc/UTC" };
   try {
     await redis.init();
     await jobs.run();
-    // await updateCookieStock(false);
-    // await createBatches();
+
     // if (process.env.NODE_ENV === "production") {
-    //   scheduler.schedule("45 * * * *", updateCookieStock);
-    //   scheduler.schedule(
-    //     "15 1,13 * * *",
-    //     getGoogleTrendsDataOneByOne.bind(null, {
-    //       timeSpan: "week",
-    //       compareWith: "arweave",
-    //       minsToComplete: 60 * 11,
-    //     }),
-    //     schedulerOptions
-    //   );
 
     //   scheduler.schedule(
     //     "15 * * * *",
