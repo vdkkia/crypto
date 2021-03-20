@@ -2,8 +2,10 @@ const Queue = require("bull");
 
 const logger = require("../services/logger");
 const { loadCookie } = require("../services/cookies");
-const getTimelineDataKey = require("../services/google-trends/get-timeline-data-key");
-const fetchTimelineData = require("../services/google-trends/fetch-timeline-data");
+const {
+  getTimelineDataKey,
+  fetchTimelineData,
+} = require("../services/google-trends");
 const sendDataForNormalization = require("../services/normalization/send-data-for-normalization");
 
 const SEVEN_DAYS = 60 * 1000 * (60 * 24 * 7 - 1);
