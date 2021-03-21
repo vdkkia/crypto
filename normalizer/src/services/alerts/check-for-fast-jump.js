@@ -66,7 +66,9 @@ const checkForFastJump = async (
     if (channelIndex !== null) {
       const alertMessage = `Jump factor ${jumpFactor.toFixed(
         2
-      )} detected on <https://trends.google.com/trends/explore?date=now%204-H&q=${encodeURIComponent(
+      )} (relative = ${jumpFactorNormalized.toFixed(
+        2
+      )}) detected on <https://trends.google.com/trends/explore?date=now%201-d&q=${encodeURIComponent(
         keyword
       )},arweave|${keyword}> | channel ${channelIndex}
 `;
