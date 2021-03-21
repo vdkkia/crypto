@@ -71,6 +71,9 @@ async function getGoogleTrendsDataForOneKeyword({
 }) {
   try {
     const cookie = await loadCookie(jobNumber - 1);
+     logger.info(
+      `getting timeline data for job ${jobNumber}/${totalJobs}: ${keyword} - ${timeSpan} - scheduler: ${scheduler}`
+    );
     if (!cookie) {
       logger.info(`${jobNumber}/${totalJobs}: "${keyword}" waiting for cookie`);
       return 0;
@@ -95,9 +98,9 @@ async function getGoogleTrendsDataForOneKeyword({
       averages,
       timeSpan,
     });
-    logger.info(
-      `received timeline data for job ${jobNumber}/${totalJobs}: ${keyword} - ${timeSpan} - scheduler: ${scheduler}`
-    );
+    // logger.info(
+    //   `received timeline data for job ${jobNumber}/${totalJobs}: ${keyword} - ${timeSpan} - scheduler: ${scheduler}`
+    // );
     return 1;
   } catch (err) {
     if (axios.isCancel(err)) {
