@@ -26,7 +26,7 @@ const processMovingAverage = async () => {
       throttledQuery({
         movingAverageWindow: 24 * 60,
         movingAverageSize: 7 * 24 * 60,
-        keyword: coins[i].keyword,
+        keyword: coins[i].term,
       })
     );
   }
@@ -36,7 +36,7 @@ const processMovingAverage = async () => {
 
 const saveMovingAverage = async (records) => {
   const values = records.map((record) => ({
-    KEYWORD: record.keyword,
+    KEYWORD: record.term,
     RATIO: record.ratio,
     CALC_TIME: Date.now(),
   }));
@@ -74,7 +74,7 @@ const getCoinWeeklyData = async (page = 1) => {
   const data = result.map((x) => ({
     trends: x.array_agg.map((t) => t.split(",")[0]),
     time: x.array_agg.map((t) => t.split(",")[1]),
-    coin: coins.find((m) => m.keyword == x.KEYWORD)?.Symbol,
+    coin: coins.find((m) => m.term == x.KEYWORD)?.Symbol,
   }));
   return data;
 };
