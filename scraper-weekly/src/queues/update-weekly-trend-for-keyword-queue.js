@@ -24,11 +24,6 @@ updateWeeklyTrendForKeywordQueue.process(async (job) => {
       totalKeywords,
     },
   } = job;
-  logger.info(
-    `[job ${job.id}]: getting weekly trend for keyword ${term} (${
-      index + 1
-    }/${totalKeywords})`
-  );
   const cookie = await loadCookie(index);
   if (!cookie) {
     logger.info("Waiting for cookie...");

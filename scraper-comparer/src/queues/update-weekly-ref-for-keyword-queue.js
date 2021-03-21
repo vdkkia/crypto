@@ -19,7 +19,7 @@ updateWeeklyRefForKeywordQueue.process(async (job) => {
   const {
     data: {
       index,
-      keyword: { term, category },
+      keyword: { term },
       totalKeywords,
       ref,
     },

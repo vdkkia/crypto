@@ -1,8 +1,10 @@
 const updateWeeklyRefsQueue = require("./../queues/update-weekly-refs-queue");
 const updateWeeklyRefForKeywordQueue = require("./../queues/update-weekly-ref-for-keyword-queue");
 
-const REPEAT_EVERY_MS = 12 * 60 * 1000;
-const MINS_TO_COMPLETE = 12 * 60 - 30;
+const REPEAT_EVERY_MS =
+  process.env.NODE_ENV === "production" ? 12 * 60 * 60 * 1000 : 4 * 60 * 1000;
+const MINS_TO_COMPLETE =
+  process.env.NODE_ENV === "production" ? 12 * 60 - 30 : 2;
 const REF_KEYWORD = "arweave";
 
 const jobsOptions = {
@@ -11,8 +13,8 @@ const jobsOptions = {
 };
 
 const run = async () => {
-  await updateWeeklyRefForKeywordQueue.empty();
-  await updateWeeklyRefsQueue.empty();
+  await updateWeeklyRefForKeywordQueue.obliterate({ force: true });
+  await updateWeeklyRefsQueue.obliterate({ force: true });
   const repJobs = await updateWeeklyRefsQueue.getRepeatableJobs();
   await Promise.all(
     repJobs.map((j) => updateWeeklyRefsQueue.removeRepeatableByKey(j.key))

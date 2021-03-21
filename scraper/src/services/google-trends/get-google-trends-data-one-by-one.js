@@ -5,19 +5,7 @@ const getTimelineDataKey = require("./get-timeline-data-key");
 const fetchTimelineData = require("./fetch-timeline-data");
 const { loadCookie } = require("../cookies");
 const sendDataForNormalization = require("../normalization/send-data-for-normalization");
-const keywords = require("./../../../data/keywords.json").map(
-  ({ term, category }) => ({
-    term: term.trim(),
-    category,
-  })
-);
-
-// const keywords = require("./../../../data/keywords.json").map(
-//   ({ term, category }) => ({
-//     term: term.trim(),
-//     category,
-//   })
-// ).slice(0, 250);
+const keywords = require("./../keywords");
 
 const ONE_DAY = 60 * 60 * 1000 * 24;
 const SEVEN_DAYS = 60 * 1000 * (60 * 24 * 7 - 1);
@@ -26,6 +14,7 @@ const getGoogleTrendsDataOneByOne = async ({
   timeSpan = "week",
   minsToComplete = 6,
   compareWith,
+  scheduler = "unknown",
 }) => {
   try {
     logger.info(
@@ -53,6 +42,7 @@ const getGoogleTrendsDataOneByOne = async ({
           timeSpan,
           keyword: keywords[i].term,
           compareWith,
+          scheduler,
         })
       );
     }
@@ -77,6 +67,7 @@ async function getGoogleTrendsDataForOneKeyword({
   totalJobs,
   compareWith,
   timeSpan,
+  scheduler,
 }) {
   try {
     const cookie = await loadCookie(jobNumber - 1);
@@ -105,7 +96,7 @@ async function getGoogleTrendsDataForOneKeyword({
       timeSpan,
     });
     logger.info(
-      `received timeline data for job ${jobNumber}/${totalJobs}: ${keyword} - ${timeSpan}`
+      `received timeline data for job ${jobNumber}/${totalJobs}: ${keyword} - ${timeSpan} - scheduler: ${scheduler}`
     );
     return 1;
   } catch (err) {

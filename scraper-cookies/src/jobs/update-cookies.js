@@ -1,14 +1,16 @@
 const updateCookieQueue = require("../queues/update-cookie-queue");
 const logger = require("./../services/logger");
 
+const cookieStockSize =
+  process.env.NODE_ENV === "production" ? process.env.COOKIE_STOCK_SIZE : 40;
+
 const updateCookies = async (minutesToComplete = 60 * 2) => {
   logger.info(
-    `adding ${process.env.COOKIE_STOCK_SIZE} cookies in ${minutesToComplete} minutes`
+    `adding ${cookieStockSize} cookies in ${minutesToComplete} minutes`
   );
 
-  const numOfCookies = process.env.COOKIE_STOCK_SIZE;
-  const jobDelay = (minutesToComplete * 60 * 1000) / numOfCookies;
-  for (let i = 0; i < numOfCookies; i++) {
+  const jobDelay = (minutesToComplete * 60 * 1000) / cookieStockSize;
+  for (let i = 0; i < cookieStockSize; i++) {
     await updateCookieQueue.add({ index: i }, { delay: jobDelay * i });
   }
 };

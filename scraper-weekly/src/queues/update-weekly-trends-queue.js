@@ -1,7 +1,7 @@
 const Queue = require("bull");
 
 const updateWeeklyTrendForKeywordQueue = require("./update-weekly-trend-for-keyword-queue");
-const keywords = require("./../../data/keywords.json");
+const keywords = require("./../services/keywords");
 const logger = require("../services/logger");
 
 const updateWeeklyTrendsQueue = new Queue(

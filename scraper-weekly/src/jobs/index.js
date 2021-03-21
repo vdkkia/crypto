@@ -1,8 +1,9 @@
 const updateWeeklyTrendsQueue = require("./../queues/update-weekly-trends-queue");
 const updateWeeklyTrendForKeywordQueue = require("./../queues/update-weekly-trend-for-keyword-queue");
 
-const REPEAT_EVERY_MS = 1 * 60 * 1000;
-const MINS_TO_COMPLETE = 55;
+const REPEAT_EVERY_MS =
+  process.env.NODE_ENV === "production" ? 1 * 60 * 1000 : 60 * 1000;
+const MINS_TO_COMPLETE = process.env.NODE_ENV === "production" ? 55 : 0.8;
 
 const jobsOptions = {
   removeOnComplete: true,
@@ -10,8 +11,8 @@ const jobsOptions = {
 };
 
 const run = async () => {
-  await updateWeeklyTrendsQueue.empty();
-  await updateWeeklyTrendForKeywordQueue.empty();
+  await updateWeeklyTrendsQueue.obliterate({ force: true });
+  await updateWeeklyTrendForKeywordQueue.obliterate({ force: true });
   const repJobs = await updateWeeklyTrendsQueue.getRepeatableJobs();
   await Promise.all(
     repJobs.map((j) => updateWeeklyTrendsQueue.removeRepeatableByKey(j.key))
