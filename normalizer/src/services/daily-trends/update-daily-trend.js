@@ -10,6 +10,9 @@ const updateDailyTrend = async ({ keyword, timelineData }) => {
   if (!weeklyTrend) {
     throw new Error(`no weekly trend for ${keyword}`);
   }
+  if (timelineData.length === 0) {
+    throw new Error(`daily trend data for ${keyword} is empty`);
+  }
   const scaleFactor = findScaleFactor(weeklyTrend, timelineData);
   const parsedDailyTrend = parseDailyTrendsData({
     timelineData,

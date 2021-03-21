@@ -12,6 +12,9 @@ const updateWeeklyTrend = async ({
   logger.info(
     `updating weekly trend for ${keyword} - ref: ${reference || "no"}`
   );
+  if (timelineData.length === 0) {
+    throw new Error(`weekly trend data for ${keyword} is empty`);
+  }
   const parsedWeeklyTrendsData = parseWeeklyTrendsData({
     timelineData,
     averages,
