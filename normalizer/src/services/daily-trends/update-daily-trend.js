@@ -6,6 +6,7 @@ const saveDailyTrendRecord = require("./save-daily-trend-record");
 const logger = require("./../logger");
 
 const updateDailyTrend = async ({ keyword, timelineData }) => {
+  logger.info(`updating daily trend for ${keyword}`);
   const weeklyTrend = await loadWeeklyTrendForKeyword(keyword);
   if (!weeklyTrend) {
     throw new Error(`no weekly trend for ${keyword}`);

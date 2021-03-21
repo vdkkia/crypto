@@ -16,7 +16,6 @@ const normalizeIncomingData = async ({
       await updateDailyTrend({ keyword, timelineData });
     }
   } catch (err) {
-    logger.error("error in normalizeIncomingData");
     logger.error(err.message);
   }
 };
