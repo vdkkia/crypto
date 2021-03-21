@@ -21,12 +21,13 @@ const recordColumns = new pgp.helpers.ColumnSet(
   { table: "dailies" }
 );
 
-const saveDailyTrendRecord = (record) => {
+const saveDailyTrendRecord = async (record) => {
   try {
     const values = [record];
     const query =
       pgp.helpers.insert(values, recordColumns) + "ON CONFLICT DO NOTHING";
-    return db.none(query);
+    const result = await db.none(query);
+    return result;
   } catch (err) {
     logger.error(
       `error in saving daily trend record for ${record.keyword} to db.`

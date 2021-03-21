@@ -9,7 +9,9 @@ const updateWeeklyTrend = async ({
   timelineData,
   averages,
 }) => {
-  logger.info(`updating weekly trend for ${keyword} - ref: ${reference}`);
+  logger.info(
+    `updating weekly trend for ${keyword} - ref: ${reference || "no"}`
+  );
   const parsedWeeklyTrendsData = parseWeeklyTrendsData({
     timelineData,
     averages,
