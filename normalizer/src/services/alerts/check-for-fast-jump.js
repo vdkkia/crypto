@@ -70,7 +70,7 @@ const checkForFastJump = async (
         keyword
       )},arweave|${keyword}> | channel ${channelIndex}
 `;
-      const result = await axios.post(process.env.SLACK_INCOMING_WEBHOOK, {
+      const result = await axios.post(channels[channelIndex], {
         text: alertMessage,
         blocks: [
           {
