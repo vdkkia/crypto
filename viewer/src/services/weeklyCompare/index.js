@@ -2,17 +2,18 @@ const logger = require("../logger");
 const { db, pgp } = require("../../adapters/postgres");
 const coins = require("./../../../data/coins.json");
 const Bottleneck = require("bottleneck");
+const PAGE_SIZE = 10;
 
 const cs = new pgp.helpers.ColumnSet(["KEYWORD", "RATIO", "CALC_TIME"], { table: "moving_average" });
 
-const testCoins = [
-  { keyword: "SFP coin", symbol: "safepal" },
-  { keyword: "SFT coin", symbol: "safex-token" },
-];
+// const testCoins = [
+//   { keyword: "SFP coin", symbol: "safepal" },
+//   { keyword: "SFT coin", symbol: "safex-token" },
+// ];
 
 const processMovingAverage = async () => {
   const secondsToComplete = 1;
-  const msBetweenReqs = Math.ceil((secondsToComplete * 1000) / testCoins.length);
+  const msBetweenReqs = Math.ceil((secondsToComplete * 1000) / coins.length);
   const limiter = new Bottleneck({
     minTime: msBetweenReqs,
     maxConcurrent: process.env.MAX_CONCURRENCY,
@@ -20,12 +21,12 @@ const processMovingAverage = async () => {
 
   const throttledQuery = limiter.wrap(_process);
   const promises = [];
-  for (let i = 0; i < testCoins.length; i++) {
+  for (let i = 0; i < coins.length; i++) {
     promises.push(
       throttledQuery({
         movingAverageWindow: 24 * 60,
         movingAverageSize: 7 * 24 * 60,
-        keyword: testCoins[i].keyword,
+        keyword: coins[i].keyword,
       })
     );
   }
@@ -59,14 +60,16 @@ const _process = async ({ keyword, movingAverageWindow, movingAverageSize }) => 
   }
 };
 
-const getCoinWeeklyData = async () => {
+const getCoinWeeklyData = async (page = 1) => {
   const today = new Date();
   const lastWeek = new Date(today.getTime() - 7 * 24 * 60 * 60 * 1000);
   const query =
     `SELECT moving_average."RATIO", "KEYWORD", array_agg("INTEREST" || ',' || "TIMESTAMP")` +
     ` FROM (SELECT * FROM cointerests WHERE "REPORT_TIME" >= ${lastWeek.getTime() / 1000}) AS X` +
     ` FULL OUTER JOIN moving_average USING("KEYWORD") GROUP BY "KEYWORD", moving_average."RATIO"` +
-    ` ORDER BY nullif(moving_average."RATIO", 'NaN') DESC NULLS LAST`; //LIMIT 5
+    ` ORDER BY nullif(moving_average."RATIO", 'NaN') DESC NULLS LAST LIMIT ${PAGE_SIZE} OFFSET ${
+      (page - 1) * PAGE_SIZE
+    }`;
   const result = await db.query(query);
   const data = result.map((x) => ({
     trends: x.array_agg.map((t) => t.split(",")[0]),
