@@ -22,7 +22,6 @@ const updateDailyTrend = async ({ keyword, timelineData }) => {
   }
   const scaleFactor = findScaleFactor(weeklyTrend, timelineData);
   const relativeScale = findRelativeScale(refTrend);
-  logger.info(`relative scale: ${relativeScale}`);
   const parsedDailyTrend = parseDailyTrendsData({
     timelineData,
     keyword,
