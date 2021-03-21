@@ -1,13 +1,10 @@
 const axios = require("axios");
-const fs = require("fs");
 const Bottleneck = require("bottleneck");
 const logger = require("./../logger");
 const getTimelineDataKey = require("./get-timeline-data-key");
 const fetchTimelineData = require("./fetch-timeline-data");
 const { loadCookie } = require("../cookies");
-const printFinalReport = require("./utils/print-final-report");
 const sendDataForNormalization = require("../normalization/send-data-for-normalization");
-// const keywords = [{ term: "bepro coin" }];
 const keywords = require("./../../../data/keywords.json").map(
   ({ term, category }) => ({
     term: term.trim(),
