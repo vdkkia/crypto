@@ -1,12 +1,12 @@
 {
-  "name": "scraper",
+  "name": "scraper-weekly",
   "version": "1.0.0",
-  "description": "This microservice is responsible for getting google trends data regularly, sending the data to the broker, and sending alert messages to the slack channel when special trends are detected",
+  "description": "This microservice is responsible for keeping an updated 7-day trend for each keyword",
   "main": "index.js",
   "scripts": {
     "start": "if [ $NODE_ENV = 'production' ]; then node index.js; else nodemon index.js -L; fi"
   },
-  "author": "pumphunters",
+  "author": "",
   "license": "ISC",
   "devDependencies": {
     "nodemon": "2.0.7"
@@ -15,9 +15,9 @@
     "axios": "0.21.1",
     "bottleneck": "2.19.5",
     "bull": "3.21.1",
-    "ioredis": "4.23.0",
+    "ioredis": "4.24.2",
     "moment": "2.29.1",
-    "node-cron": "2.0.3",
+    "node-cron": "3.0.0",
     "proxy-agent": "4.0.1",
     "winston": "3.3.3"
   }

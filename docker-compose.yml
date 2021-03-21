@@ -76,6 +76,87 @@ services:
       options:
         max-size: "500m"
         max-file: "10"
+  scraper-cookies:
+    container_name: scraper-cookies
+    restart: unless-stopped
+    build:
+      context: scraper-cookies
+      dockerfile: Dockerfile
+    environment:
+      - NODE_ENV
+      - REDIS_URI=redis://redis:6379
+      - PROXY_URI
+      - COOKIE_STOCK_SIZE
+      - AXIOS_TIMEOUT
+      - MAX_CONCURRENCY
+    depends_on:
+      - redis
+    command: bash -c "cd /usr/src/app && npm install && npm run start"
+    volumes:
+      - ./scraper-cookies:/usr/src/app
+      - /usr/src/app/node_modules
+      - scraper_cookies_logs:/logs
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "500m"
+        max-file: "10"
+  scraper-comparer:
+    container_name: scraper-comparer
+    restart: unless-stopped
+    build:
+      context: scraper-comparer
+      dockerfile: Dockerfile
+    environment:
+      - NODE_ENV
+      - REDIS_URI=redis://redis:6379
+      - PROXY_URI
+      - ACTIVE_SECONDS_PER_MIN
+      - COOKIE_STOCK_SIZE
+      - AXIOS_TIMEOUT
+      - MAX_CONCURRENCY
+      - NORMALIZER_API_BASE_URI=http://normalizer:3000
+    depends_on:
+      - redis
+      - normalizer
+    command: bash -c "cd /usr/src/app && npm install && npm run start"
+    volumes:
+      - ./scraper-comparer:/usr/src/app
+      - /usr/src/app/node_modules
+      - scraper_comparer_logs:/logs
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "500m"
+        max-file: "10"
+  scraper-weekly:
+    container_name: scraper-weekly
+    restart: unless-stopped
+    build:
+      context: scraper-weekly
+      dockerfile: Dockerfile
+    environment:
+      - NODE_ENV
+      - REDIS_URI=redis://redis:6379
+      - PROXY_URI
+      - ACTIVE_SECONDS_PER_MIN
+      - COOKIE_STOCK_SIZE
+      - AXIOS_TIMEOUT
+      - MAX_CONCURRENCY
+      - NORMALIZER_API_BASE_URI=http://normalizer:3000
+    depends_on:
+      - redis
+      - normalizer
+    command: bash -c "cd /usr/src/app && npm install && npm run start"
+    volumes:
+      - ./scraper-weekly:/usr/src/app
+      - /usr/src/app/node_modules
+      - scraper_weekly_logs:/logs
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "500m"
+        max-file: "10"
   scraper:
     container_name: scraper
     restart: unless-stopped
@@ -90,7 +171,6 @@ services:
       - COOKIE_STOCK_SIZE
       - AXIOS_TIMEOUT
       - MAX_CONCURRENCY
-      - SLACK_INCOMING_WEBHOOK
       - NORMALIZER_API_BASE_URI=http://normalizer:3000
     depends_on:
       - redis
@@ -111,4 +191,7 @@ volumes:
   mongo-data:
   redis-data:
   scraper_logs:
+  scraper_cookies_logs:
+  scraper_weekly_logs:
+  scraper_comparer_logs:
   normalizer_logs:
