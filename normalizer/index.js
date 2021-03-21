@@ -8,6 +8,8 @@ const normalizeIncomingData = require("./src/services/normalizaton/normalize-inc
 const comparedSample = require("./sample-data/sample-compared-data-weekly.json");
 const weeklySample = require("./sample-data/sample-weekly-data.json");
 const dailySample = require("./sample-data/sample-daily-data.json");
+const loadReferencedWeeklyTrendForKeyword = require("./src/services/weekly-trends/load-referenced-weekly-trend-for-keyword");
+const findRelativeScale = require("./src/services/daily-trends/find-relative-scale");
 
 const sample = dailySample;
 
@@ -18,13 +20,6 @@ routes(server);
   try {
     await redis.init();
     await mongodb.init();
-    // await normalizeIncomingData({
-    //   keyword: sample.keyword,
-    //   reference: sample.compareWith,
-    //   timelineData: sample.timelineData,
-    //   averages: sample.averages,
-    //   timeSpan: "day",
-    // });
 
     server.listen(3000, (err) => {
       if (err) {
