@@ -24,11 +24,6 @@ updateWeeklyRefForKeywordQueue.process(async (job) => {
       ref,
     },
   } = job;
-  logger.info(
-    `getting weekly refs for keyword ${term} (${
-      index + 1
-    }/${totalKeywords}) compared with ${ref}`
-  );
   const cookie = await loadCookie(index);
   if (!cookie) {
     logger.info("Waiting for cookie...");

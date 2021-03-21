@@ -7,10 +7,10 @@ const MINS_TO_COMPLETE =
   process.env.NODE_ENV === "production" ? 60 * 4 - 10 : 4;
 
 const run = async () => {
-  await updateCookieQueue.obliterate({ force: true });
-  // await updateCookieQueue.clean(1);
-  // await updateCookieQueue.empty();
-  await updateCookies(MINS_TO_COMPLETE);
+  // await updateCookieQueue.obliterate({ force: true });
+  // await updateCookieQueue.clean(1000);
+  await updateCookieQueue.empty();
+  await updateCookies(10);
   scheduler.schedule(
     "12 */4 * * *",
     updateCookies.bind(null, MINS_TO_COMPLETE),

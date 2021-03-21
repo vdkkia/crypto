@@ -72,7 +72,7 @@ async function getGoogleTrendsDataForOneKeyword({
   try {
     const cookie = await loadCookie(jobNumber - 1);
     if (!cookie) {
-      logger.info(`waiting for cookie`);
+      logger.info(`${jobNumber}/${totalJobs}: "${keyword}" waiting for cookie`);
       return 0;
     }
     const timelineDataKey = await getTimelineDataKey({

@@ -11,8 +11,10 @@ const jobsOptions = {
 };
 
 const run = async () => {
-  await updateWeeklyTrendsQueue.obliterate({ force: true });
-  await updateWeeklyTrendForKeywordQueue.obliterate({ force: true });
+  // await updateWeeklyTrendsQueue.obliterate({ force: true });
+  // await updateWeeklyTrendForKeywordQueue.obliterate({ force: true });
+  await updateWeeklyTrendsQueue.empty();
+  await updateWeeklyTrendForKeywordQueue.empty();
   const repJobs = await updateWeeklyTrendsQueue.getRepeatableJobs();
   await Promise.all(
     repJobs.map((j) => updateWeeklyTrendsQueue.removeRepeatableByKey(j.key))
