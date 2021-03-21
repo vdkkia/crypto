@@ -46,6 +46,7 @@ const parseDailyTrendsData = ({
     return record;
   } catch (err) {
     logger.error(`error in parsing daily trend data for ${keyword}`);
+    logger.error(`length of timelineData: ${timelineData.length}`);
     logger.error(err.message);
     throw err;
   }

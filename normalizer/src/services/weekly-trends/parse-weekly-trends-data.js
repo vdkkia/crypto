@@ -41,6 +41,7 @@ const parseWeeklyTrendsData = (weeklyTrends) => {
         weeklyTrends.reference || "none"
       }`
     );
+    logger.error(`length of timelineData: ${weeklyTrends.timelineData.length}`);
     logger.error(err.message);
     throw err;
   }
