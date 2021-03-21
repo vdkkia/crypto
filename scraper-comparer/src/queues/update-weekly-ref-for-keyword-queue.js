@@ -29,7 +29,7 @@ updateWeeklyRefForKeywordQueue.process(async (job) => {
       index + 1
     }/${totalKeywords}) compared with ${ref}`
   );
-  const cookie = await loadCookie(index % process.env.COOKIE_STOCK_SIZE);
+  const cookie = await loadCookie(index);
   if (!cookie) {
     logger.info("Waiting for cookie...");
     return false;

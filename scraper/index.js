@@ -1,15 +1,6 @@
 const redis = require("./src/adapters/redis");
-const scheduler = require("node-cron");
 const logger = require("./src/services/logger");
-const updateCookieStock = require("./src/services/cookies/update-cookie-stock");
-const { createBatches } = require("./src/services/batches");
-const {
-  getComparedTrendsDataForAllKeywords,
-  getGoogleTrendsDataForAllKeywords,
-  getGoogleTrendsDataOneByOne,
-} = require("./src/services/google-trends");
 const jobs = require("./src/jobs");
-const schedulerOptions = { timezone: "Etc/UTC" };
 
 (async () => {
   try {
@@ -17,15 +8,6 @@ const schedulerOptions = { timezone: "Etc/UTC" };
     await jobs.run();
 
     // if (process.env.NODE_ENV === "production") {
-
-    //   scheduler.schedule(
-    //     "15 * * * *",
-    //     getGoogleTrendsDataOneByOne.bind(null, {
-    //       timeSpan: "week",
-    //       minsToComplete: 55,
-    //     }),
-    //     schedulerOptions
-    //   );
 
     //   scheduler.schedule(
     //     "*/8 * * * *",
@@ -56,5 +38,6 @@ const schedulerOptions = { timezone: "Etc/UTC" };
     // }
   } catch (err) {
     logger.error(err.message);
+    console.log(err);
   }
 })();

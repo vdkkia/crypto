@@ -25,11 +25,11 @@ updateWeeklyTrendForKeywordQueue.process(async (job) => {
     },
   } = job;
   logger.info(
-    `[job ${job.id}]: getting weekly refs for keyword ${term} (${
+    `[job ${job.id}]: getting weekly trend for keyword ${term} (${
       index + 1
     }/${totalKeywords})`
   );
-  const cookie = await loadCookie(index % process.env.COOKIE_STOCK_SIZE);
+  const cookie = await loadCookie(index);
   if (!cookie) {
     logger.info("Waiting for cookie...");
     return false;
@@ -68,7 +68,7 @@ updateWeeklyTrendForKeywordQueue.on("completed", (job, result) => {
 
 updateWeeklyTrendForKeywordQueue.on("failed", (job, error) => {
   logger.error(
-    `[job ${job.id}]: unable to update weekly ref for keyword ${
+    `[job ${job.id}]: unable to update weekly trend for keyword ${
       job.data.keyword.term
     } (${job.data.index + 1}/${job.data.totalKeywords})`
   );

@@ -4,15 +4,16 @@ const Bottleneck = require("bottleneck");
 const logger = require("./../logger");
 const getTimelineDataKey = require("./get-timeline-data-key");
 const fetchTimelineData = require("./fetch-timeline-data");
-const loadCookies = require("../cookies/load-cookies");
+const { loadCookie } = require("../cookies");
 const printFinalReport = require("./utils/print-final-report");
 const sendDataForNormalization = require("../normalization/send-data-for-normalization");
 // const keywords = [{ term: "bepro coin" }];
-const keywords = require("./../../../data/keywords.json")
-  .map(({ term, category }) => ({
+const keywords = require("./../../../data/keywords.json").map(
+  ({ term, category }) => ({
     term: term.trim(),
     category,
-  }));
+  })
+);
 
 // const keywords = require("./../../../data/keywords.json").map(
 //   ({ term, category }) => ({
@@ -30,15 +31,17 @@ const getGoogleTrendsDataOneByOne = async ({
   compareWith,
 }) => {
   try {
-    logger.info(`running schedule with parameters: timeSpan=${timeSpan}, minsToComplete=${minsToComplete}, compareWith=${compareWith}`);
+    logger.info(
+      `running schedule with parameters: timeSpan=${timeSpan}, minsToComplete=${minsToComplete}, compareWith=${
+        compareWith || "nothing"
+      }`
+    );
     const startTime = Date.now();
     const reqsPerSec = keywords.length / (minsToComplete * 60);
     logger.info(`sending ${reqsPerSec} requests per seconds`);
     const msBetweenReqs = Math.ceil(
       (minsToComplete * 60 * 1000) / keywords.length
     );
-    const cookies = await loadCookies();
-    logger.info(`loaded ${cookies.length} cookies`);
     const batchPromises = [];
     const limiter = new Bottleneck({
       minTime: msBetweenReqs,
@@ -50,7 +53,6 @@ const getGoogleTrendsDataOneByOne = async ({
         throttledJobs({
           jobNumber: i + 1,
           totalJobs: keywords.length,
-          cookie: cookies[i % cookies.length],
           timeSpan,
           keyword: keywords[i].term,
           compareWith,
@@ -62,7 +64,8 @@ const getGoogleTrendsDataOneByOne = async ({
     logger.info(
       `The whole process took ${(endTime - startTime) / 1000} seconds to finish`
     );
-    printFinalReport(results, `${timeSpan} trends`);
+    // printFinalReport(results, `${timeSpan} trends`);
+    return results;
   } catch (err) {
     logger.error(err.message);
   }
@@ -75,11 +78,15 @@ async function getGoogleTrendsDataForOneKeyword({
   proxyUri = process.env.PROXY_URI,
   jobNumber,
   totalJobs,
-  cookie,
   compareWith,
   timeSpan,
 }) {
   try {
+    const cookie = await loadCookie(jobNumber - 1);
+    if (!cookie) {
+      logger.info(`waiting for cookie`);
+      return 0;
+    }
     const timelineDataKey = await getTimelineDataKey({
       keywords: compareWith ? [keyword, compareWith] : [keyword],
       startTime: new Date(
@@ -93,11 +100,6 @@ async function getGoogleTrendsDataForOneKeyword({
     const {
       default: { timelineData, averages },
     } = JSON.parse(timelineDataStr);
-    // console.log(JSON.stringify({ timelineData, averages }));
-    // fs.writeFileSync(
-    //   "./data/sample-daily-data.json",
-    //   JSON.stringify({ averages, timelineData, keyword, compareWith })
-    // );
     sendDataForNormalization({
       keyword,
       reference: compareWith,
