@@ -5,10 +5,37 @@
             <div class="row mainRow">
             </div>
             <script>
-                const fullData = JSON.parse('<%-JSON.stringify(data)%>')
-                console.log(fullData)
-                for (let i = 0; i < fullData.length; i++) {
-                    displayChart(fullData[i], "c" + i)
+                let page = 1
+                getData(page)
+                $(document).ready(function () {
+                    $(window).scroll(function () {
+                        if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+                            getData(++page)
+                        }
+                    });
+                });
+
+                function getData() {
+                    $.ajax({
+                        url: '<%= process.env.WEBSITE_BASE_URL %>' + '/list?page=' + page,
+                        type: "GET",
+                        success: (data) => {
+                            $.each(data, (i, x) => {
+                                displayChart(x, getRandomString(5))
+                            })
+                            coinStat()
+                        },
+                        error: (e) => { console.error(e) }
+                    })
+                }
+
+                function getRandomString(length) {
+                    const randomChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+                    let result = '';
+                    for (let i = 0; i < length; i++) {
+                        result += randomChars.charAt(Math.floor(Math.random() * randomChars.length));
+                    }
+                    return result;
                 }
             </script>
         </body>

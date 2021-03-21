@@ -9,7 +9,12 @@ app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 app.use(express.static("./public"));
 app.get("/", async (req, res) => {
-  res.render("pages/default", { data: await getCoinWeeklyData() });
+  res.render("pages/default");
+});
+
+app.get("/list", async (req, res) => {
+  const { page } = req.query;
+  res.send(await getCoinWeeklyData(page));
 });
 
 app.listen(EXPRESS_PORT, () => {
