@@ -84,8 +84,8 @@ const checkForFastJump = async (
       )},arweave|${keyword}> | channel ${channelIndex} | ${generateReportUid({
         keyword,
         reportTime: report_time,
-        weeklyTrendReportTime: weeklyTrend.report_time,
-        refTrendReportTime: refTrend.report_time,
+        weeklyTrendReportTime: weeklyTrend.record.report_time,
+        refTrendReportTime: refTrend.record.report_time,
       })}
 `;
       const result = await axios.post(channels[channelIndex], {
