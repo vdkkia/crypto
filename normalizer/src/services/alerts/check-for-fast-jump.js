@@ -1,5 +1,6 @@
 const axios = require("axios");
 const logger = require("../logger");
+const generateReportUid = require("./utils/generate-alert-uid");
 
 const channels = [
   process.env.SLACK_INCOMING_WEBHOOK_1,
@@ -15,8 +16,18 @@ const channels = [
 ];
 
 const checkForFastJump = async (
-  { jump_factor, keyword, reference, average, ref_average, last_fixed_value },
-  relativeScale
+  {
+    jump_factor,
+    keyword,
+    reference,
+    average,
+    ref_average,
+    last_fixed_value,
+    report_time,
+  },
+  relativeScale,
+  weeklyTrend,
+  refTrend
 ) => {
   try {
     let channelIndex = null;
@@ -70,7 +81,12 @@ const checkForFastJump = async (
         2
       )}) detected on <https://trends.google.com/trends/explore?date=now%201-d&q=${encodeURIComponent(
         keyword
-      )},arweave|${keyword}> | channel ${channelIndex}
+      )},arweave|${keyword}> | channel ${channelIndex} | ${generateReportUid({
+        keyword,
+        reportTime: report_time,
+        weeklyTrendReportTime: weeklyTrend.report_time,
+        refTrendReportTime: refTrend.report_time,
+      })}
 `;
       const result = await axios.post(channels[channelIndex], {
         text: alertMessage,

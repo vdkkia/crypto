@@ -21,8 +21,8 @@ const parseWeeklyTrendsData = (weeklyTrends) => {
 
     const timeMap = {};
 
-    weeklyTrends.timelineData.forEach((dp) => {
-      if (!dp.isPartial) {
+    weeklyTrends.timelineData.forEach((dp, index) => {
+      if (!dp.isPartial && index < weeklyTrends.timelineData.length - 1) {
         record.interest_values.push(dp.value[0]);
         if (weeklyTrends.reference) {
           record.ref_values.push(dp.value[1]);

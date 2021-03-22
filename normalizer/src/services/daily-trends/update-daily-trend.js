@@ -29,7 +29,7 @@ const updateDailyTrend = async ({ keyword, timelineData }) => {
     weeklyTrend,
   });
   saveDailyTrendRecord(parsedDailyTrend);
-  checkForFastJump(parsedDailyTrend, relativeScale);
+  checkForFastJump(parsedDailyTrend, relativeScale, weeklyTrend, refTrend);
 };
 
 module.exports = updateDailyTrend;
