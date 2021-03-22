@@ -81,12 +81,12 @@ const checkForFastJump = async (
         2
       )}) detected on <https://trends.google.com/trends/explore?date=now%201-d&q=${encodeURIComponent(
         keyword
-      )},arweave|${keyword}> | channel ${channelIndex} | ${generateReportUid({
+      )},arweave|${keyword}> | channel ${channelIndex} | <${generateReportUid({
         keyword,
         reportTime: report_time,
         weeklyTrendReportTime: weeklyTrend.record.report_time,
         refTrendReportTime: refTrend.record.report_time,
-      })}
+      })}|uid>
 `;
       const result = await axios.post(channels[channelIndex], {
         text: alertMessage,
