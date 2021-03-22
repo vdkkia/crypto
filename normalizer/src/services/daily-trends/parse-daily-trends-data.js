@@ -9,9 +9,7 @@ const parseDailyTrendsData = ({
 }) => {
   try {
     const lastDatapoint = timelineData[timelineData.length - 1];
-    const lastFixedDatapoint = lastDatapoint.isPartial
-      ? timelineData[timelineData.length - 2]
-      : lastDatapoint;
+    const lastFixedDatapoint = timelineData[timelineData.length - 2];
     const lastThreeDays = weeklyTrend.record.interest_values.slice(-73, -1);
     const threeDayAverage =
       lastThreeDays.reduce((a, b) => a + b, 0) /
@@ -32,8 +30,8 @@ const parseDailyTrendsData = ({
       three_day_average: threeDayAverage,
     };
 
-    timelineData.forEach((dp) => {
-      if (!dp.isPartial) {
+    timelineData.forEach((dp, index) => {
+      if (!dp.isPartial && index < timelineData.length - 1) {
         record.interest_values.push(dp.value[0]);
       }
     });
