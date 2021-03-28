@@ -54,4 +54,3 @@ CREATE TABLE IF NOT EXISTS dailies (
 SELECT create_hypertable('dailies', 'time');
 
 
-

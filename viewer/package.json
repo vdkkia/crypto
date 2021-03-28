@@ -1,0 +1,26 @@
+{
+    "name": "trends-viewer",
+    "version": "1.0.0",
+    "description": "This microservice is responsible for showing the trends data as well as the price info to the user",
+    "main": "index.js",
+    "scripts": {
+        "start": "if [ $NODE_ENV = 'production' ]; then node index.js; else nodemon index.js -L; fi"
+    },
+    "author": "pumphunters",
+    "license": "ISC",
+    "devDependencies": {
+        "nodemon": "2.0.7"
+    },
+    "dependencies": {
+        "axios": "^0.21.1",
+        "bottleneck": "^2.19.5",
+        "ejs": "^3.1.6",
+        "express": "^4.17.1",
+        "ioredis": "4.23.0",
+        "moment": "2.29.1",
+        "mongoose": "5.11.19",
+        "node-cron": "2.0.3",
+        "pg-promise": "10.9.5",
+        "winston": "3.3.3"
+    }
+}

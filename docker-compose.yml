@@ -195,6 +195,34 @@ services:
       options:
         max-size: "500m"
         max-file: "10"
+  viewer:
+    container_name: viewer
+    restart: unless-stopped
+    build:
+      context: viewer
+      dockerfile: Dockerfile
+    ports:
+      - 5000:5000
+    environment:
+      - NODE_ENV
+      - POSTGRES_URI=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}
+      - POSTGRES_EXPOSED_PORT
+      - POSTGRES_DB
+      - POSTGRES_USER
+      - POSTGRES_PASSWORD
+      - MAX_CONCURRENCY
+    depends_on:
+      - db
+    command: bash -c "cd /usr/src/app && npm install && npm run start"
+    volumes:
+      - ./viewer:/usr/src/app
+      - /usr/src/app/node_modules
+      - viewer_logs:/logs
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "500m"
+        max-file: "10"
 
 volumes:
   db-data:
@@ -205,3 +233,4 @@ volumes:
   scraper_weekly_logs:
   scraper_comparer_logs:
   normalizer_logs:
+  viewer_logs:
