@@ -23,7 +23,6 @@ app.listen(EXPRESS_PORT, () => {
 
 (async () => {
   try {
-    scheduler.schedule("0 1 * * *", processMovingAverage);
     // processMovingAverage()
   } catch (err) {
     logger.error(err.message);

@@ -53,11 +53,4 @@ CREATE TABLE IF NOT EXISTS dailies (
 
 SELECT create_hypertable('dailies', 'time');
 
-CREATE TABLE moving_average (
-  "KEYWORD" text,
-  "RATIO" double precision,
-  "CALC_TIME" text
-);
-
-
 

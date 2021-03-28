@@ -1,81 +1,75 @@
 const logger = require("../logger");
-const { db, pgp } = require("../../adapters/postgres");
-const coins = require("./../../../data/coins.json");
+const { db } = require("../../adapters/postgres");
+const coins = require("./../../../data/new_coins.json");
 const Bottleneck = require("bottleneck");
 const PAGE_SIZE = 10;
 
-const cs = new pgp.helpers.ColumnSet(["KEYWORD", "RATIO", "CALC_TIME"], { table: "moving_average" });
-
-// const testCoins = [
-//   { keyword: "SFP coin", symbol: "safepal" },
-//   { keyword: "SFT coin", symbol: "safex-token" },
-// ];
-
-const processMovingAverage = async () => {
+const processMovingAverage = async (page) => {
   const secondsToComplete = 1;
   const msBetweenReqs = Math.ceil((secondsToComplete * 1000) / coins.length);
   const limiter = new Bottleneck({
     minTime: msBetweenReqs,
     maxConcurrent: process.env.MAX_CONCURRENCY,
   });
-
   const throttledQuery = limiter.wrap(_process);
   const promises = [];
-  for (let i = 0; i < coins.length; i++) {
+  const start = Math.min((page - 1) * PAGE_SIZE, coins.length - 1);
+  const end = Math.min(page * PAGE_SIZE, coins.length);
+  for (let i = start; i < end; i++) {
     promises.push(
       throttledQuery({
-        movingAverageWindow: 24 * 60,
-        movingAverageSize: 7 * 24 * 60,
         keyword: coins[i].term,
       })
     );
   }
-  const results = await Promise.all(promises);
-  await saveMovingAverage(results);
+  return await Promise.all(promises);
 };
 
-const saveMovingAverage = async (records) => {
-  const values = records.map((record) => ({
-    KEYWORD: record.term,
-    RATIO: record.ratio,
-    CALC_TIME: Date.now(),
-  }));
-  const query = pgp.helpers.insert(values, cs);
-  await db.none(query);
-};
-
-const _process = async ({ keyword, movingAverageWindow, movingAverageSize }) => {
+const _process = async ({ keyword }) => {
   try {
-    const movingAverageWindowQuery = `SELECT AVG("INTEREST") AS AVG1 FROM cointerests WHERE LOWER("KEYWORD")=LOWER('${keyword}') limit ${movingAverageWindow}`;
-    const movingAverageSizeQuery = `SELECT AVG("INTEREST") AS AVG2 FROM cointerests WHERE LOWER("KEYWORD")=LOWER('${keyword}') limit ${movingAverageSize}`;
-    const ratio = await db.any(
+    const movingAverageWindowQuery = `SELECT (SELECT AVG(s) FROM UNNEST(interest_values) s) as AVG1 FROM dailies WHERE LOWER(keyword)=LOWER('${keyword}') ORDER BY CAST(report_time AS INTEGER) DESC limit 1`;
+    const movingAverageSizeQuery = `SELECT (SELECT AVG(s) FROM UNNEST(interest_values) s) as AVG2 from weeklies WHERE LOWER(keyword)=LOWER('${keyword}') ORDER BY CAST(report_time AS INTEGER) DESC limit 1`;
+    const _ratio = db.query(
       `WITH daily AS (${movingAverageWindowQuery}), weekly AS (${movingAverageSizeQuery}) SELECT` +
         ` CASE WHEN CAST((SELECT AVG2 FROM weekly) AS FLOAT) > 0 THEN CAST((SELECT AVG1 FROM daily) AS FLOAT)/CAST((SELECT AVG2 FROM weekly) AS FLOAT) ELSE 0 END AS RESULT`
     );
+
+    const _values = db.query(
+      `SELECT interest_values, report_time FROM weeklies WHERE LOWER(keyword)=LOWER('${keyword}') ORDER BY CAST(report_time AS INTEGER) DESC limit 1`
+    );
+    const [ratio, values] = await Promise.all([_ratio, _values]);
     logger.info(`keyword: ${keyword}, ratio: ${ratio[0].result}`);
-    return { keyword, ratio: parseFloat(ratio[0].result) };
+    return {
+      keyword,
+      ratio: parseFloat(ratio[0].result),
+      interest_values: values[0]?.interest_values,
+      report_time: values[0]?.report_time,
+    };
   } catch (e) {
-    logger.error("Error: " + e);
+    logger.error(`${e}`);
     return { keyword, ratio: 0 };
   }
 };
 
 const getCoinWeeklyData = async (page = 1) => {
-  const today = new Date();
-  const lastWeek = new Date(today.getTime() - 7 * 24 * 60 * 60 * 1000);
-  const query =
-    `SELECT moving_average."RATIO", "KEYWORD", array_agg("INTEREST" || ',' || "TIMESTAMP")` +
-    ` FROM (SELECT * FROM cointerests WHERE "REPORT_TIME" >= ${lastWeek.getTime() / 1000}) AS X` +
-    ` FULL OUTER JOIN moving_average USING("KEYWORD") GROUP BY "KEYWORD", moving_average."RATIO"` +
-    ` ORDER BY nullif(moving_average."RATIO", 'NaN') DESC NULLS LAST LIMIT ${PAGE_SIZE} OFFSET ${
-      (page - 1) * PAGE_SIZE
-    }`;
-  const result = await db.query(query);
-  const data = result.map((x) => ({
-    trends: x.array_agg.map((t) => t.split(",")[0]),
-    time: x.array_agg.map((t) => t.split(",")[1]),
-    coin: coins.find((m) => m.term == x.KEYWORD)?.Symbol,
-  }));
+  let res = await processMovingAverage(page);
+  res.sort((a, b) => {
+    if (a.ratio > b.ratio) return 1;
+    else if (a.ratio < b.ratio) return -1;
+    else return 0;
+  });
+
+  const data = res.map((item) => {
+    return {
+      trends: item.interest_values,
+      time: item.interest_values
+        ? item.interest_values.map(
+            (x, i) => item.report_time - (item.interest_values.length - i) * 60 * 60 * 1000
+          )
+        : [],
+      coin: coins.find((m) => m.term == item.keyword)?.id,
+    };
+  });
   return data;
 };
 
