@@ -34,45 +34,36 @@ const checkForFastJump = async (
     const jumpFactor = jump_factor;
     const jumpFactorNormalized = jumpFactor * relativeScale;
 
-    if (jumpFactor >= 100 && jumpFactorNormalized >= 1) channelIndex = 9;
-    else if (jumpFactor >= 20 && jumpFactor < 100 && jumpFactorNormalized >= 1)
+    if (jumpFactor >= 20 && jumpFactorNormalized >= 10) channelIndex = 9;
+    else if (jumpFactor >= 20 && jumpFactor < 10 && jumpFactorNormalized >= 5)
       channelIndex = 8;
-    else if (jumpFactor >= 10 && jumpFactor < 20 && jumpFactorNormalized >= 2)
+    else if (jumpFactor >= 10 && jumpFactor < 20 && jumpFactorNormalized >= 10)
       channelIndex = 7;
     else if (
       jumpFactor >= 10 &&
       jumpFactor < 20 &&
-      jumpFactorNormalized >= 0.5 &&
-      jumpFactorNormalized < 2
+      jumpFactorNormalized >= 5 &&
+      jumpFactorNormalized < 10
     )
       channelIndex = 6;
-    else if (jumpFactor >= 7 && jumpFactor < 10 && jumpFactorNormalized >= 2)
+    else if (jumpFactor >= 5 && jumpFactor < 10 && jumpFactorNormalized >= 20)
       channelIndex = 5;
     else if (
-      jumpFactor >= 7 &&
+      jumpFactor >= 5 &&
       jumpFactor < 10 &&
-      jumpFactorNormalized >= 0.5 &&
-      jumpFactorNormalized < 2
+      jumpFactorNormalized >= 10 &&
+      jumpFactorNormalized < 20
     )
       channelIndex = 4;
-    else if (jumpFactor >= 5 && jumpFactor < 7 && jumpFactorNormalized >= 2)
+    else if (jumpFactor >= 3 && jumpFactor < 5 && jumpFactorNormalized >= 25)
       channelIndex = 3;
     else if (
-      jumpFactor >= 5 &&
-      jumpFactor < 7 &&
-      jumpFactorNormalized >= 0.5 &&
-      jumpFactorNormalized < 2
+      jumpFactor >= 3 &&
+      jumpFactor < 5 &&
+      jumpFactorNormalized >= 15 &&
+      jumpFactorNormalized < 25
     )
       channelIndex = 2;
-    else if (jumpFactor >= 3.5 && jumpFactor < 5 && jumpFactorNormalized >= 2)
-      channelIndex = 1;
-    else if (
-      jumpFactor >= 3.5 &&
-      jumpFactor < 5 &&
-      jumpFactorNormalized >= 0.5 &&
-      jumpFactorNormalized < 2
-    )
-      channelIndex = 0;
 
     if (channelIndex !== null) {
       const alertMessage = `Jump factor ${jumpFactor.toFixed(
