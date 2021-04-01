@@ -7,11 +7,11 @@ const buildLogger = (fileNameTimestamp) =>
     format: winston.format.simple(),
     transports: [
       new winston.transports.File({
-        filename: `/logs/${fileNameTimestamp}-errors.log`,
+        filename: `./logs/${fileNameTimestamp}-errors.log`,
         level: "error",
       }),
       new winston.transports.File({
-        filename: `/logs/${fileNameTimestamp}-all.log`,
+        filename: `./logs/${fileNameTimestamp}-all.log`,
       }),
       new winston.transports.Console({
         format: winston.format.combine(
