@@ -16,6 +16,7 @@ const recordColumns = new pgp.helpers.ColumnSet(
     "reference",
     "scale_factor",
     "jump_factor",
+    "relative_jump_factor",
     "three_day_average",
   ],
   { table: "dailies" }

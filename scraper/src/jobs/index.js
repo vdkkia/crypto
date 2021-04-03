@@ -6,12 +6,16 @@ const MINS_TO_COMPLETE = process.env.NODE_ENV === "production" ? 5 : 1;
 
 const jobsOptions = {
   removeOnComplete: true,
-  removeOnFail: false,
+  removeOnFail: true,
 };
 
 const run = async () => {
   // await updateDailyTrendsQueue.obliterate({ force: true });
   await updateDailyTrendsQueue.empty();
+  await updateDailyTrendsQueue.clean(60 * 60 * 1000);
+  setInterval(() => {
+    updateDailyTrendsQueue.clean(60 * 60 * 1000);
+  }, 60 * 60 * 1000);
   const repJobs = await updateDailyTrendsQueue.getRepeatableJobs();
   await Promise.all(
     repJobs.map((j) => updateDailyTrendsQueue.removeRepeatableByKey(j.key))

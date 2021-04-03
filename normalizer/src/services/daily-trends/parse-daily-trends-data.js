@@ -6,6 +6,7 @@ const parseDailyTrendsData = ({
   keyword = "UNKNOWN",
   scaleFactor,
   weeklyTrend,
+  relativeScale,
 }) => {
   try {
     const lastDatapoint = timelineData[timelineData.length - 1];
@@ -27,6 +28,7 @@ const parseDailyTrendsData = ({
       reference: weeklyTrend.record.reference,
       scale_factor: scaleFactor,
       jump_factor: jumpFactor,
+      relative_jump_factor: jumpFactor * relativeScale,
       three_day_average: threeDayAverage,
     };
 

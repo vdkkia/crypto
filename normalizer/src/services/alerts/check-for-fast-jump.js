@@ -24,6 +24,7 @@ const checkForFastJump = async (
     ref_average,
     last_fixed_value,
     report_time,
+    relative_jump_factor,
   },
   relativeScale,
   weeklyTrend,
@@ -32,7 +33,7 @@ const checkForFastJump = async (
   try {
     let channelIndex = null;
     const jumpFactor = jump_factor;
-    const jumpFactorNormalized = jumpFactor * relativeScale;
+    const jumpFactorNormalized = relative_jump_factor;
 
     if (jumpFactor >= 20 && jumpFactorNormalized >= 10) channelIndex = 9;
     else if (jumpFactor >= 20 && jumpFactor < 10 && jumpFactorNormalized >= 5)
