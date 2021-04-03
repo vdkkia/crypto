@@ -10,6 +10,10 @@ const run = async () => {
   // await updateCookieQueue.obliterate({ force: true });
   // await updateCookieQueue.clean(1000);
   await updateCookieQueue.empty();
+  await updateCookieQueue.clean(60 * 60 * 1000);
+  setInterval(() => {
+    updateCookieQueue.clean(60 * 60 * 1000);
+  }, 60 * 60 * 1000);
   await updateCookies(10);
   scheduler.schedule(
     "12 */4 * * *",

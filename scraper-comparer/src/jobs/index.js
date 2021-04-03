@@ -9,7 +9,7 @@ const REF_KEYWORD = "arweave";
 
 const jobsOptions = {
   removeOnComplete: true,
-  removeOnFail: false,
+  removeOnFail: true,
 };
 
 const run = async () => {
@@ -17,6 +17,14 @@ const run = async () => {
   // await updateWeeklyRefsQueue.obliterate({ force: true });
   await updateWeeklyRefForKeywordQueue.empty();
   await updateWeeklyRefsQueue.empty();
+  await updateWeeklyRefForKeywordQueue.clean(60 * 60 * 1000);
+  await updateWeeklyRefsQueue.clean(60 * 60 * 1000);
+  setInterval(() => {
+    updateWeeklyRefForKeywordQueue.clean(60 * 60 * 1000);
+  }, 60 * 60 * 1000);
+  setInterval(() => {
+    updateWeeklyRefsQueue.clean(60 * 60 * 1000);
+  }, 60 * 60 * 1000);
   const repJobs = await updateWeeklyRefsQueue.getRepeatableJobs();
   await Promise.all(
     repJobs.map((j) => updateWeeklyRefsQueue.removeRepeatableByKey(j.key))

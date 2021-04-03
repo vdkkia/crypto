@@ -27,6 +27,7 @@ const updateDailyTrend = async ({ keyword, timelineData }) => {
     keyword,
     scaleFactor,
     weeklyTrend,
+    relativeScale,
   });
   saveDailyTrendRecord(parsedDailyTrend);
   checkForFastJump(parsedDailyTrend, relativeScale, weeklyTrend, refTrend);

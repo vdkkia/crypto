@@ -8,7 +8,7 @@ const updateDailyTrendsQueue = new Queue(
   "update-daily-trends-queue",
   process.env.REDIS_URI,
   {
-    settins: {
+    settings: {
       stalledInterval: 0,
     },
   }

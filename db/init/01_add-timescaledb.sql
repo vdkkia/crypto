@@ -47,6 +47,7 @@ CREATE TABLE IF NOT EXISTS dailies (
   reference                   TEXT,
   scale_factor                DOUBLE PRECISION,
   jump_factor                 DOUBLE PRECISION,
+  relative_jump_factor        DOUBLE PRECISION,
   three_day_average           DOUBLE PRECISION,
   constraint pk_daily_keyword_time primary key (keyword, time)
 );
