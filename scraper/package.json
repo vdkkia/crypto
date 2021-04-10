@@ -17,6 +17,8 @@
     "bull": "3.21.1",
     "ioredis": "4.23.0",
     "moment": "2.29.1",
+    "mongoose": "^5.12.3",
+    "mongoose-sequence": "^5.3.1",
     "node-cron": "2.0.3",
     "proxy-agent": "4.0.1",
     "winston": "3.3.3"
