@@ -5,8 +5,12 @@ const getTimelineDataKey = require("./get-timeline-data-key");
 const fetchTimelineData = require("./fetch-timeline-data");
 const { loadCookie } = require("../cookies");
 const sendDataForNormalization = require("../normalization/send-data-for-normalization");
+const minuteTrends_2Hour = require("../../models/2HourMinuteTrends");
+const minuteTrends_12Hour = require("../../models/12HourMinuteTrends");
+
 const keywords = require("./../keywords");
 
+const FOUR_HOURS = 60 * 60 * 1000 * 4;
 const ONE_DAY = 60 * 60 * 1000 * 24;
 const SEVEN_DAYS = 60 * 1000 * (60 * 24 * 7 - 1);
 
@@ -15,6 +19,7 @@ const getGoogleTrendsDataOneByOne = async ({
   minsToComplete = 6,
   compareWith,
   scheduler = "unknown",
+  normalize = true,
 }) => {
   try {
     logger.info(
@@ -25,9 +30,7 @@ const getGoogleTrendsDataOneByOne = async ({
     const startTime = Date.now();
     const reqsPerSec = keywords.length / (minsToComplete * 60);
     logger.info(`sending ${reqsPerSec} requests per seconds`);
-    const msBetweenReqs = Math.ceil(
-      (minsToComplete * 60 * 1000) / keywords.length
-    );
+    const msBetweenReqs = Math.ceil((minsToComplete * 60 * 1000) / keywords.length);
     const batchPromises = [];
     const limiter = new Bottleneck({
       minTime: msBetweenReqs,
@@ -43,14 +46,13 @@ const getGoogleTrendsDataOneByOne = async ({
           keyword: keywords[i].term,
           compareWith,
           scheduler,
+          normalize,
         })
       );
     }
     const results = await Promise.all(batchPromises);
     const endTime = Date.now();
-    logger.info(
-      `The whole process took ${(endTime - startTime) / 1000} seconds to finish`
-    );
+    logger.info(`The whole process took ${(endTime - startTime) / 1000} seconds to finish`);
     // printFinalReport(results, `${timeSpan} trends`);
     return results;
   } catch (err) {
@@ -68,10 +70,11 @@ async function getGoogleTrendsDataForOneKeyword({
   compareWith,
   timeSpan,
   scheduler,
+  normalize = true,
 }) {
   try {
     const cookie = await loadCookie(jobNumber - 1);
-     logger.info(
+    logger.info(
       `getting timeline data for job ${jobNumber}/${totalJobs}: ${keyword} - ${timeSpan} - scheduler: ${scheduler}`
     );
     if (!cookie) {
@@ -81,23 +84,51 @@ async function getGoogleTrendsDataForOneKeyword({
     const timelineDataKey = await getTimelineDataKey({
       keywords: compareWith ? [keyword, compareWith] : [keyword],
       startTime: new Date(
-        Date.now() - (timeSpan === "day" ? ONE_DAY : SEVEN_DAYS)
+        Date.now() - (timeSpan === "day" ? ONE_DAY : timeSpan === "4hours" ? FOUR_HOURS : SEVEN_DAYS)
       ),
       granularTimeResolution: true,
       proxyUri,
       cookie,
     });
+    
     const timelineDataStr = await fetchTimelineData(timelineDataKey, true);
     const {
       default: { timelineData, averages },
     } = JSON.parse(timelineDataStr);
-    sendDataForNormalization({
-      keyword,
-      reference: compareWith,
-      timelineData,
-      averages,
-      timeSpan,
-    });
+
+    if (normalize) {
+      sendDataForNormalization({
+        keyword,
+        reference: compareWith,
+        timelineData,
+        averages,
+        timeSpan,
+      });
+    } else {
+      //Store to mongoDB
+      if (timeSpan === "day") {
+        // Each 12 hours... Trends of last day
+        await minuteTrends_12Hour.create({
+          keyword,
+          reference: compareWith,
+          timelineData,
+          averages,
+          timeSpan,
+        });
+        logger.warn(`minuteTrends_12Hour data for ${keyword} stored in MongoDB`);
+      } else {
+        // Each 2 hours... Trends of last 4 hours
+        await minuteTrends_2Hour.create({
+          keyword,
+          reference: compareWith,
+          timelineData,
+          averages,
+          timeSpan,
+        });
+        logger.warn(`minuteTrends_2Hour data for ${keyword} stored in MongoDB`);
+      }
+    }
+
     // logger.info(
     //   `received timeline data for job ${jobNumber}/${totalJobs}: ${keyword} - ${timeSpan} - scheduler: ${scheduler}`
     // );
@@ -108,9 +139,7 @@ async function getGoogleTrendsDataForOneKeyword({
       logger.error(err.message);
       return 0;
     } else {
-      logger.error(
-        `job ${jobNumber} failed with status ${err?.response?.status} and code ${err?.code}.`
-      );
+      logger.error(`job ${jobNumber} failed with status ${err?.response?.status} and code ${err?.code}.`);
       logger.error(err.message);
       return -1;
     }
