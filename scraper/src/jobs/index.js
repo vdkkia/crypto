@@ -17,29 +17,29 @@ const jobsOptions = {
 };
 
 const run = async () => {
-  // await updateDailyTrendsQueue.obliterate({ force: true });
-  await updateDailyTrendsQueue.empty();
-  await updateDailyTrendsQueue.clean(60 * 60 * 1000);
-  setInterval(() => {
-    updateDailyTrendsQueue.clean(60 * 60 * 1000);
-  }, 60 * 60 * 1000);
-  const repJobs = await updateDailyTrendsQueue.getRepeatableJobs();
-  await Promise.all(repJobs.map((j) => updateDailyTrendsQueue.removeRepeatableByKey(j.key)));
+  // // await updateDailyTrendsQueue.obliterate({ force: true });
+  // await updateDailyTrendsQueue.empty();
+  // await updateDailyTrendsQueue.clean(60 * 60 * 1000);
+  // setInterval(() => {
+  //   updateDailyTrendsQueue.clean(60 * 60 * 1000);
+  // }, 60 * 60 * 1000);
+  // const repJobs = await updateDailyTrendsQueue.getRepeatableJobs();
+  // await Promise.all(repJobs.map((j) => updateDailyTrendsQueue.removeRepeatableByKey(j.key)));
 
-  await updateDailyTrendsQueue.add(
-    "once",
-    { minsToComplete: MINS_TO_COMPLETE, scheduler: "first-time" },
-    jobsOptions
-  );
+  // await updateDailyTrendsQueue.add(
+  //   "once",
+  //   { minsToComplete: MINS_TO_COMPLETE, scheduler: "first-time" },
+  //   jobsOptions
+  // );
 
-  await updateDailyTrendsQueue.add(
-    "schedule",
-    {
-      minsToComplete: MINS_TO_COMPLETE,
-      jobsOptions: { ...jobsOptions, repeat: { every: REPEAT_EVERY_MS } },
-    },
-    { delay: REPEAT_EVERY_MS }
-  );
+  // await updateDailyTrendsQueue.add(
+  //   "schedule",
+  //   {
+  //     minsToComplete: MINS_TO_COMPLETE,
+  //     jobsOptions: { ...jobsOptions, repeat: { every: REPEAT_EVERY_MS } },
+  //   },
+  //   { delay: REPEAT_EVERY_MS }
+  // );
 
   //=============================minute trends 2-hour======================================
   await updateMinuteTrendsQueue.empty();

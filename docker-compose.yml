@@ -51,41 +51,41 @@ services:
       - mongo-data:/data/db
     ports:
       - "${MONGO_EXPOSED_PORT}:27017"
-  normalizer:
-    container_name: normalizer
-    restart: unless-stopped
-    build:
-      context: normalizer
-      dockerfile: Dockerfile
-    environment:
-      - NODE_ENV
-      - REDIS_URI=redis://redis:6379
-      - POSTGRES_URI=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}
-      - MONGO_URI=mongodb://${MONGO_INITDB_USERNAME}:${MONGO_INITDB_PASSWORD}@mongodb:27017/${MONGO_INITDB_DATABASE}
-      - SLACK_INCOMING_WEBHOOK
-      - SLACK_INCOMING_WEBHOOK_1
-      - SLACK_INCOMING_WEBHOOK_2
-      - SLACK_INCOMING_WEBHOOK_3
-      - SLACK_INCOMING_WEBHOOK_4
-      - SLACK_INCOMING_WEBHOOK_5
-      - SLACK_INCOMING_WEBHOOK_6
-      - SLACK_INCOMING_WEBHOOK_7
-      - SLACK_INCOMING_WEBHOOK_8
-      - SLACK_INCOMING_WEBHOOK_9
-      - SLACK_INCOMING_WEBHOOK_10
-    depends_on:
-      - redis
-      - db
-    command: bash -c "cd /usr/src/app && npm install && npm run start"
-    volumes:
-      - ./normalizer:/usr/src/app
-      - /usr/src/app/node_modules
-      - normalizer_logs:/logs
-    logging:
-      driver: "json-file"
-      options:
-        max-size: "500m"
-        max-file: "10"
+  # normalizer:
+  #   container_name: normalizer
+  #   restart: unless-stopped
+  #   build:
+  #     context: normalizer
+  #     dockerfile: Dockerfile
+  #   environment:
+  #     - NODE_ENV
+  #     - REDIS_URI=redis://redis:6379
+  #     - POSTGRES_URI=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}
+  #     - MONGO_URI=mongodb://${MONGO_INITDB_USERNAME}:${MONGO_INITDB_PASSWORD}@mongodb:27017/${MONGO_INITDB_DATABASE}
+  #     - SLACK_INCOMING_WEBHOOK
+  #     - SLACK_INCOMING_WEBHOOK_1
+  #     - SLACK_INCOMING_WEBHOOK_2
+  #     - SLACK_INCOMING_WEBHOOK_3
+  #     - SLACK_INCOMING_WEBHOOK_4
+  #     - SLACK_INCOMING_WEBHOOK_5
+  #     - SLACK_INCOMING_WEBHOOK_6
+  #     - SLACK_INCOMING_WEBHOOK_7
+  #     - SLACK_INCOMING_WEBHOOK_8
+  #     - SLACK_INCOMING_WEBHOOK_9
+  #     - SLACK_INCOMING_WEBHOOK_10
+  #   depends_on:
+  #     - redis
+  #     - db
+  #   command: bash -c "cd /usr/src/app && npm install && npm run start"
+  #   volumes:
+  #     - ./normalizer:/usr/src/app
+  #     - /usr/src/app/node_modules
+  #     - normalizer_logs:/logs
+  #   logging:
+  #     driver: "json-file"
+  #     options:
+  #       max-size: "500m"
+  #       max-file: "10"
   scraper-cookies:
     container_name: scraper-cookies
     restart: unless-stopped
@@ -111,62 +111,62 @@ services:
       options:
         max-size: "500m"
         max-file: "10"
-  scraper-comparer:
-    container_name: scraper-comparer
-    restart: unless-stopped
-    build:
-      context: scraper-comparer
-      dockerfile: Dockerfile
-    environment:
-      - NODE_ENV
-      - REDIS_URI=redis://redis:6379
-      - PROXY_URI
-      - ACTIVE_SECONDS_PER_MIN
-      - COOKIE_STOCK_SIZE
-      - AXIOS_TIMEOUT
-      - MAX_CONCURRENCY
-      - NORMALIZER_API_BASE_URI=http://normalizer:3000
-    depends_on:
-      - redis
-      - normalizer
-    command: bash -c "cd /usr/src/app && npm install && npm run start"
-    volumes:
-      - ./scraper-comparer:/usr/src/app
-      - /usr/src/app/node_modules
-      - scraper_comparer_logs:/logs
-    logging:
-      driver: "json-file"
-      options:
-        max-size: "500m"
-        max-file: "10"
-  scraper-weekly:
-    container_name: scraper-weekly
-    restart: unless-stopped
-    build:
-      context: scraper-weekly
-      dockerfile: Dockerfile
-    environment:
-      - NODE_ENV
-      - REDIS_URI=redis://redis:6379
-      - PROXY_URI
-      - ACTIVE_SECONDS_PER_MIN
-      - COOKIE_STOCK_SIZE
-      - AXIOS_TIMEOUT
-      - MAX_CONCURRENCY
-      - NORMALIZER_API_BASE_URI=http://normalizer:3000
-    depends_on:
-      - redis
-      - normalizer
-    command: bash -c "cd /usr/src/app && npm install && npm run start"
-    volumes:
-      - ./scraper-weekly:/usr/src/app
-      - /usr/src/app/node_modules
-      - scraper_weekly_logs:/logs
-    logging:
-      driver: "json-file"
-      options:
-        max-size: "500m"
-        max-file: "10"
+  # scraper-comparer:
+  #   container_name: scraper-comparer
+  #   restart: unless-stopped
+  #   build:
+  #     context: scraper-comparer
+  #     dockerfile: Dockerfile
+  #   environment:
+  #     - NODE_ENV
+  #     - REDIS_URI=redis://redis:6379
+  #     - PROXY_URI
+  #     - ACTIVE_SECONDS_PER_MIN
+  #     - COOKIE_STOCK_SIZE
+  #     - AXIOS_TIMEOUT
+  #     - MAX_CONCURRENCY
+  #     - NORMALIZER_API_BASE_URI=http://normalizer:3000
+  #   depends_on:
+  #     - redis
+  #     - normalizer
+  #   command: bash -c "cd /usr/src/app && npm install && npm run start"
+  #   volumes:
+  #     - ./scraper-comparer:/usr/src/app
+  #     - /usr/src/app/node_modules
+  #     - scraper_comparer_logs:/logs
+  #   logging:
+  #     driver: "json-file"
+  #     options:
+  #       max-size: "500m"
+  #       max-file: "10"
+  # scraper-weekly:
+  #   container_name: scraper-weekly
+  #   restart: unless-stopped
+  #   build:
+  #     context: scraper-weekly
+  #     dockerfile: Dockerfile
+  #   environment:
+  #     - NODE_ENV
+  #     - REDIS_URI=redis://redis:6379
+  #     - PROXY_URI
+  #     - ACTIVE_SECONDS_PER_MIN
+  #     - COOKIE_STOCK_SIZE
+  #     - AXIOS_TIMEOUT
+  #     - MAX_CONCURRENCY
+  #     - NORMALIZER_API_BASE_URI=http://normalizer:3000
+  #   depends_on:
+  #     - redis
+  #     - normalizer
+  #   command: bash -c "cd /usr/src/app && npm install && npm run start"
+  #   volumes:
+  #     - ./scraper-weekly:/usr/src/app
+  #     - /usr/src/app/node_modules
+  #     - scraper_weekly_logs:/logs
+  #   logging:
+  #     driver: "json-file"
+  #     options:
+  #       max-size: "500m"
+  #       max-file: "10"
   scraper:
     container_name: scraper
     restart: unless-stopped
@@ -185,7 +185,7 @@ services:
       - MONGO_URI=mongodb://${MONGO_INITDB_USERNAME}:${MONGO_INITDB_PASSWORD}@mongodb:27017/${MONGO_INITDB_DATABASE}
     depends_on:
       - redis
-      - normalizer
+      # - normalizer
       - mongodb
     command: bash -c "cd /usr/src/app && npm install && npm run start"
     volumes:
